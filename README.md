@@ -1,4 +1,4 @@
-# WELCOME TO OUR PET STORE
+# WELCOME TO OUR GROCERY STORE
 
 ## What will you find in this:
 * NetBeans Apache Ant project including JUnit Test
