@@ -1,6 +1,6 @@
 <%-- 
-    Document   : home
-    Created on : Feb 23, 2025, 9:37:35 PM
+    Document   : home.jsp
+    Created on : Feb 23, 2025, 10:19:00 PM
     Author     : admin
 --%>
 
@@ -16,10 +16,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home One || Oganik || HTML Template For Organic Stores</title>
         <!-- favicons Icons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
-        <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+        <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/images/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/images/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
         <meta name="description" content="Agrikon HTML Template For Agriculture Farm & Farmers" />
 
         <!-- fonts -->
@@ -165,7 +165,7 @@
                      }'>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="image-layer" style="background-image: url(assets/images/main-slider/main-slider-1-1.jpg);">
+                            <div class="image-layer" style="background-image: url(${pageContext.request.contextPath}/images/main-slider/main-slider-1-1.jpg);">
                             </div>
                             <!-- /.image-layer -->
                             <div class="container">
@@ -180,7 +180,7 @@
                             </div><!-- /.container -->
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <div class="image-layer" style="background-image: url(assets/images/main-slider/main-slider-1-2.jpg);">
+                            <div class="image-layer" style="background-image: url(${pageContext.request.contextPath}/images/main-slider/main-slider-1-2.jpg);">
                             </div>
                             <!-- /.image-layer -->
                             <div class="container">
