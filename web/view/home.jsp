@@ -51,14 +51,11 @@
         <!-- /.preloader -->
         <jsp:include page="com/preloader.jsp"></jsp:include><!-- /.page-wrapper -->
 
-
-        <jsp:include page="com/mobile-nav_wrapper.jsp"></jsp:include>
-        <!-- /.mobile-nav__wrapper -->
+        <jsp:include page="com/mobile-nav_wrapper.jsp"></jsp:include><!-- /.mobile-nav__wrapper -->
 
         <jsp:include page="com/cart-toggler.jsp"></jsp:include><!-- /.cart-toggler -->
 
-        <jsp:include page="com/search-popup.jsp"></jsp:include>
-        <!-- /.search-popup -->
+        <jsp:include page="com/search-popup.jsp"></jsp:include><!-- /.search-popup -->
 
         <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 

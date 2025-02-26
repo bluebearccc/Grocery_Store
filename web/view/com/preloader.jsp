@@ -51,29 +51,16 @@
                     <a href="#"><i class="organik-icon-user"></i>Login / Register</a>
                 </div><!-- /.main-menu__login -->
                 <ul class="main-menu__list">
-                    <li class="dropdown">
+                    <li>
                         <a href="index-2.html">Home</a>
-                        <ul>
-                            <li>
-                                <a href="index-2.html">Home One</a>
-                            </li>
-                            <li><a href="index-3.html">Home Two</a></li>
-                            <li class="dropdown">
-                                <a href="#">Header Styles</a>
-                                <ul>
-                                    <li><a href="index-2.html">Header One</a></li>
-                                    <li><a href="index-3.html">Header Two</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </li>
                     <li>
                         <a href="about.html">About</a>
                     </li>
                     <li class="dropdown">
-                        <a href="products.html">Shop</a>
+                        <a href="view/com/product.jsp">Shop</a>
                         <ul>
-                            <li><a href="products.html">Shop</a></li>
+                            <li><a href="view/com/product.jsp">Shop</a></li>
                             <li><a href="product-details.html">Product Details</a></li>
                             <li><a href="cart.html">Cart Page</a></li>
                             <li><a href="checkout.html">Checkout</a></li>
