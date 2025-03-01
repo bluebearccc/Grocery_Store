@@ -18,6 +18,8 @@ import lombok.*;
 @Getter
 @Setter
 public class Supplier {
-    private int supplierID;
+    private int supplierId;
     private String companyName;
+    private String contactName;
+    private String phone;
 }

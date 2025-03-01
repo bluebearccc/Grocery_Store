@@ -24,10 +24,14 @@ import lombok.ToString;
 @Getter
 @Setter
 public class User {
-    private int userID;
+
+    private int userId;
     private String userName;
-    private int roleID;
+    private String fullname;
+    private String password;
     private String email;
-    private String birthday;
     private String address;
+    private String phone;
+    private int role;
+    private float balance;
 }

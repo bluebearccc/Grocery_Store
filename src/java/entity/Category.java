@@ -24,7 +24,7 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Category {
-    private int categoryID;
+    private int categoryId;
     private String categoryName;
-    private String descibe;
+    private String description;
 }
