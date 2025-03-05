@@ -1,6 +1,6 @@
 <%-- 
-    Document   : preloader
-    Created on : Mar 5, 2025, 10:07:30 PM
+    Document   : register
+    Created on : Mar 6, 2025, 1:19:18 AM
     Author     : admin
 --%>
 
@@ -12,8 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div class="preloader">
-            <img class="preloader__image" width="55" src="${pageContext.request.contextPath}/images/loader.png" alt="" />
-        </div>
+        <h1>Hello World!</h1>
     </body>
 </html>
