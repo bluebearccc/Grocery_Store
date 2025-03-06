@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 /**
  *
  * @author ADMIN
@@ -430,7 +431,7 @@ public abstract class GenericDAO<T> extends DBContext {
         // Trả về ID được tạo tự động (nếu có)
         return id;
     }
-    
+
     protected int insertGenericDAO(String sql, Map<String, Object> parameterMap) {
         List<Object> parameters = new ArrayList<>();
 
@@ -617,9 +618,9 @@ public abstract class GenericDAO<T> extends DBContext {
         }
         return total;
     }
-    
+
     public abstract List<T> findAll();
-    
+
     public abstract int insert(T t);
 
 }
