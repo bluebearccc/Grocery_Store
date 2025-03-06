@@ -23,7 +23,7 @@
                     <img src="${pageContext.request.contextPath}/images/products/cart-1-1.jpg" alt="">
                     <div class="mini-cart__item-content">
                         <div class="mini-cart__item-top">
-                            <h3><a href="product-details.html">Banana</a></h3>
+                            <h3><a href="product-details.jsp">Banana</a></h3>
                             <p>$9.99</p>
                         </div><!-- /.mini-cart__item-top -->
                         <div class="quantity-box">
@@ -37,7 +37,7 @@
                     <img src="${pageContext.request.contextPath}/images/products/cart-1-2.jpg" alt="">
                     <div class="mini-cart__item-content">
                         <div class="mini-cart__item-top">
-                            <h3><a href="product-details.html">Tomato</a></h3>
+                            <h3><a href="product-details.jsp">Tomato</a></h3>
                             <p>$9.99</p>
                         </div><!-- /.mini-cart__item-top -->
                         <div class="quantity-box">
@@ -51,7 +51,7 @@
                     <img src="${pageContext.request.contextPath}/images/products/cart-1-3.jpg" alt="">
                     <div class="mini-cart__item-content">
                         <div class="mini-cart__item-top">
-                            <h3><a href="product-details.html">Bread</a></h3>
+                            <h3><a href="product-details.jsp">Bread</a></h3>
                             <p>$9.99</p>
                         </div><!-- /.mini-cart__item-top -->
                         <div class="quantity-box">
@@ -61,7 +61,7 @@
                         </div>
                     </div><!-- /.mini-cart__item-content -->
                 </div><!-- /.mini-cart__item -->
-                <a href="checkout.html" class="thm-btn mini-cart__checkout">Proceed To Checkout</a>
+                <a href="checkout" class="thm-btn mini-cart__checkout">Proceed To Checkout</a>
             </div><!-- /.mini-cart__content -->
         </div>
     </div>

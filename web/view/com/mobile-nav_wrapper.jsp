@@ -19,7 +19,7 @@
                 <span class="mobile-nav__close mobile-nav__toggler"><i class="organik-icon-close"></i></span>
 
                 <div class="logo-box">
-                    <a href="index-2.html" aria-label="logo image"><img src="${pageContext.request.contextPath}/images/logo-light.png" width="155" alt="" /></a>
+                    <a href="index-2.jsp" aria-label="logo image"><img src="${pageContext.request.contextPath}/images/logo-light.png" width="155" alt="" /></a>
                 </div>
                 <!-- /.logo-box -->
                 <div class="mobile-nav__container"></div>
