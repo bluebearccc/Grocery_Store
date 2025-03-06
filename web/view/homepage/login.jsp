@@ -11,13 +11,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login || Oganik</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/images/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/images/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg); no-repeat center center/cover">
         <div class="login-container">
             <div class="overlay"></div>
             <div class="content">
-                <form>
+                <form class="form-login">
                     <div class="input-group">
                         <input type="text" placeholder="Username" required>
                     </div>
