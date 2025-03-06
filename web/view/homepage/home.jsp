@@ -50,7 +50,6 @@
                     <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
                 </div><!-- /.stricky-header -->
 
-
                 <section class="main-slider">
                     <div class="swiper-container thm-swiper__slider" data-swiper-options='{
                          "slidesPerView": 1,
