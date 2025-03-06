@@ -865,7 +865,7 @@
                 </div><!-- /.container-fluid -->
             </section><!-- /.gallery-one -->
 
-            <jsp:include page="page-wrapper/site-footer.jsp"></jsp:include><!-- /.site-footer -->
+            <jsp:include page="../com/page-wrapper/site-footer.jsp"></jsp:include><!-- /.site-footer -->
             </div><!-- /.page-wrapper -->
 
         <jsp:include page="../com/mobile-nav_wrapper.jsp"></jsp:include><!-- /.mobile-nav__wrapper -->

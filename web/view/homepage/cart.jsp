@@ -12,10 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cart Page || Oganik || HTML Template For Organic Stores</title>
         <!-- favicons Icons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
-        <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+        <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/images/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/images/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
         <meta name="description" content="Agrikon HTML Template For Agriculture Farm & Farmers" />
 
         <!-- fonts -->
@@ -23,26 +23,26 @@
         <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&amp;family=Abril+Fatface&amp;family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet" />
 
 
-        <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/vendors/bootstrap-select/bootstrap-select.min.css" />
-        <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
-        <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
-        <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
-        <link rel="stylesheet" href="assets/vendors/organik-icon/organik-icons.css" />
-        <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-        <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
-        <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
-        <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
-        <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
-        <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/bootstrap-select/bootstrap-select.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/animate/animate.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/jarallax/jarallax.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/organik-icon/organik-icons.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/nouislider/nouislider.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/nouislider/nouislider.pips.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/odometer/odometer.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/swiper/swiper.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/vendors/tiny-slider/tiny-slider.min.css" />
 
         <!-- template styles -->
-        <link rel="stylesheet" href="assets/css/organik.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/organik.css" />
     </head>
 
     <body>
         <div class="preloader">
-            <img class="preloader__image" width="55" src="assets/images/loader.png" alt="" />
+            <img class="preloader__image" width="55" src="${pageContext.request.contextPath}/images/loader.png" alt="" />
         </div>
         <!-- /.preloader -->
         <div class="page-wrapper">
@@ -52,7 +52,7 @@
                     <div class="container">
                         <div class="main-logo">
                             <a href="index-2.html" class="logo">
-                                <img src="assets/images/logo-dark.png" width="105" alt="">
+                                <img src="${pageContext.request.contextPath}/images/logo-dark.png" width="105" alt="">
                             </a>
                             <div class="mobile-nav__buttons">
                                 <a href="#" class="search-toggler"><i class="organik-icon-magnifying-glass"></i></a>
@@ -129,7 +129,7 @@
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                         <div class="main-menu__language">
-                            <img src="assets/images/resources/flag-1-1.jpg" alt="">
+                            <img src="${pageContext.request.contextPath}/images/resources/flag-1-1.jpg" alt="">
                             <label class="sr-only" for="language-select">select language</label>
                             <!-- /#language-select.sr-only -->
                             <select class="selectpicker" id="language-select-header">
@@ -147,7 +147,7 @@
             </div><!-- /.stricky-header -->
 
             <section class="page-header">
-                <div class="page-header__bg" style="background-image: url(assets/images/backgrounds/page-header-bg-1-1.jpg);"></div>
+                <div class="page-header__bg" style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg);"></div>
                 <!-- /.page-header__bg -->
                 <div class="container">
                     <h2>Cart</h2>
@@ -176,7 +176,7 @@
                                 <tr>
                                     <td>
                                         <div class="product-box">
-                                            <img src="assets/images/products/cart-1-1.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/images/products/cart-1-1.jpg" alt="">
                                             <h3><a href="product-details.html">Banana</a></h3>
                                         </div><!-- /.product-box -->
                                     </td>
@@ -198,7 +198,7 @@
                                 <tr>
                                     <td>
                                         <div class="product-box">
-                                            <img src="assets/images/products/cart-1-2.jpg" alt="">
+                                            <img src="${pageContext.request.contextPath}/images/products/cart-1-2.jpg" alt="">
                                             <h3><a href="product-details.html">Tomatoes</a></h3>
                                         </div><!-- /.product-box -->
                                     </td>
@@ -222,12 +222,6 @@
                         </table><!-- /.table -->
                     </div><!-- /.table-responsive -->
                     <div class="row">
-                        <div class="col-lg-8">
-                            <form action="#" class="contact-one__form">
-                                <input type="text" placeholder="Enter Coupon Code">
-                                <button type="submit" class="thm-btn">Apply Coupon</button><!-- /.thm-btn -->
-                            </form><!-- /.contact-one__form -->
-                        </div><!-- /.col-lg-8 -->
                         <div class="col-lg-4">
                             <ul class="cart-total list-unstyled">
                                 <li>
@@ -253,14 +247,14 @@
             </section><!-- /.cart-page -->
 
             <footer class="site-footer background-black-2">
-                <img src="assets/images/shapes/footer-bg-1-1.png" alt="" class="site-footer__shape-1">
-                <img src="assets/images/shapes/footer-bg-1-2.png" alt="" class="site-footer__shape-2">
+                <img src="${pageContext.request.contextPath}/images/shapes/footer-bg-1-1.png" alt="" class="site-footer__shape-1">
+                <img src="${pageContext.request.contextPath}/images/shapes/footer-bg-1-2.png" alt="" class="site-footer__shape-2">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                             <div class="footer-widget footer-widget__about-widget">
                                 <a href="index-2.html" class="footer-widget__logo">
-                                    <img src="assets/images/logo-light.png" alt="" width="105" height="43">
+                                    <img src="${pageContext.request.contextPath}/images/logo-light.png" alt="" width="105" height="43">
                                 </a>
                                 <p class="thm-text-dark">Atiam rhoncus sit amet adip
                                     scing sed ipsum. Lorem ipsum
@@ -366,7 +360,7 @@
                 <span class="mobile-nav__close mobile-nav__toggler"><i class="organik-icon-close"></i></span>
 
                 <div class="logo-box">
-                    <a href="index-2.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
+                    <a href="index-2.html" aria-label="logo image"><img src="${pageContext.request.contextPath}/images/logo-light.png" width="155" alt="" /></a>
                 </div>
                 <!-- /.logo-box -->
                 <div class="mobile-nav__container"></div>
@@ -384,7 +378,7 @@
                 </ul><!-- /.mobile-nav__contact -->
                 <div class="mobile-nav__top">
                     <div class="mobile-nav__language">
-                        <img src="assets/images/resources/flag-1-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/images/resources/flag-1-1.jpg" alt="">
                         <label class="sr-only" for="language-select">select language</label>
                         <!-- /#language-select.sr-only -->
                         <select class="selectpicker" id="language-select">
@@ -412,7 +406,7 @@
                     <span class="mini-cart__close mini-cart__toggler"><i class="organik-icon-close"></i></span>
                 </div><!-- /.mini-cart__top -->
                 <div class="mini-cart__item">
-                    <img src="assets/images/products/cart-1-1.jpg" alt="">
+                    <img src="${pageContext.request.contextPath}/images/products/cart-1-1.jpg" alt="">
                     <div class="mini-cart__item-content">
                         <div class="mini-cart__item-top">
                             <h3><a href="product-details.html">Banana</a></h3>
@@ -426,7 +420,7 @@
                     </div><!-- /.mini-cart__item-content -->
                 </div><!-- /.mini-cart__item -->
                 <div class="mini-cart__item">
-                    <img src="assets/images/products/cart-1-2.jpg" alt="">
+                    <img src="${pageContext.request.contextPath}/images/products/cart-1-2.jpg" alt="">
                     <div class="mini-cart__item-content">
                         <div class="mini-cart__item-top">
                             <h3><a href="product-details.html">Tomato</a></h3>
@@ -440,7 +434,7 @@
                     </div><!-- /.mini-cart__item-content -->
                 </div><!-- /.mini-cart__item -->
                 <div class="mini-cart__item">
-                    <img src="assets/images/products/cart-1-3.jpg" alt="">
+                    <img src="${pageContext.request.contextPath}/images/products/cart-1-3.jpg" alt="">
                     <div class="mini-cart__item-content">
                         <div class="mini-cart__item-top">
                             <h3><a href="product-details.html">Bread</a></h3>
@@ -476,24 +470,24 @@
         <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
-        <script src="assets/vendors/jquery/jquery-3.5.1.min.js"></script>
-        <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
-        <script src="assets/vendors/jarallax/jarallax.min.js"></script>
-        <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
-        <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
-        <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
-        <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
-        <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
-        <script src="assets/vendors/nouislider/nouislider.min.js"></script>
-        <script src="assets/vendors/odometer/odometer.min.js"></script>
-        <script src="assets/vendors/swiper/swiper.min.js"></script>
-        <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
-        <script src="assets/vendors/wnumb/wNumb.min.js"></script>
-        <script src="assets/vendors/wow/wow.js"></script>
-        <script src="assets/vendors/isotope/isotope.js"></script>
-        <script src="assets/vendors/countdown/countdown.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/jquery/jquery-3.5.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/jarallax/jarallax.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/jquery-appear/jquery.appear.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/jquery-validate/jquery.validate.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/nouislider/nouislider.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/odometer/odometer.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/swiper/swiper.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/tiny-slider/tiny-slider.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/wnumb/wNumb.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/wow/wow.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/isotope/isotope.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendors/countdown/countdown.min.js"></script>
         <!-- template js -->
-        <script src="assets/js/organik.js"></script>
+        <script src="${pageContext.request.contextPath}/js/organik.js"></script>
     </body>
 </html>
