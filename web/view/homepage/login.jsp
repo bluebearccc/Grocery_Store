@@ -8,11 +8,9 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="vi">
-
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Form</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login || Oganik</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg); no-repeat center center/cover">

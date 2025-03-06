@@ -9,9 +9,46 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Register || Oganik</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
     </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+    <div class="container">
+        <div class="left-image">
+            <img src="${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg" alt="Left Image">
+        </div>
+
+        <div class="right-image">
+            <img src="${pageContext.request.contextPath}/images/backgrounds/funfact-bg-1-1.jpg" alt="Right Image">
+        </div>
+
+        <div class="form-container">
+            <form class="register-form">
+                <h2>Register</h2>
+                <div class="input-register-group">
+                    <input type="text" name="fullname" placeholder="Fullname" required>
+                </div>
+                <div class="input-register-group">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-register-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-register-group">
+                    <input type="text" name="phone" placeholder="Phone" required>
+                </div>
+                <div class="input-register-group">
+                    <input type="text" name="address" placeholder="Address" required>
+                </div>
+                <div class="input-register-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="input-register-group">
+                    <input type="password" name="password-confirm" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="register-btn">Sign Up</button>
+
+                <p class="login-link">Already have an account? <a href="#">Login</a></p>
+            </form>
+        </div>
+    </div>
 </html>
