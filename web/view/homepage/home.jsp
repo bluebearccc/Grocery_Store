@@ -73,7 +73,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="products.html" class=" thm-btn">Order Now</a>
+                                        <a href="products.jsp" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -88,7 +88,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="products.html" class=" thm-btn">Order Now</a>
+                                        <a href="products.jsp" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -198,11 +198,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Banana</a></h3>
+                                    <h3><a href="product-details.jsp">Banana</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -222,11 +222,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Olive Oil</a></h3>
+                                    <h3><a href="product-details.jsp">Olive Oil</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -246,11 +246,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Eggs</a></h3>
+                                    <h3><a href="product-details.jsp">Eggs</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -270,11 +270,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Tamatos</a></h3>
+                                    <h3><a href="product-details.jsp">Tamatos</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -294,11 +294,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Bread</a></h3>
+                                    <h3><a href="product-details.jsp">Bread</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -318,11 +318,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Apples</a></h3>
+                                    <h3><a href="product-details.jsp">Apples</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -346,7 +346,7 @@
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="products.html" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
@@ -355,7 +355,7 @@
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="products.html" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
@@ -432,7 +432,7 @@
                                         </div><!-- /.col-md-6 -->
                                     </div><!-- /.row -->
                                 </div><!-- /.call-to-action__wrap -->
-                                <a href="products.html" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action__content -->
                         </div><!-- /.col-md-12 col-lg-12 col-xl-12 -->
                     </div><!-- /.row -->
@@ -585,7 +585,7 @@
                                         </ul><!-- /.list-unstyled -->
                                     </div><!-- /.col-md-6 -->
                                 </div><!-- /.row -->
-                                <a href="products.html" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action-two__content -->
                         </div><!-- /.col-md-6 -->
 

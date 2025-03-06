@@ -55,7 +55,7 @@
                 <div class="container">
                     <h2>Products</h2>
                     <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index-2.html">Home</a></li>
+                        <li><a href="index-2.jsp">Home</a></li>
                         <li>/</li>
                         <li><span>Products</span></li>
                     </ul><!-- /.thm-breadcrumb list-unstyled -->
@@ -121,12 +121,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-1.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Banana</a></h3>
+                                                <h3><a href="product-details.jsp">Banana</a></h3>
                                                 <p>$1.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -145,12 +145,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-2.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Tomatoes</a></h3>
+                                                <h3><a href="product-details.jsp">Tomatoes</a></h3>
                                                 <p>$3.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -169,12 +169,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-3.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Bread</a></h3>
+                                                <h3><a href="product-details.jsp">Bread</a></h3>
                                                 <p>$2.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -193,12 +193,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-4.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Apples</a></h3>
+                                                <h3><a href="product-details.jsp">Apples</a></h3>
                                                 <p>$5.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -217,12 +217,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-5.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Olive Oil</a></h3>
+                                                <h3><a href="product-details.jsp">Olive Oil</a></h3>
                                                 <p>$6.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -241,12 +241,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-6.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Eggs</a></h3>
+                                                <h3><a href="product-details.jsp">Eggs</a></h3>
                                                 <p>$4.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -265,12 +265,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-7.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Honey</a></h3>
+                                                <h3><a href="product-details.jsp">Honey</a></h3>
                                                 <p>$9.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -289,12 +289,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-8.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Onions</a></h3>
+                                                <h3><a href="product-details.jsp">Onions</a></h3>
                                                 <p>$2.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">
@@ -313,12 +313,12 @@
                                             <img src="${pageContext.request.contextPath}/images/products/product-1-9.jpg" alt="">
                                             <div class="product-card__image-content">
                                                 <a href="#"><i class="organik-icon-heart"></i></a>
-                                                <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                                <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                             </div><!-- /.product-card__image-content -->
                                         </div><!-- /.product-card__image -->
                                         <div class="product-card__content">
                                             <div class="product-card__left">
-                                                <h3><a href="product-details.html">Cabbage</a></h3>
+                                                <h3><a href="product-details.jsp">Cabbage</a></h3>
                                                 <p>$3.00</p>
                                             </div><!-- /.product-card__left -->
                                             <div class="product-card__right">

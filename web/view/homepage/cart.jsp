@@ -57,7 +57,7 @@
                 <div class="container">
                     <h2>Cart</h2>
                     <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index-2.html">Home</a></li>
+                        <li><a href="index-2.jsp">Home</a></li>
                         <li>/</li>
                         <li><span>Cart</span></li>
                     </ul><!-- /.thm-breadcrumb list-unstyled -->
@@ -82,7 +82,7 @@
                                     <td>
                                         <div class="product-box">
                                             <img src="${pageContext.request.contextPath}/images/products/cart-1-1.jpg" alt="">
-                                            <h3><a href="product-details.html">Banana</a></h3>
+                                            <h3><a href="product-details.jsp">Banana</a></h3>
                                         </div><!-- /.product-box -->
                                     </td>
                                     <td>$9.99</td>
@@ -104,7 +104,7 @@
                                     <td>
                                         <div class="product-box">
                                             <img src="${pageContext.request.contextPath}/images/products/cart-1-2.jpg" alt="">
-                                            <h3><a href="product-details.html">Tomatoes</a></h3>
+                                            <h3><a href="product-details.jsp">Tomatoes</a></h3>
                                         </div><!-- /.product-box -->
                                     </td>
                                     <td>$9.99</td>

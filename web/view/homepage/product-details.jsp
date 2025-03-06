@@ -55,7 +55,7 @@
                 <div class="container">
                     <h2>Product</h2>
                     <ul class="thm-breadcrumb list-unstyled">
-                        <li><a href="index-2.html">Home</a></li>
+                        <li><a href="index-2.jsp">Home</a></li>
                         <li>/</li>
                         <li><span>Product</span></li>
                     </ul><!-- /.thm-breadcrumb list-unstyled -->
@@ -300,11 +300,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Banana</a></h3>
+                                    <h3><a href="product-details.jsp">Banana</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -324,11 +324,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Olive Oil</a></h3>
+                                    <h3><a href="product-details.jsp">Olive Oil</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -348,11 +348,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.html"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.html">Eggs</a></h3>
+                                    <h3><a href="product-details.jsp">Eggs</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>

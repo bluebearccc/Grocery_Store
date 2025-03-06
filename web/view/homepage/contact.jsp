@@ -55,7 +55,7 @@
                     <div class="container">
                         <h2>Contact</h2>
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.jsp">Home</a></li>
                             <li>/</li>
                             <li><span>Contact</span></li>
                         </ul><!-- /.thm-breadcrumb list-unstyled -->
