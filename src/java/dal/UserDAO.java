@@ -4,10 +4,13 @@
  */
 package dal;
 
+import entity.User;
+import java.util.List;
+
 /**
  *
  * @author admin
  */
 public class UserDAO {
-    
+
 }

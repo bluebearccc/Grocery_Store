@@ -14,14 +14,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 body {
-    /*login*/
     background: no-repeat center center/cover;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*register*/
-    background: #f0f0f0;
 }
 
 .login-container {
