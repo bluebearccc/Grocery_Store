@@ -196,3 +196,61 @@ body {
     color: #3498db;
     text-decoration: none;
 }
+
+.container-account {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Rubik', sans-serif;
+}
+
+.container-account h2,
+.container-account h3 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.container-account form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-account input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container-account .input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.container-account .input-group input {
+    width: 48%;
+}
+
+.container-account .btn-save {
+    width: 100%;
+    background: #78be20;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container-account .btn-save:hover {
+    background: #5fa416;
+}
+
