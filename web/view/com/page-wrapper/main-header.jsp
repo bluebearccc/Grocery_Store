@@ -15,7 +15,7 @@
         <div class="topbar">
             <div class="container">
                 <div class="main-logo">
-                    <a href="index-2.html" class="logo">
+                    <a href="home" class="logo">
                         <img src="${pageContext.request.contextPath}/images/logo-dark.png" width="105" alt="">
                     </a>
                     <div class="mobile-nav__buttons">
@@ -34,13 +34,13 @@
                     </div><!-- /.topbar__social -->
                     <div class="topbar__info">
                         <i class="organik-icon-email"></i>
-                        <p>Email <a href="mailto:info@organik.com">info@organik.com</a></p>
+                        <p>Email <a href="#">haithangbip@gmail.com</a></p>
                     </div><!-- /.topbar__info -->
                 </div><!-- /.topbar__left -->
                 <div class="topbar__right">
                     <div class="topbar__info">
                         <i class="organik-icon-calling"></i>
-                        <p>Phone <a href="tel:+92-666-888-0000">92 666 888 0000</a></p>
+                        <p>Phone <a href="#">0123456789</a></p>
                     </div><!-- /.topbar__info -->
                     <div class="topbar__buttons">
                         <a href="#" class="search-toggler"><i class="organik-icon-magnifying-glass"></i></a>
@@ -53,41 +53,32 @@
         <nav class="main-menu">
             <div class="container">
                 <div class="main-menu__login">
-                    <a href="#"><i class="organik-icon-user"></i>Login / Register</a>
+                    <a href="home?site=login"><i class="organik-icon-user"></i>Login</a>
+                </div><!-- /.main-menu__login -->
+                <div class="divider">/</div>
+                <div class="main-menu__login">
+                    <a href="home?site=register">Register</a>
                 </div><!-- /.main-menu__login -->
                 <ul class="main-menu__list">
                     <li>
-                        <a href="index-2.html">Home</a>
+                        <a href="home?site=home">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="home?site=about">About</a>
                     </li>
                     <li class="dropdown">
-                        <a href="view/homepage/product.jsp">Shop</a>
+                        <a href="home?site=product">Shop</a>
                         <ul>
-                            <li><a href="view/homepage/product.jsp">Shop</a></li>
-                            <li><a href="product-details.html">Product Details</a></li>
-                            <li><a href="cart.html">Cart Page</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="home?site=product">Shop</a></li>
+                            <li><a href="home?site=product-details">Product Details</a></li>
+                            <li><a href="home?site=cart">Cart Page</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="news.html">News</a>
-                        <ul>
-                            <li><a href="news.html">News</a></li>
-                            <li><a href="news-details.html">News Details</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="home?site=contact">Contact</a></li>
                 </ul>
-                <div class="main-menu__language">
-                    <img src="${pageContext.request.contextPath}/images/resources/flag-1-1.jpg" alt="">
-                    <label class="sr-only" for="language-select">select language</label>
-                    <!-- /#language-select.sr-only -->
-                    <select class="selectpicker" id="language-select-header">
-                        <option value="english">English</option>
-                        <option value="arabic">Arabic</option>
-                    </select>
-                </div><!-- /.main-menu__language -->
+                <div class="main-menu__login">
+                    <a href="home?site=logout"><i class="organik-icon-user-logout">🔓</i> Logout</a>
+                </div><!-- /.main-menu__login -->
             </div><!-- /.container -->
         </nav>
         <!-- /.main-menu -->

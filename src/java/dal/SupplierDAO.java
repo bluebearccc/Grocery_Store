@@ -8,6 +8,6 @@ package dal;
  *
  * @author FPT
  */
-public class SupplierDAO {
+public class SupplierDAO extends DBContext{
     
 }

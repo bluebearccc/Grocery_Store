@@ -73,7 +73,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="products.jsp" class=" thm-btn">Order Now</a>
+                                        <a href="home?site=product" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -88,7 +88,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="products.jsp" class=" thm-btn">Order Now</a>
+                                        <a href="home?action=product" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -108,59 +108,30 @@
 
             <section class="feature-box">
                 <div class="container">
-                    <div class="inner-container wow fadeInUp" data-wow-duration="1500ms">
-                        <div class="thm-tiny__slider" id="contact-infos-box" data-tiny-options='{
-                             "container": "#contact-infos-box",
-                             "items": 1,
-                             "slideBy": "page",
-                             "gutter": 0,
-                             "mouseDrag": true,
-                             "autoplay": true,
-                             "nav": false,
-                             "controlsPosition": "bottom",
-                             "controlsText": ["<i class=\"fa fa-angle-left\"></i>", "<i class=\"fa fa-angle-right\"></i>"],
-                             "autoplayButtonOutput": false,
-                             "responsive": {
-                             "640": {
-                             "items": 2,
-                             "gutter": 30
-                             },
-                             "992": {
-                             "gutter": 30,
-                             "items": 3
-                             },
-                             "1200": {
-                             "disable": true
-                             }
-                             }
-                             }'>
-                            <div>
-                                <div class="feature-box__single">
-                                    <i class="organik-icon-global-shipping feature-box__icon"></i>
-                                    <div class="feature-box__content">
-                                        <h3>Return Policy</h3>
-                                        <p>Money back guarantee</p>
-                                    </div><!-- /.feature-box__content -->
-                                </div><!-- /.feature-box__single -->
-                            </div>
-                            <div>
-                                <div class="feature-box__single">
-                                    <i class="organik-icon-delivery-truck feature-box__icon"></i>
-                                    <div class="feature-box__content">
-                                        <h3>Free Shipping</h3>
-                                        <p>On all orders over $25.00</p>
-                                    </div><!-- /.feature-box__content -->
-                                </div><!-- /.feature-box__single -->
-                            </div>
-                            <div>
-                                <div class="feature-box__single">
-                                    <i class="organik-icon-online-store feature-box__icon"></i>
-                                    <div class="feature-box__content">
-                                        <h3>Store Locator</h3>
-                                        <p>Find your nearest store</p>
-                                    </div><!-- /.feature-box__content -->
-                                </div><!-- /.feature-box__single -->
-                            </div>
+                    <div class="inner-container fadeInUp" data-wow-duration="1500ms" style="display: flex; justify-content: space-evenly">
+                        <div>
+                            <div class="feature-box__single">
+                                <i class="organik-icon-global-shipping feature-box__icon"></i>
+                                <div class="feature-box__content">
+                                    <h3>Return Policy</h3>
+                                </div><!-- /.feature-box__content -->
+                            </div><!-- /.feature-box__single -->
+                        </div>
+                        <div>
+                            <div class="feature-box__single">
+                                <i class="organik-icon-delivery-truck feature-box__icon"></i>
+                                <div class="feature-box__content">
+                                    <h3>Free Shipping</h3>
+                                </div><!-- /.feature-box__content -->
+                            </div><!-- /.feature-box__single -->
+                        </div>
+                        <div>
+                            <div class="feature-box__single">
+                                <i class="organik-icon-online-store feature-box__icon"></i>
+                                <div class="feature-box__content">
+                                    <h3>Store Locator</h3>
+                                </div><!-- /.feature-box__content -->
+                            </div><!-- /.feature-box__single -->
                         </div>
                     </div><!-- /.inner-container -->
                 </div><!-- /.container -->
@@ -198,11 +169,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?action=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Banana</a></h3>
+                                    <h3><a href="home?action=product-details">Banana</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -222,11 +193,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Olive Oil</a></h3>
+                                    <h3><a href="home?site=product-details">Olive Oil</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -246,11 +217,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Eggs</a></h3>
+                                    <h3><a href="home?site=product-details">Eggs</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -270,11 +241,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Tamatos</a></h3>
+                                    <h3><a href="home?site=product-details">Tamatos</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -294,11 +265,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Bread</a></h3>
+                                    <h3><a href="home?site=product-details">Bread</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -318,11 +289,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Apples</a></h3>
+                                    <h3><a href="home?site=product-details">Apples</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -342,58 +313,26 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="0ms">
-                            <div class="offer-banner__box" style="background-image: url(assets/images/resources/offer-banner-1-1.jpg);">
+                            <div class="offer-banner__box" style="background-image: url(${pageContext.request.contextPath}/images/resources/offer-banner-1-1.jpg);">
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
                         <div class="col-md-6 wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="100ms">
-                            <div class="offer-banner__box" style="background-image: url(assets/images/resources/offer-banner-1-2.jpg);">
+                            <div class="offer-banner__box" style="background-image: url(${pageContext.request.contextPath}/images/resources/offer-banner-1-2.jpg);">
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </section><!-- /.offer-banner -->
-
-            <section class="funfact-one jarallax" data-jarallax data-speed="0.3" data-imgPosition="50% 50%">
-                <img src="${pageContext.request.contextPath}/images/backgrounds/funfact-bg-1-1.jpg" class="jarallax-img" alt="">
-                <div class="container">
-                    <div class="row no-gutters">
-                        <div class="col-md-6 col-lg-3  wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="0ms">
-                            <div class="funfact-one__single">
-                                <h3 class="odometer" data-count="8080">00</h3>
-                                <p>Organic Products Available</p>
-                            </div><!-- /.funfact-one__single -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                        <div class="col-md-6 col-lg-3  wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="100ms">
-                            <div class="funfact-one__single">
-                                <h3 class="odometer" data-count="697">00</h3>
-                                <p>Healthy Recipes</p>
-                            </div><!-- /.funfact-one__single -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                        <div class="col-md-6 col-lg-3  wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="200ms">
-                            <div class="funfact-one__single">
-                                <h3 class="odometer" data-count="440">00</h3>
-                                <p>Expert Team Members</p>
-                            </div><!-- /.funfact-one__single -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                        <div class="col-md-6 col-lg-3  wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="300ms">
-                            <div class="funfact-one__single">
-                                <h3 class="odometer" data-count="2870">00</h3>
-                                <p>Satisfied Customers</p>
-                            </div><!-- /.funfact-one__single -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-            </section><!-- /.funfact-one -->
 
             <section class="call-to-action">
                 <img src="${pageContext.request.contextPath}/images/shapes/call-shape-1.png" alt="" class="call-to-action__shape-1">
@@ -407,7 +346,7 @@
                         <div class="col-md-12 col-lg-12 col-xl-6 clearfix">
                             <div class="call-to-action__content">
                                 <div class="block-title text-left">
-                                    <div class="block-title__decor" style="background-image: url(assets/images/shapes/leaf-2-1.png);"></div>
+                                    <div class="block-title__decor" style="background-image: url(${pageContext.request.contextPath}/images/shapes/leaf-2-1.png);"></div>
                                     <!-- /.block-title__decor -->
                                     <p>Shopping Store</p>
                                     <h3>Organic Food Only</h3>
@@ -432,106 +371,12 @@
                                         </div><!-- /.col-md-6 -->
                                     </div><!-- /.row -->
                                 </div><!-- /.call-to-action__wrap -->
-                                <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action__content -->
                         </div><!-- /.col-md-12 col-lg-12 col-xl-12 -->
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </section><!-- /.call-to-action -->
-
-            <div class="client-carousel ">
-                <div class="container">
-                    <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 140, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
-                         "0": {
-                         "spaceBetween": 30,
-                         "slidesPerView": 2
-                         },
-                         "375": {
-                         "spaceBetween": 30,
-                         "slidesPerView": 2
-                         },
-                         "575": {
-                         "spaceBetween": 30,
-                         "slidesPerView": 3
-                         },
-                         "767": {
-                         "spaceBetween": 50,
-                         "slidesPerView": 4
-                         },
-                         "991": {
-                         "spaceBetween": 50,
-                         "slidesPerView": 5
-                         },
-                         "1199": {
-                         "spaceBetween": 100,
-                         "slidesPerView": 5
-                         }
-                         }}'>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                            <div class="swiper-slide">
-                                <img src="${pageContext.request.contextPath}/images/resources/brand-1-1.png" alt="">
-                            </div><!-- /.swiper-slide -->
-                        </div><!-- /.swiper-wrapper -->
-                    </div><!-- /.thm-swiper__slider -->
-                </div><!-- /.container -->
-            </div><!-- /.client-carousel -->
 
             <section class="call-to-action-two">
                 <img src="${pageContext.request.contextPath}/images/shapes/call-shape-2-1.png" alt="" class="call-to-action-two__shape-1">
@@ -585,7 +430,7 @@
                                         </ul><!-- /.list-unstyled -->
                                     </div><!-- /.col-md-6 -->
                                 </div><!-- /.row -->
-                                <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action-two__content -->
                         </div><!-- /.col-md-6 -->
 
@@ -593,91 +438,11 @@
                 </div><!-- /.container -->
             </section><!-- /.call-to-action-two -->
 
-            <section class="testimonials-one">
-                <div class="testimonials-one__head">
-                    <div class="container">
-                        <div class="block-title text-center">
-                            <div class="block-title__decor"></div><!-- /.block-title__decor -->
-                            <p>Our Testimonials</p>
-                            <h3>What People Say?</h3>
-                        </div><!-- /.block-title -->
-                    </div><!-- /.container -->
-                </div><!-- /.testimonials-one__head -->
-                <div class="container">
-                    <div class="thm-tiny__slider" id="testimonials-one-box" data-tiny-options='{
-                         "container": "#testimonials-one-box",
-                         "items": 1,
-                         "slideBy": "page",
-                         "gutter": 0,
-                         "mouseDrag": true,
-                         "autoplay": true,
-                         "nav": false,
-                         "controlsPosition": "bottom",
-                         "controlsText": ["<i class=\"fa fa-angle-left\"></i>", "<i class=\"fa fa-angle-right\"></i>"],
-                         "autoplayButtonOutput": false,
-                         "responsive": {
-                         "640": {
-                         "items": 2,
-                         "gutter": 30
-                         },
-                         "992": {
-                         "gutter": 30,
-                         "items": 3
-                         },
-                         "1200": {
-                         "disable": true
-                         }
-                         }
-                         }'>
-                        <div>
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__image">
-                                    <img src="${pageContext.request.contextPath}/images/resources/testi-1-1.png" alt="">
-                                </div><!-- /.testimonials-one__image -->
-                                <div class="testimonials-one__content">
-                                    <p>I was very impresed by the osfins service lorem ipsum is simply free text used by copy typing
-                                        refreshing. Neque porro est qui dolorem ipsum.</p>
-                                    <h3>Winnie Collier</h3>
-                                    <span>Customer</span>
-                                </div><!-- /.testimonials-one__content -->
-                            </div><!-- /.testimonials-one__single -->
-                        </div>
-                        <div>
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__image">
-                                    <img src="${pageContext.request.contextPath}/images/resources/testi-1-2.png" alt="">
-                                </div><!-- /.testimonials-one__image -->
-                                <div class="testimonials-one__content">
-                                    <p>I was very impresed by the osfins service lorem ipsum is simply free text used by copy typing
-                                        refreshing. Neque porro est qui dolorem ipsum.</p>
-                                    <h3>Helen Woods</h3>
-                                    <span>Customer</span>
-                                </div><!-- /.testimonials-one__content -->
-                            </div><!-- /.testimonials-one__single -->
-                        </div>
-                        <div>
-                            <div class="testimonials-one__single">
-                                <div class="testimonials-one__image">
-                                    <img src="${pageContext.request.contextPath}/images/resources/testi-1-3.png" alt="">
-                                </div><!-- /.testimonials-one__image -->
-                                <div class="testimonials-one__content">
-                                    <p>I was very impresed by the osfins service lorem ipsum is simply free text used by copy typing
-                                        refreshing. Neque porro est qui dolorem ipsum.</p>
-                                    <h3>Ethan Thomas</h3>
-                                    <span>Customer</span>
-                                </div><!-- /.testimonials-one__content -->
-                            </div><!-- /.testimonials-one__single -->
-                        </div>
-                    </div>
-                </div><!-- /.container -->
-            </section><!-- /.testimonials-one -->
-
             <section class="gallery-one">
                 <div class="container-fluid">
                     <div class="block-title text-center">
                         <div class="block-title__decor"></div><!-- /.block-title__decor -->
-                        <p>We’re On Instagram</p>
-                        <h3>Shop on Instagram</h3>
+                        <h3>Welcome To Our Shop</h3>
                     </div><!-- /.block-title -->
                     <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
                          "autoplay": {

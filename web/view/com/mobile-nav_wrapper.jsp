@@ -19,7 +19,7 @@
                 <span class="mobile-nav__close mobile-nav__toggler"><i class="organik-icon-close"></i></span>
 
                 <div class="logo-box">
-                    <a href="index-2.jsp" aria-label="logo image"><img src="${pageContext.request.contextPath}/images/logo-light.png" width="155" alt="" /></a>
+                    <a href="home" aria-label="logo image"><img src="${pageContext.request.contextPath}/images/logo-light.png" width="155" alt="" /></a>
                 </div>
                 <!-- /.logo-box -->
                 <div class="mobile-nav__container"></div>
@@ -35,20 +35,6 @@
                         <a href="tel:666-888-0000">666 888 0000</a>
                     </li>
                 </ul><!-- /.mobile-nav__contact -->
-                <div class="mobile-nav__top">
-                    <div class="mobile-nav__language">
-                        <img src="${pageContext.request.contextPath}/images/resources/flag-1-1.jpg" alt="">
-                        <label class="sr-only" for="language-select">select language</label>
-                        <!-- /#language-select.sr-only -->
-                        <select class="selectpicker" id="language-select">
-                            <option value="english">English</option>
-                            <option value="arabic">Arabic</option>
-                        </select>
-                    </div><!-- /.mobile-nav__language -->
-                    <div class="main-menu__login">
-                        <a href="#"><i class="organik-icon-user"></i>Login / Register</a>
-                    </div><!-- /.main-menu__login -->
-                </div><!-- /.mobile-nav__top -->
             </div>
             <!-- /.mobile-nav__content -->
         </div>

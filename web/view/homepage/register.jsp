@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-container">
-            <form class="register-form">
+            <form action="" class="register-form">
                 <h2>Register</h2>
                 <div class="input-register-group">
                     <input type="text" name="fullname" placeholder="Fullname" required>
@@ -51,7 +51,7 @@
                 </div>
                 <button type="submit" class="register-btn">Sign Up</button>
 
-                <p class="login-link">Already have an account? <a href="#">Login</a></p>
+                <p class="login-link">Already have an account? <a href="home?site=login">Login</a></p>
             </form>
         </div>
     </div>

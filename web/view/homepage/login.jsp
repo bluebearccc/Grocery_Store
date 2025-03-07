@@ -21,7 +21,7 @@
         <div class="login-container">
             <div class="overlay"></div>
             <div class="content">
-                <form class="form-login">
+                <form action="" class="form-login">
                     <div class="input-group">
                         <input type="text" placeholder="Username" required>
                     </div>
@@ -33,7 +33,7 @@
                         <a href="#">Forgot your password?</a>
                     </div>
                     <button type="submit" class="login-btn">Login</button>
-                    <p class="signup">Not a member? <a href="#">Sign up now</a></p>
+                    <p class="signup">Not a member? <a href="home?site=register">Sign up now</a></p>
                 </form>
                 <img src="${pageContext.request.contextPath}/images/backgrounds/funfact-bg-1-1.jpg" alt="Side Image">
             </div>
