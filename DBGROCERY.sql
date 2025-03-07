@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [DB_GroceryStore]    Script Date: 3/7/2025 10:27:42 PM ******/
+/****** Object:  Database [DB_GroceryStore]    Script Date: 3/8/2025 1:28:23 AM ******/
 CREATE DATABASE [DB_GroceryStore]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [DB_GroceryStore] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, C
 GO
 USE [DB_GroceryStore]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 3/7/2025 10:27:43 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 3/8/2025 1:28:23 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 3/7/2025 10:27:43 PM ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 3/8/2025 1:28:23 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +109,7 @@ CREATE TABLE [dbo].[OrderDetails](
 	[unit__price] [float] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 3/7/2025 10:27:43 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 3/8/2025 1:28:23 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 3/7/2025 10:27:43 PM ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 3/8/2025 1:28:23 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -148,7 +148,7 @@ CREATE TABLE [dbo].[Products](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Suppliers]    Script Date: 3/7/2025 10:27:43 PM ******/
+/****** Object:  Table [dbo].[Suppliers]    Script Date: 3/8/2025 1:28:23 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,7 +164,7 @@ CREATE TABLE [dbo].[Suppliers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 3/7/2025 10:27:43 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 3/8/2025 1:28:23 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -231,7 +231,7 @@ SET IDENTITY_INSERT [dbo].[Products] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Suppliers] ON 
 GO
-INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (6, N'Fresh Dairy Co.', N'John Smith', N'123-456-7890')
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (6, N'Fresh Dairy Co.', N'Michael Johnson', N'123-456-7890')
 GO
 INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (7, N'Pantry Essentials Ltd.', N'Alice Johnson', N'234-567-8901')
 GO
@@ -240,6 +240,22 @@ GO
 INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (9, N'Tropical Fruits Inc.', N'Maria Davis', N'456-789-0123')
 GO
 INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (10, N'Green Veggies Market', N'William Martinez', N'567-890-1234')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (11, N'ABC Corp', N'John Doe', N'123-456-7890')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (12, N'XYZ Ltd', N'Jane Smith', N'987-654-3210')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (13, N'Global Supplies', N'Michael Johnson', N'555-123-4567')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (14, N'TechWorld', N'Emily Davis', N'444-987-6543')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (15, N'SuperMart', N'William Brown', N'333-222-1111')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (16, N'Fresh Foods', N'Olivia Wilson', N'666-777-8888')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (17, N'Quick Logistics', N'James Anderson', N'999-888-7777')
+GO
+INSERT [dbo].[Suppliers] ([supplier__id], [company__name], [contact__name], [phone]) VALUES (22, N'1', N'1', N'1')
 GO
 SET IDENTITY_INSERT [dbo].[Suppliers] OFF
 GO
@@ -263,7 +279,7 @@ SET IDENTITY_INSERT [dbo].[Users] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UC_User]    Script Date: 3/7/2025 10:27:43 PM ******/
+/****** Object:  Index [UC_User]    Script Date: 3/8/2025 1:28:23 AM ******/
 ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [UC_User] UNIQUE NONCLUSTERED 
 (
 	[username] ASC
@@ -292,11 +308,15 @@ ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Users]
 GO
 ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Categories] FOREIGN KEY([category__id])
 REFERENCES [dbo].[Categories] ([category__id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Categories]
 GO
 ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Suppliers] FOREIGN KEY([supplier__id])
 REFERENCES [dbo].[Suppliers] ([supplier__id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Suppliers]
 GO
