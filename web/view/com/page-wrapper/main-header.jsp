@@ -34,13 +34,13 @@
                     </div><!-- /.topbar__social -->
                     <div class="topbar__info">
                         <i class="organik-icon-email"></i>
-                        <p>Email <a href="mailto:info@organik.com">haithangbip@gmail.com</a></p>
+                        <p>Email <a href="#">haithangbip@gmail.com</a></p>
                     </div><!-- /.topbar__info -->
                 </div><!-- /.topbar__left -->
                 <div class="topbar__right">
                     <div class="topbar__info">
                         <i class="organik-icon-calling"></i>
-                        <p>Phone <a href="tel:+92-666-888-0000">92 666 888 0000</a></p>
+                        <p>Phone <a href="#">0123456789</a></p>
                     </div><!-- /.topbar__info -->
                     <div class="topbar__buttons">
                         <a href="#" class="search-toggler"><i class="organik-icon-magnifying-glass"></i></a>
@@ -53,7 +53,11 @@
         <nav class="main-menu">
             <div class="container">
                 <div class="main-menu__login">
-                    <a href="home?site=login"><i class="organik-icon-user"></i>Login / Register</a>
+                    <a href="home?site=login"><i class="organik-icon-user"></i>Login</a>
+                </div><!-- /.main-menu__login -->
+                <div class="divider">/</div>
+                <div class="main-menu__login">
+                    <a href="home?site=register">Register</a>
                 </div><!-- /.main-menu__login -->
                 <ul class="main-menu__list">
                     <li>
@@ -72,6 +76,9 @@
                     </li>
                     <li><a href="home?site=contact">Contact</a></li>
                 </ul>
+                <div class="main-menu__login">
+                    <a href="home?site=logout"><i class="organik-icon-user-logout">🔓</i> Logout</a>
+                </div><!-- /.main-menu__login -->
             </div><!-- /.container -->
         </nav>
         <!-- /.main-menu -->

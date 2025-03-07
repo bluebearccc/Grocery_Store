@@ -1732,6 +1732,7 @@ h6 {
 --------------------------------------------------------------*/
 .main-menu .container {
   position: relative;
+  justify-content: end;
   display: flex;
   align-items: center;
   position: relative;

@@ -32,11 +32,11 @@
                             <ul class="list-unstyled footer-widget__contact">
                                 <li>
                                     <i class="fa fa-phone-square"></i>
-                                    <a href="tel:666-888-0000">0123456789</a>
+                                    <a href="#">0123456789</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-envelope"></i>
-                                    <a href="mailto:info@company.com">haithangbip@gmail.com</a>
+                                    <a href="#">haithangbip@gmail.com</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-map-marker-alt"></i>
@@ -98,7 +98,7 @@
                             <a href="#" class="fab fa-facebook-square"></a>
                             <a href="#" class="fab fa-instagram"></a>
                         </div><!-- /.bottom-footer__social -->
-                        <p class="thm-text-dark">© Copyright <span class="dynamic-year"></span> by Company.com</p>
+                        <p class="thm-text-dark">© Copyright <span class="dynamic-year"></span> by BlueBear | Corp</p>
                     </div><!-- /.inner-container -->
                 </div><!-- /.container -->
             </div><!-- /.bottom-footer -->
