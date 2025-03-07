@@ -118,7 +118,6 @@ CREATE TABLE [dbo].[Orders](
 	[order__id] [int] IDENTITY(1,1) NOT NULL,
 	[user__id] [int] NOT NULL,
 	[order__date] [date] NOT NULL,
-	[totalmoney] [float] NOT NULL,
  CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
 (
 	[order__id] ASC
