@@ -73,7 +73,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="products.jsp" class=" thm-btn">Order Now</a>
+                                        <a href="home?site=product" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -88,7 +88,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="products.jsp" class=" thm-btn">Order Now</a>
+                                        <a href="home?action=product" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -108,38 +108,12 @@
 
             <section class="feature-box">
                 <div class="container">
-                    <div class="inner-container wow fadeInUp" data-wow-duration="1500ms">
-                        <div class="thm-tiny__slider" id="contact-infos-box" data-tiny-options='{
-                             "container": "#contact-infos-box",
-                             "items": 1,
-                             "slideBy": "page",
-                             "gutter": 0,
-                             "mouseDrag": true,
-                             "autoplay": true,
-                             "nav": false,
-                             "controlsPosition": "bottom",
-                             "controlsText": ["<i class=\"fa fa-angle-left\"></i>", "<i class=\"fa fa-angle-right\"></i>"],
-                             "autoplayButtonOutput": false,
-                             "responsive": {
-                             "640": {
-                             "items": 2,
-                             "gutter": 30
-                             },
-                             "992": {
-                             "gutter": 30,
-                             "items": 3
-                             },
-                             "1200": {
-                             "disable": true
-                             }
-                             }
-                             }'>
+                    <div class="inner-container fadeInUp" data-wow-duration="1500ms" style="display: flex; justify-content: space-evenly">
                             <div>
                                 <div class="feature-box__single">
                                     <i class="organik-icon-global-shipping feature-box__icon"></i>
                                     <div class="feature-box__content">
                                         <h3>Return Policy</h3>
-                                        <p>Money back guarantee</p>
                                     </div><!-- /.feature-box__content -->
                                 </div><!-- /.feature-box__single -->
                             </div>
@@ -148,7 +122,6 @@
                                     <i class="organik-icon-delivery-truck feature-box__icon"></i>
                                     <div class="feature-box__content">
                                         <h3>Free Shipping</h3>
-                                        <p>On all orders over $25.00</p>
                                     </div><!-- /.feature-box__content -->
                                 </div><!-- /.feature-box__single -->
                             </div>
@@ -157,11 +130,9 @@
                                     <i class="organik-icon-online-store feature-box__icon"></i>
                                     <div class="feature-box__content">
                                         <h3>Store Locator</h3>
-                                        <p>Find your nearest store</p>
                                     </div><!-- /.feature-box__content -->
                                 </div><!-- /.feature-box__single -->
                             </div>
-                        </div>
                     </div><!-- /.inner-container -->
                 </div><!-- /.container -->
             </section><!-- /.feature-box -->
@@ -198,11 +169,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?action=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Banana</a></h3>
+                                    <h3><a href="home?action=product-details">Banana</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -222,11 +193,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Olive Oil</a></h3>
+                                    <h3><a href="home?site=product-details">Olive Oil</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -246,11 +217,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Eggs</a></h3>
+                                    <h3><a href="home?site=product-details">Eggs</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -270,11 +241,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Tamatos</a></h3>
+                                    <h3><a href="home?site=product-details">Tamatos</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -294,11 +265,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Bread</a></h3>
+                                    <h3><a href="home?site=product-details">Bread</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -318,11 +289,11 @@
                                     <div class="product-card__two-image-content">
                                         <a href="#"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="cart.jsp"><i class="organik-icon-shopping-cart"></i></a>
+                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
                                 <div class="product-card__two-content">
-                                    <h3><a href="product-details.jsp">Apples</a></h3>
+                                    <h3><a href="home?site=product-details">Apples</a></h3>
                                     <div class="product-card__two-stars">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -342,20 +313,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="0ms">
-                            <div class="offer-banner__box" style="background-image: url(assets/images/resources/offer-banner-1-1.jpg);">
+                            <div class="offer-banner__box" style="background-image: url(${pageContext.request.contextPath}/images/resources/offer-banner-1-1.jpg);">
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
                         <div class="col-md-6 wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="100ms">
-                            <div class="offer-banner__box" style="background-image: url(assets/images/resources/offer-banner-1-2.jpg);">
+                            <div class="offer-banner__box" style="background-image: url(${pageContext.request.contextPath}/images/resources/offer-banner-1-2.jpg);">
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
@@ -407,7 +378,7 @@
                         <div class="col-md-12 col-lg-12 col-xl-6 clearfix">
                             <div class="call-to-action__content">
                                 <div class="block-title text-left">
-                                    <div class="block-title__decor" style="background-image: url(assets/images/shapes/leaf-2-1.png);"></div>
+                                    <div class="block-title__decor" style="background-image: url(${pageContext.request.contextPath}/images/shapes/leaf-2-1.png);"></div>
                                     <!-- /.block-title__decor -->
                                     <p>Shopping Store</p>
                                     <h3>Organic Food Only</h3>
@@ -432,7 +403,7 @@
                                         </div><!-- /.col-md-6 -->
                                     </div><!-- /.row -->
                                 </div><!-- /.call-to-action__wrap -->
-                                <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action__content -->
                         </div><!-- /.col-md-12 col-lg-12 col-xl-12 -->
                     </div><!-- /.row -->
@@ -585,7 +556,7 @@
                                         </ul><!-- /.list-unstyled -->
                                     </div><!-- /.col-md-6 -->
                                 </div><!-- /.row -->
-                                <a href="products.jsp" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action-two__content -->
                         </div><!-- /.col-md-6 -->
 

@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author admin
  */
-public class UserDAO {
-
+public class UserDAO extends DBContext{
+    
 }

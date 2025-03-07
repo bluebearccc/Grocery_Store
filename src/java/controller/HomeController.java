@@ -38,7 +38,35 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/homepage/home.jsp").forward(request, response);
+        String site = request.getParameter("site") == null ? "default" : request.getParameter("site").trim().toLowerCase();
+        switch (site) {
+            case "product":
+                request.getRequestDispatcher("view/homepage/product.jsp").forward(request, response);
+                break;
+            case "product-details":
+                request.getRequestDispatcher("view/homepage/product-details.jsp").forward(request, response);
+                break;
+            case "cart":
+                request.getRequestDispatcher("view/homepage/cart.jsp").forward(request, response);
+                break;
+            case "contact":
+                request.getRequestDispatcher("view/homepage/contact.jsp").forward(request, response);
+                break;
+            case "accont":
+                request.getRequestDispatcher("view/homepage/account.jsp").forward(request, response);
+                break;
+            case "about":
+                request.getRequestDispatcher("view/homepage/about.jsp").forward(request, response);
+                break;
+            case "login":
+                request.getRequestDispatcher("view/homepage/login.jsp").forward(request, response);
+                break;
+            case "register":
+                request.getRequestDispatcher("view/homepage/register.jsp").forward(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("view/homepage/home.jsp").forward(request, response);
+        }
     }
 
     /**
