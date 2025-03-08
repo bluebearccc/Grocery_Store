@@ -98,8 +98,7 @@
 
                     <!-- If we need navigation buttons -->
                     <div class="main-slider__nav">
-                        <div class="swiper-button-prev" id="main-slider__swiper-button-next"><i class="organik-icon-left-arrow"></i>
-                        </div>
+                        <div class="swiper-button-prev" id="main-slider__swiper-button-next"><i class="organik-icon-left-arrow"></i></div>
                         <div class="swiper-button-next" id="main-slider__swiper-button-prev"><i class="organik-icon-right-arrow"></i></div>
                     </div><!-- /.main-slider__nav -->
 
@@ -108,7 +107,7 @@
 
             <section class="feature-box">
                 <div class="container">
-                    <div class="inner-container fadeInUp" data-wow-duration="1500ms" style="display: flex; justify-content: space-evenly">
+                    <div class="inner-container fadeInUp" data-wow-duration="1500ms" style="display: flex; justify-content: space-around">
                         <div>
                             <div class="feature-box__single">
                                 <i class="organik-icon-global-shipping feature-box__icon"></i>
@@ -167,7 +166,7 @@
                                     <span class="product-card__two-sale">sale</span>
                                     <img src="${pageContext.request.contextPath}/images/products/product-2-1.jpg" alt="">
                                     <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
+                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
                                         <a href="home?action=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
@@ -191,8 +190,8 @@
 
                                     <img src="${pageContext.request.contextPath}/images/products/product-2-2.jpg" alt="">
                                     <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
+                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
+                                        <a href="home?site=product-details"><i class="organik-icon-heart"></i></a>
                                         <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
                                 </div><!-- /.product-card__two-image -->
@@ -215,7 +214,7 @@
 
                                     <img src="${pageContext.request.contextPath}/images/products/product-2-3.jpg" alt="">
                                     <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
+                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
                                         <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
@@ -239,7 +238,7 @@
 
                                     <img src="${pageContext.request.contextPath}/images/products/product-2-4.jpg" alt="">
                                     <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
+                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
                                         <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
@@ -263,7 +262,7 @@
 
                                     <img src="${pageContext.request.contextPath}/images/products/product-2-5.jpg" alt="">
                                     <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
+                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
                                         <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->
@@ -287,7 +286,7 @@
                                     <span class="product-card__two-sale">sale</span>
                                     <img src="${pageContext.request.contextPath}/images/products/product-2-6.jpg" alt="">
                                     <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
+                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
                                         <a href="#"><i class="organik-icon-heart"></i></a>
                                         <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                     </div><!-- /.product-card__two-image-content -->

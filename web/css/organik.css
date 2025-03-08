@@ -4723,7 +4723,8 @@ h6 {
   padding-bottom: 51.5px;
   border: 2px solid #f4f4f4;
   background-color: #fff;
-  display: inline;
+  /*display: inline;*/
+  display: flex;
 }
 
 @media (min-width: 1200px) {

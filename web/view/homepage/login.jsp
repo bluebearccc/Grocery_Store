@@ -21,7 +21,7 @@
         <div class="login-container">
             <div class="overlay"></div>
             <div class="content">
-                <form action="" class="form-login">
+                <form action="account?action=login" class="form-login" method="POST">
                     <div class="input-group">
                         <input type="text" placeholder="Username" required>
                     </div>
