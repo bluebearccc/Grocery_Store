@@ -21,18 +21,20 @@
         <div class="login-container">
             <div class="overlay"></div>
             <div class="content">
-                <form action="account?action=login" class="form-login" method="POST">
+                <form action="home" class="form-login" method="POST">
+                    <input type="hidden" name="site" value="validatelogin">
                     <div class="input-group">
-                        <input type="text" placeholder="Username" required>
+                        <input type="text" name="username" placeholder="Username" required>
                     </div>
                     <div class="input-group">
-                        <input type="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" required>
                     </div>
                     <div class="options">
                         <label><input type="checkbox"> Remember me</label>
                         <a href="#">Forgot your password?</a>
                     </div>
                     <button type="submit" class="login-btn">Login</button>
+                    <p style="color:red">${error}</p>
                     <p class="signup">Not a member? <a href="home?site=register">Sign up now</a></p>
                 </form>
                 <img src="${pageContext.request.contextPath}/images/backgrounds/funfact-bg-1-1.jpg" alt="Side Image">

@@ -25,13 +25,13 @@ import lombok.ToString;
 @Setter
 public class User {
 
-    private int userId;
-    private String userName;
-    private String fullName;
-    private String passWord;
+    private int user__id;
+    private String username;
+    private String fullname;
+    private String password;
     private String email;
     private String address;
     private String phone;
-    private int role;
+    private boolean role;
     private float balance;
 }

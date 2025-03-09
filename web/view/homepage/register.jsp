@@ -26,7 +26,8 @@
         </div>
 
         <div class="form-container">
-            <form action="" class="register-form">
+            <form action="account" class="register-form" method="POST">
+                <input type="hidden" name="site" value="registeruser">
                 <h2>Register</h2>
                 <div class="input-register-group">
                     <input type="text" name="fullname" placeholder="Fullname" required>

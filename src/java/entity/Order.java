@@ -26,8 +26,7 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Order {
-    private int orderId;
-    private int userId;
-    private Date orderDate;
-    private float totalMoney;
+    private int order__id;
+    private int user__id;
+    private Date order__date;
 }

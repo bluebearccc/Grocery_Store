@@ -4,10 +4,165 @@
  */
 package dal;
 
+import entity.Category;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author FPT
  */
-public class CategoryDAO extends DBContext{
-    
+public class CategoryDAO extends DBContext {
+
+    public int createCategory(Category category) {
+        String sql = "INSERT INTO [dbo].[Categories] (category__name, description) VALUES (?, ?)";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, category.getCategory__name());
+            ps.setString(2, category.getDescription());
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Exception at createCategory" + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception at createCategory" + e.getMessage());
+            }
+        }
+        return -1;
+    }
+
+    public Category getCategoryById(int id) {
+        String sql = "SELECT * FROM [dbo].[Categories] WHERE category__id = ?";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Category(
+                        rs.getInt("category__id"),
+                        rs.getString("category__name"),
+                        rs.getString("description")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception at getCategoryById" + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception at getCategoryById" + e.getMessage());
+            }
+        }
+        return null;
+    }
+
+    public int updateCategory(Category category) {
+        String sql = "UPDATE [dbo].[Categories] SET category__name = ?, description = ? WHERE category__id = ?";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, category.getCategory__name());
+            ps.setString(2, category.getDescription());
+            ps.setInt(3, category.getCategory__id());
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Exception at updateCategory" + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception at updateCategory" + e.getMessage());
+            }
+        }
+        return -1;
+    }
+
+    public int deleteCategory(int id) {
+        String sql = "DELETE FROM [dbo].[Categories] WHERE category__id = ?";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Exception at deleteCategory" + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception at deleteCategory" + e.getMessage());
+            }
+        }
+        return -1;
+    }
+
+    public List<Category> searchCategory(String name) {
+        List<Category> list = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Categories] WHERE category__name LIKE ?";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, "%" + name + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Category(
+                        rs.getInt("category__id"),
+                        rs.getString("category__name"),
+                        rs.getString("description")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception at searchCategory" + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception at searchCategory" + e.getMessage());
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        CategoryDAO c = new CategoryDAO();
+        for (Category category : c.searchCategory("")) {
+            System.out.println(category);
+        }
+    }
 }

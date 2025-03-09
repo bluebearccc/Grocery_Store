@@ -4,18 +4,24 @@
  */
 package controller;
 
+import constant.CommonConst;
+import dal.UserDAO;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author admin
  */
 public class HomeController extends HttpServlet {
+
+    UserDAO udao = new UserDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,37 +42,37 @@ public class HomeController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String site = request.getParameter("site") == null ? "default" : request.getParameter("site").trim().toLowerCase();
-        switch (site) {
-            case "product":
-                request.getRequestDispatcher("view/homepage/product.jsp").forward(request, response);
-                break;
-            case "product-details":
-                request.getRequestDispatcher("view/homepage/product-details.jsp").forward(request, response);
-                break;
-            case "cart":
-                request.getRequestDispatcher("view/homepage/cart.jsp").forward(request, response);
-                break;
-            case "contact":
-                request.getRequestDispatcher("view/homepage/contact.jsp").forward(request, response);
-                break;
-            case "accont":
-                request.getRequestDispatcher("view/homepage/account.jsp").forward(request, response);
-                break;
-            case "about":
-                request.getRequestDispatcher("view/homepage/about.jsp").forward(request, response);
-                break;
-            case "login":
-                request.getRequestDispatcher("view/homepage/login.jsp").forward(request, response);
-                break;
-            case "register":
-                request.getRequestDispatcher("view/homepage/register.jsp").forward(request, response);
-                break;
-            default:
-                request.getRequestDispatcher("view/homepage/home.jsp").forward(request, response);
-        }
+        String url;
+        url = switch (site) {
+            case "product" ->
+                "view/homepage/product.jsp";
+            case "product-details" ->
+                "view/homepage/product-details.jsp";
+            case "cart" ->
+                "view/homepage/cart.jsp";
+            case "contact" ->
+                "view/homepage/contact.jsp";
+            case "account" ->
+                "view/homepage/account.jsp";
+            case "about" ->
+                "view/homepage/about.jsp";
+            case "login" ->
+                "view/homepage/login.jsp";
+            case "logout" -> {
+                request.getSession().removeAttribute(CommonConst.SESSION_ACCOUNT);
+                yield "view/homepage/home.jsp";
+            }
+            case "register" ->
+                "view/homepage/register.jsp";
+            default ->
+                "view/homepage/home.jsp";
+        };
+
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -80,6 +86,18 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String site = request.getParameter("site") == null ? "default" : request.getParameter("site").trim().toLowerCase();
+        String url;
+        switch (site) {
+            case "validatelogin" ->
+                url = "account";
+            case "registeruser" ->
+                url = "account";
+            default ->
+                url = "view/homepage/home.jsp";
+        }
+
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**

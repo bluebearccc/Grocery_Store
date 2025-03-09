@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,13 +53,20 @@
         </div><!-- /.topbar -->
         <nav class="main-menu">
             <div class="container">
-                <div class="main-menu__login">
-                    <a href="home?site=login"><i class="organik-icon-user"></i>Login</a>
-                </div><!-- /.main-menu__login -->
-                <div class="divider">/</div>
-                <div class="main-menu__login">
-                    <a href="home?site=register">Register</a>
-                </div><!-- /.main-menu__login -->
+                <c:if test="${sessionScope.user == null}">
+                    <div class="main-menu__login">
+                        <a href="home?site=login"><i class="organik-icon-user"></i>Login</a>
+                    </div><!-- /.main-menu__login -->
+                    <div class="divider">/</div>
+                    <div class="main-menu__login">
+                        <a href="home?site=register">Register</a>
+                    </div><!-- /.main-menu__login -->
+                </c:if>
+                <c:if test="${sessionScope.user != null}">
+                    <div class="main-menu__login">
+                        <a href="home?site=account"><i class="organik-icon-user"></i>Welcome ${user.getFullname()} !</a>
+                    </div><!-- /.main-menu__login -->
+                </c:if>
                 <ul class="main-menu__list">
                     <li>
                         <a href="home?site=home">Home</a>
@@ -76,9 +84,11 @@
                     </li>
                     <li><a href="home?site=contact">Contact</a></li>
                 </ul>
-                <div class="main-menu__login">
-                    <a href="home?site=logout"><i class="organik-icon-user-logout">🔓</i> Logout</a>
-                </div><!-- /.main-menu__login -->
+                <c:if test="${sessionScope.user != null}">
+                    <div class="main-menu__login">
+                        <a href="home?site=logout"><i class="organik-icon-user-logout">🔓</i> Logout</a>
+                    </div><!-- /.main-menu__login -->
+                </c:if>    
             </div><!-- /.container -->
         </nav>
         <!-- /.main-menu -->

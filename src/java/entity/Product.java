@@ -25,16 +25,16 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Product {
-    private int productId;
-    private String productName;
-    private int supplierId;
-    private int categoryId;
-    private String quantityPerUnit;
-    private float unitPrice;
-    private int unitInStock;
-    private int quantitySold;
-    private int starRating;
+    private int product__id;
+    private String product__name;
+    private int supplier__id;
+    private int category__id;
+    private String quantity__per__unit;
+    private float unit__price;
+    private int unit__in__stock;
+    private int quantity__sold;
+    private int star__rating;
     private String image;
     private String describe;
-    private Date releaseDate;
+    private Date release__date;
 }
