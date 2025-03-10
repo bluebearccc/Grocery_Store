@@ -16,7 +16,7 @@ import java.sql.*;
 public class SupplierDAO extends DBContext {
 
     public int createSupplier(Supplier supplier) {
-        String sql = "INSERT INTO [dbo].[Supplier] "
+        String sql = "INSERT INTO [dbo].[Suppliers] "
                 + "([company__name], [contact__name], [phone]) "
                 + "VALUES (?, ?, ?)";
         try {
@@ -35,7 +35,7 @@ public class SupplierDAO extends DBContext {
     }
 
     public Supplier getSupplier(int supplierId) {
-        String sql = "SELECT * FROM [dbo].[Supplier] WHERE supplier__id = ?";
+        String sql = "SELECT * FROM [dbo].[Suppliers] WHERE supplier__id = ?";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
@@ -58,7 +58,7 @@ public class SupplierDAO extends DBContext {
     }
 
     public int updateSupplier(Supplier supplier) {
-        String sql = "UPDATE [dbo].[Supplier] SET "
+        String sql = "UPDATE [dbo].[Suppliers] SET "
                 + "[company__name] = ?, [contact__name] = ?, [phone] = ? "
                 + "WHERE [supplier__id] = ?";
         try {
@@ -78,7 +78,7 @@ public class SupplierDAO extends DBContext {
     }
 
     public int deleteSupplier(int supplierId) {
-        String sql = "DELETE FROM [dbo].[Supplier] WHERE supplier__id = ?";
+        String sql = "DELETE FROM [dbo].[Suppliers] WHERE supplier__id = ?";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
@@ -94,7 +94,7 @@ public class SupplierDAO extends DBContext {
 
     public List<Supplier> searchSuppliersByName(String name) {
         List<Supplier> list = new ArrayList<>();
-        String sql = "SELECT * FROM [dbo].[Supplier] WHERE company__name LIKE ?";
+        String sql = "SELECT * FROM [dbo].[Suppliers] WHERE company__name LIKE ?";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
@@ -118,7 +118,7 @@ public class SupplierDAO extends DBContext {
 
     public List<Supplier> getAllSuppliers() {
         List<Supplier> list = new ArrayList<>();
-        String sql = "SELECT * FROM [dbo].[Supplier]";
+        String sql = "SELECT * FROM [dbo].[Suppliers]";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
@@ -152,6 +152,13 @@ public class SupplierDAO extends DBContext {
             }
         } catch (SQLException e) {
             System.out.println("Exception at closeResources: " + e.getMessage());
+        }
+    }
+    
+    public static void main(String[] args) {
+        SupplierDAO dao = new SupplierDAO();
+        for (Supplier allSupplier : dao.getAllSuppliers()) {
+            System.out.println(allSupplier);
         }
     }
 }

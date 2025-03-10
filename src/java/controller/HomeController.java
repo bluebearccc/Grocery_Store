@@ -5,15 +5,15 @@
 package controller;
 
 import constant.CommonConst;
-import dal.UserDAO;
-import entity.User;
+import dal.*;
+import entity.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  *
@@ -21,7 +21,10 @@ import jakarta.servlet.http.HttpSession;
  */
 public class HomeController extends HttpServlet {
 
-    UserDAO udao = new UserDAO();
+    ProductDAO pdao = new ProductDAO();
+    CategoryDAO cdao = new CategoryDAO();
+    SupplierDAO sdao = new SupplierDAO();
+    PageControl pageControl = new PageControl();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,32 +35,57 @@ public class HomeController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String site = request.getParameter("site") == null ? "default" : request.getParameter("site").trim().toLowerCase();
+        String categoryId = request.getParameter("categoryId");
+        String productId = request.getParameter("productId") == null ? "3" : request.getParameter("productId").trim();
+        List<Product> ProductList;
+        List<Category> CategoryList = cdao.searchCategory("");
+        ProductList = categoryId == null || categoryId.equals("all") ? pdao.searchProduct("") : pdao.searchProductByCate(Integer.parseInt(categoryId));
+        Product pro = pdao.getProduct(Integer.parseInt(productId));
+        Category cate = cdao.getCategoryById(pro.getCategory__id());
+        Supplier sup = sdao.getSupplier(pro.getSupplier__id());
+        String pageRaw = request.getParameter("page");
+        int page;
+        try {
+            page = Integer.parseInt(pageRaw);
+            if (page <= 0) {
+                page = 1;
+            }
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        String requestURL = request.getRequestURL().toString() + "?";
+        int totalRecord = pdao.findTotalRecordByCategory(page);
+        String urlPattern = requestURL; //+ queryS
+        //total page
+        int totalPage = totalRecord % CommonConst.RECORD_PER_PAGE == 0
+                ? totalRecord / CommonConst.RECORD_PER_PAGE
+                : (totalRecord / CommonConst.RECORD_PER_PAGE) + 1;
+        //set total record, total page, page vao PageControl
+        pageControl.setPage(page);
+        pageControl.setTotalPage(totalPage);
+        pageControl.setTotalRecord(totalRecord);
+        pageControl.setUrlPattern(urlPattern);
         String url;
         url = switch (site) {
             case "product" ->
                 "view/homepage/product.jsp";
-            case "product-details" ->
-                "view/homepage/product-details.jsp";
+            case "product-details" -> {
+                request.setAttribute(CommonConst.SESSION_PRODUCT, pro);
+                request.setAttribute(CommonConst.SESSION_CATEGORY, cate);
+                request.setAttribute(CommonConst.SESSION_SUPPLIER, sup);
+                request.setAttribute("SameCategoryList", pdao.searchProductSameCate(pro));
+                yield "view/homepage/product-details.jsp";
+            }
             case "cart" ->
                 "view/homepage/cart.jsp";
             case "contact" ->
                 "view/homepage/contact.jsp";
             case "account" ->
-                "view/homepage/account.jsp";
+                "view/user/account.jsp";
             case "about" ->
                 "view/homepage/about.jsp";
             case "login" ->
@@ -68,10 +96,14 @@ public class HomeController extends HttpServlet {
             }
             case "register" ->
                 "view/homepage/register.jsp";
-            default ->
-                "view/homepage/home.jsp";
+            default -> {
+                ProductList = pdao.getThreeLastestProduct();
+                yield "view/homepage/home.jsp";
+            }
         };
 
+        request.setAttribute("ProductList", ProductList);
+        request.setAttribute("CategoryList", CategoryList);
         request.getRequestDispatcher(url).forward(request, response);
     }
 
@@ -87,17 +119,15 @@ public class HomeController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String site = request.getParameter("site") == null ? "default" : request.getParameter("site").trim().toLowerCase();
-        String url;
         switch (site) {
             case "validatelogin" ->
-                url = "account";
+                request.getRequestDispatcher("account").forward(request, response);
             case "registeruser" ->
-                url = "account";
+                request.getRequestDispatcher("account").forward(request, response);
             default ->
-                url = "view/homepage/home.jsp";
+                doGet(request, response);
         }
 
-        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**

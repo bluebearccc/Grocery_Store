@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/images/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
         <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
-        <meta name="description" content="Agrikon HTML Template For Agriculture Farm & Farmers" />
+        <meta name="description" content="Agriculture Farm & Farmers" />
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com/" />
@@ -88,7 +89,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="home?action=product" class=" thm-btn">Order Now</a>
+                                        <a href="home?site=product" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -146,164 +147,25 @@
                             <h3>New Products</h3>
                         </div><!-- /.block-title -->
 
-                        <ul class="post-filter filters list-unstyled">
-                            <li class="active filter" data-filter=".filter-item">All</li>
-                            <li class="filter" data-filter=".dairy">Dairy</li>
-                            <li class="filter" data-filter=".pantry">Pantry
-                            </li>
-                            <li class="filter" data-filter=".meat">Meat
-                            </li>
-                            <li class="filter" data-filter=".fruits">Fruits
-                            </li>
-                            <li class="filter" data-filter=".veg">Vagetables
-                            </li>
-                        </ul>
                     </div><!-- /.new-products__top -->
                     <div class="row filter-layout">
-                        <div class="col-lg-4 col-md-6 filter-item dairy">
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-                                    <span class="product-card__two-sale">sale</span>
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-1.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?action=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?action=product-details">Banana</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$1.00</p>
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div><!-- /.col-lg-4 -->
-                        <div class="col-lg-4 col-md-6 filter-item pantry">
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-2.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
-                                        <a href="home?site=product-details"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Olive Oil</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$9.00</p>
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div><!-- /.col-lg-4 -->
-                        <div class="col-lg-4 col-md-6 filter-item meat">
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-3.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Eggs</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$3.00</p>
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div><!-- /.col-lg-4 -->
-                        <div class="col-lg-4 col-md-6 filter-item dairy">
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-4.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Tamatos</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$1.00</p>
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div><!-- /.col-lg-4 -->
-                        <div class="col-lg-4 col-md-6 filter-item fruits">
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-5.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Bread</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$2.00</p>
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div><!-- /.col-lg-4 -->
-                        <div class="col-lg-4 col-md-6 filter-item veg">
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-                                    <span class="product-card__two-sale">sale</span>
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-6.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="home?site=product-details"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Apples</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$2.00</p>
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div><!-- /.col-lg-4 -->
+                        <c:forEach items="${ProductList}" var="p">
+                            <div class="col-lg-4 col-md-6 filter-item dairy">
+                                <div class="product-card__two">
+                                    <div class="product-card__two-image">
+                                        <img src="${pageContext.request.contextPath}/${p.getImage()}" alt="">
+                                        <div class="product-card__two-image-content">
+                                            <a href="home?site=product-details&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
+                                            <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
+                                        </div><!-- /.product-card__two-image-content -->
+                                    </div><!-- /.product-card__two-image -->
+                                    <div class="product-card__two-content">
+                                        <h3><a href="home?site=product-details&productId=${p.getProduct__id()}">${p.getProduct__name()}</a></h3>
+                                        <p>$${p.getUnit__price()}</p>
+                                    </div><!-- /.product-card__two-content -->
+                                </div><!-- /.product-card__two -->
+                            </div><!-- /.col-lg-4 -->
+                        </c:forEach>
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </section><!-- /.new-products -->

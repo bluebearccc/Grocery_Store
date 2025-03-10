@@ -4,6 +4,8 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/images/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
         <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
-        <meta name="description" content="Agrikon HTML Template For Agriculture Farm & Farmers" />
+        <meta name="description" content="Agriculture Farm & Farmers" />
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com/" />
@@ -68,33 +70,29 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6">
                             <div class="product_detail_image">
-                                <img src="${pageContext.request.contextPath}/images/products/product-d-1.jpg" alt="">
+                                <img src="${pageContext.request.contextPath}/${product.getImage()}" alt="">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <div class="product_detail_content">
-                                <h2>Apples</h2>
+                                <h2>${product.getProduct__name()}</h2>
                                 <div class="product_detail_review_box">
                                     <div class="product_detail_price_box">
-                                        <p>$9.98</p>
+                                        <p>$${product.getUnit__price()}</p>
                                     </div>
                                     <div class="product_detail_review">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#" class="deactive"><i class="fa fa-star"></i></a>
-                                        <span>2 Customer Reviews</span>
+                                        <c:forEach begin="1" end="${product.getStar__rating()}">
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            </c:forEach>
                                     </div>
                                 </div>
                                 <div class="product_detail_text">
-                                    <p>Aliquam hendrerit a augue insuscipit. Etiam aliquam massa quis des mauris commodo
-                                        venenatis ligula commodo leez sed blandit convallis dignissim onec vel pellentesque
-                                        neque.</p>
+                                    <p>${product.getDescribe()}</p>
+                                    <p>Release Date: ${product.getRelease__date()}</p>
                                 </div>
                                 <ul class="list-unstyled product_detail_address">
-                                    <li>REF. 4231/406</li>
-                                    <li>Available in store</li>
+                                    <li>From: ${supplier.getCompany__name()}</li>
+                                    <li>Unit In Stock: ${product.getUnit__in__stock()}</li>
                                 </ul>
                                 <div class="product-quantity-box">
                                     <div class="quantity-box">
@@ -110,19 +108,8 @@
                                     </div>
                                 </div>
                                 <ul class="list-unstyled category_tag_list">
-                                    <li><span>Category:</span> Food</li>
-                                    <li><span>Tags:</span> Vegetables, Fruits</li>
+                                    <li><span>Category:</span> ${category.getCategory__name()}</li>
                                 </ul>
-                                <div class="product_detail_share_box">
-                                    <div class="share_box_title">
-                                        <h2>Share with friends</h2>
-                                    </div>
-                                    <div class="share_box_social">
-                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -133,107 +120,31 @@
                 <div class="container">
                     <div class="block-title text-center">
                         <div class="block-title__decor"></div><!-- /.block-title__decor -->
-                        <p>Recently Added</p>
                         <h3>Similar Products</h3>
                     </div><!-- /.block-title -->
-                    <div class="thm-tiny__slider" id="product-two__carousel" data-tiny-options='{
-                         "container": "#product-two__carousel",
-                         "items": 1,
-                         "slideBy": "page",
-                         "gutter": 0,
-                         "mouseDrag": true,
-                         "autoplay": true,
-                         "nav": false,
-                         "controlsPosition": "bottom",
-                         "controlsText": ["<i class=\"fa fa-angle-left\"></i>", "<i class=\"fa fa-angle-right\"></i>"],
-                         "autoplayButtonOutput": false,
-                         "responsive": {
-                         "640": {
-                         "items": 2,
-                         "gutter": 30
-                         },
-                         "992": {
-                         "gutter": 30,
-                         "items": 3
-                         },
-                         "1200": {
-                         "disable": true
-                         }
-                         }
-                         }'>
-                        <div>
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-                                    <span class="product-card__two-sale">sale</span>
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-1.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Banana</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$1.00</p>
-
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div>
-                        <div>
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-2.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Olive Oil</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$7.00</p>
-
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div>
-                        <div>
-                            <div class="product-card__two">
-                                <div class="product-card__two-image">
-                                    <img src="${pageContext.request.contextPath}/images/products/product-2-3.jpg" alt="">
-                                    <div class="product-card__two-image-content">
-                                        <a href="#"><i class="organik-icon-visibility"></i></a>
-                                        <a href="#"><i class="organik-icon-heart"></i></a>
-                                        <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
-                                    </div><!-- /.product-card__two-image-content -->
-                                </div><!-- /.product-card__two-image -->
-                                <div class="product-card__two-content">
-                                    <h3><a href="home?site=product-details">Eggs</a></h3>
-                                    <div class="product-card__two-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div><!-- /.product-card__two-stars -->
-                                    <p>$3.00</p>
-
-                                </div><!-- /.product-card__two-content -->
-                            </div><!-- /.product-card__two -->
-                        </div>
+                    <div class="thm-tiny__slider" id="product-two__carousel">
+                        <c:forEach items="${SameCategoryList}" var="product_sameCate">
+                            <div>
+                                <div class="product-card__two">
+                                    <div class="product-card__two-image">
+                                        <img src="${pageContext.request.contextPath}/${product_sameCate.getImage()}" alt="">
+                                        <div class="product-card__two-image-content">
+                                            <a href="#"><i class="organik-icon-visibility"></i></a>
+                                            <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
+                                        </div><!-- /.product-card__two-image-content -->
+                                    </div><!-- /.product-card__two-image -->
+                                    <div class="product-card__two-content">
+                                        <h3><a href="home?site=product-details">${product_sameCate.getProduct__name()}</a></h3>
+                                        <div class="product-card__two-stars">
+                                            <c:forEach begin="1" end="${product_sameCate.getStar__rating()}">
+                                                <i class="fa fa-star"></i>
+                                            </c:forEach>
+                                        </div><!-- /.product-card__two-stars -->
+                                        <p>$${product_sameCate.getUnit__price()}</p>
+                                    </div><!-- /.product-card__two-content -->
+                                </div><!-- /.product-card__two -->
+                            </div>
+                        </c:forEach>
                     </div>
                 </div><!-- /.container -->
             </section><!-- /.product-two -->

@@ -42,7 +42,7 @@ public class FilteFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         if (req.getServletPath().contains(".jsp")) {
-            resp.sendRedirect("home");
+            resp.sendRedirect(req.getContextPath() + "/home");  
         }
     }
 
@@ -80,6 +80,7 @@ public class FilteFilter implements Filter {
      * @exception IOException if an input/output error occurs
      * @exception ServletException if a servlet error occurs
      */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {

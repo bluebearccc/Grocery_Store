@@ -4,7 +4,6 @@
  */
 package entity;
 
-import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,28 +14,18 @@ import lombok.ToString;
 
 /**
  *
- * @author Tranh
+ * @author admin
  */
-@ToString
-@Builder
 @Data
+@Builder
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Product {
-
-    private int product__id;
-    private String product__name;
-    private int supplier__id;
-    private int category__id;
-    private String quantity__per__unit;
-    private float unit__price;
-    private int unit__in__stock;
-    private int quantity__sold;
-    private int star__rating;
-    private String image;
-    private String describe;
-    private Date release__date;
-
+public class PageControl {
+    private int totalPage;
+    private int totalRecord;
+    private int page;
+    private String urlPattern;
 }

@@ -24,7 +24,13 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Category {
+
     private int category__id;
     private String category__name;
     private String description;
+
+    public static void main(String[] args) {
+        Category c = new Category();
+        
+    }
 }
