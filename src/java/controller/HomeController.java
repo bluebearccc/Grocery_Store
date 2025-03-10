@@ -92,6 +92,7 @@ public class HomeController extends HttpServlet {
                 "view/homepage/login.jsp";
             case "logout" -> {
                 request.getSession().removeAttribute(CommonConst.SESSION_ACCOUNT);
+                ProductList = pdao.getThreeLastestProduct();
                 yield "view/homepage/home.jsp";
             }
             case "register" ->
