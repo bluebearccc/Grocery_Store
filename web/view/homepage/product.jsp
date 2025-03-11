@@ -70,8 +70,10 @@
                         <div class="col-sm-12 col-md-12 col-lg-3">
                             <div class="product-sidebar">
                                 <div class="product-sidebar__single product-sidebar__search-widget">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
+                                    <form action="home">
+                                        <input type="hidden" name="site" value="product">
+                                        <input type="hidden" name="action" value="search">
+                                        <input type="text" name="productName" placeholder="Search product name">
                                         <button class="organik-icon-magnifying-glass" type="submit"></button>
                                     </form>
                                 </div><!-- /.product-sidebar__single -->
@@ -103,13 +105,6 @@
                             </div><!-- /.product-sidebar -->
                         </div><!-- /.col-sm-12 col-md-12 col-lg-3 -->
                         <div class="col-sm-12 col-md-12 col-lg-9">
-                            <div class="product-sorter">
-                                <div class="product-sorter__select">
-                                    <select class="selectpicker">
-                                        <option value="#">Sort by popular</option>
-                                    </select>
-                                </div><!-- /.product-sorter__select -->
-                            </div><!-- /.product-sorter -->
                             <div class="row">
                                 <c:forEach items="${ProductList}" var="p">
                                     <div class="col-md-6 col-lg-4">
@@ -117,7 +112,7 @@
                                             <div class="product-card__image">
                                                 <img src="${pageContext.request.contextPath}/${p.getImage()}" alt="">
                                                 <div class="product-card__image-content">
-                                                    <a href="#"><i class="organik-icon-heart"></i></a>
+                                                    <a href="home?site=product-details&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
                                                     <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                                 </div><!-- /.product-card__image-content -->
                                             </div><!-- /.product-card__image -->
@@ -136,10 +131,13 @@
                                     </div><!-- /.col-md-6 col-lg-4 -->
                                 </c:forEach>
                             </div><!-- /.row -->
-                            <c:forEach begin="1" end="${PageControl.getTotalPage()}" var="pageNumber">
-                                <!--<li><a href="#" class="active">1</a></li>-->
-                                <li><a href="${PageControl.getUrlPattern()}page=${pageNumber}">${pageNumber}</a></li>
-                                </c:forEach>
+                            <ul class="list-unstyled post-pagination d-flex justify-content-center" style="margin-top: 30px">
+                                <li><a href="${pageControl.getUrlPattern()}page=${pageControl.getPage() - 1}"><i class="fa fa-angle-left"></i></a></li>
+                                    <c:forEach begin="1" end="${pageControl.getTotalPage()}" var="pageNumber">
+                                    <li><a href="${pageControl.getUrlPattern()}page=${pageNumber}">${pageNumber}</a></li>
+                                    </c:forEach>
+                                <li><a href="${pageControl.getUrlPattern()}page=${pageControl.getPage() + 1}""><i class="fa fa-angle-right"></i></a></li>
+                            </ul><!-- /.post-pagination -->
                         </div><!-- /.col-sm-12 col-md-12 col-lg-9 -->
                     </div><!-- /.row -->
                 </div><!-- /.container -->

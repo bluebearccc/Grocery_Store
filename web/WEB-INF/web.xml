@@ -8,6 +8,10 @@
         <filter-name>UserAccountFilter</filter-name>
         <filter-class>filter.UserAccountFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>AdminAccountFilter</filter-name>
+        <filter-class>filter.AdminAccountFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>FilteFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -15,6 +19,10 @@
     <filter-mapping>
         <filter-name>UserAccountFilter</filter-name>
         <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminAccountFilter</filter-name>
+        <url-pattern>/dashboard/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>HomeController</servlet-name>

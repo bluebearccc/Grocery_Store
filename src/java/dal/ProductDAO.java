@@ -347,6 +347,25 @@ public class ProductDAO extends DBContext {
         return total;
     }
 
+    public int findTotalRecordPagnition() {
+        int total = 0;
+        String sql = "SELECT count(*) \n"
+                + "	FROM Products\n";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception at findTotalRecordPagnition: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        return total;
+    }
+
     private void closeResources() {
         try {
             if (rs != null) {
@@ -365,9 +384,10 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        for (Product product : dao.getProductPagination(1)) {
-            System.out.println(product);
-        }
+//        for (Product product : dao.getProductPagination(1)) {
+//            System.out.println(product);
+//        }
+        System.out.println(dao.findTotalRecordPagnition());
     }
 
 }
