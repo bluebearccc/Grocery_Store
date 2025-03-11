@@ -159,10 +159,4 @@ public class CategoryDAO extends DBContext {
         return list;
     }
 
-    public static void main(String[] args) {
-        CategoryDAO c = new CategoryDAO();
-        for (Category category : c.searchCategory("")) {
-            System.out.println(category);
-        }
-    }
 }
