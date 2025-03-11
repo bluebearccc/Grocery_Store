@@ -28,6 +28,22 @@
         <servlet-name>AccountController</servlet-name>
         <servlet-class>controller.AccountController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageSupplier</servlet-name>
+        <servlet-class>controller.AdminSupplierController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>controller.AdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAccountController</servlet-name>
+        <servlet-class>controller.AdminAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminProductController</servlet-name>
+        <servlet-class>controller.AdminProductController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -43,6 +59,22 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>ManageSupplier</servlet-name>
+        <url-pattern>/ManageSupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/AdminController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAccountController</servlet-name>
+        <url-pattern>/AdminAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminProductController</servlet-name>
+        <url-pattern>/AdminProductController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>

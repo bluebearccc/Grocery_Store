@@ -363,11 +363,140 @@ public class ProductDAO extends DBContext {
         }
     }
 
-    public static void main(String[] args) {
-        ProductDAO dao = new ProductDAO();
-        for (Product product : dao.getProductPagination(1)) {
-            System.out.println(product);
+    public void editProduct(int productId, String newProductName, int newSupplierId, int newCateId,
+            String newQuantityPerUnit, double newUnitPrice,
+            String newDescription) {
+
+        String sql = "UPDATE [dbo].[Products]\n"
+                + "SET [product__name] = ?, [supplier__id] = ?, [category__id] = ?, \n"
+                + "    [quantity__per__unit] = ?, [unit__price] = ?, [describe] = ?\n"
+                + "WHERE [product__id] = ?";
+
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+
+            ps.setString(1, newProductName);
+            ps.setInt(2, newSupplierId);
+            ps.setInt(3, newCateId);
+            ps.setString(4, newQuantityPerUnit);
+            ps.setDouble(5, newUnitPrice);
+            ps.setString(6, newDescription);
+            ps.setInt(7, productId);
+
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Product with ID " + productId + " was updated successfully.");
+            } else {
+                System.out.println("No product found with ID " + productId);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
         }
+        closeResources();
     }
 
+    public void deleteProductById(int productId) {
+
+        String sql = "DELETE FROM [dbo].[Products] WHERE [product__id] = ?";
+
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, productId);
+
+            int rowsDeleted = ps.executeUpdate();
+            if (rowsDeleted > 0) {
+                System.out.println("Product with ID " + productId + " was deleted successfully.");
+            } else {
+                System.out.println("No product found with ID " + productId);
+            }
+        } catch (SQLException e) {
+        }
+        closeResources();
+    }
+
+    public Product searchProductById(int idFind) {
+        connection = getConnection();
+        String sql = "SELECT [product__id]\n"
+                + "      ,[product__name]\n"
+                + "      ,[supplier__id]\n"
+                + "      ,[category__id]\n"
+                + "      ,[quantity__per__unit]\n"
+                + "      ,[unit__price]\n"
+                + "      ,[unit__in__stock]\n"
+                + "      ,[quantity__sold]\n"
+                + "      ,[star__rating]\n"
+                + "      ,[image]\n"
+                + "      ,[describe]\n"
+                + "      ,[release__date]\n"
+                + "  FROM [dbo].[Products]"
+                + "  WHERE [product__id] = ?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, idFind);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("product__id");
+                String productName = rs.getString("product__name");
+                int supID = rs.getInt("supplier__id");
+                int cateID = rs.getInt("category__id");
+                String quantityPerUnit = rs.getString("quantity__per__unit");
+                double unitPrice = rs.getDouble("unit__price");
+                int unitInStock = rs.getInt("unit__in__stock");
+                int quantitySold = rs.getInt("quantity__sold");
+                int starRating = rs.getInt("star__rating");
+                String image = rs.getString("image");
+                String describe = rs.getString("describe");
+                Date releaseDate = rs.getDate("release__date");
+
+                return new Product(id, productName, supID, cateID, quantityPerUnit, (float) unitPrice, unitInStock, quantitySold, starRating, image, describe, releaseDate);
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public List<Product> getAllProducts() {
+        List<Product> listProduct = new ArrayList<>();
+        connection = getConnection();
+
+        String sql = "SELECT [product__id]\n"
+                + "      ,[product__name]\n"
+                + "      ,[supplier__id]\n"
+                + "      ,[category__id]\n"
+                + "      ,[quantity__per__unit]\n"
+                + "      ,[unit__price]\n"
+                + "      ,[unit__in__stock]\n"
+                + "      ,[quantity__sold]\n"
+                + "      ,[star__rating]\n"
+                + "      ,[image]\n"
+                + "      ,[describe]\n"
+                + "      ,[release__date]\n"
+                + "  FROM [dbo].[Products]";
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("product__id");
+                String productName = rs.getString("product__name");
+                int supID = rs.getInt("supplier__id");
+                int cateID = rs.getInt("category__id");
+                String quantityPerUnit = rs.getString("quantity__per__unit");
+                double unitPrice = rs.getDouble("unit__price");
+                int unitInStock = rs.getInt("unit__in__stock");
+                int quantitySold = rs.getInt("quantity__sold");
+                int starRating = rs.getInt("star__rating");
+                String image = rs.getString("image");
+                String describe = rs.getString("describe");
+                Date releaseDate = rs.getDate("release__date");
+
+                Product product = new Product(id, productName, supID, cateID, quantityPerUnit, (float) unitPrice, unitInStock, quantitySold, starRating, image, describe, releaseDate);
+                listProduct.add(product);
+            }
+        } catch (Exception e) {
+        }
+        return listProduct;
+    }
 }

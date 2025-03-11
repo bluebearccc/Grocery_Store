@@ -17,17 +17,15 @@ import java.util.logging.Logger;
  */
 public class UserDAO extends DBContext {
 
-    public int deleteUser(User u) {
+    public void deleteUser(int id) {
+        connection = getConnection();
         String sql = "DELETE FROM [dbo].[Users]\n"
                 + "      WHERE user__id = ?";
-
         try {
-            connection = getConnection();
             ps = connection.prepareStatement(sql);
-            ps.setInt(1, u.getUser__id());
-            return ps.executeUpdate();
+            ps.setObject(1, id);
+            ps.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Exception at deleteUser" + e.getMessage());
         } finally {
             try {
                 if (rs != null) {
@@ -40,11 +38,10 @@ public class UserDAO extends DBContext {
                     connection.close();
                 }
             } catch (SQLException e) {
-                System.out.println("Exception at deleteUser" + e.getMessage());
+                System.out.println("Exception at UpdateUser" + e.getMessage());
             }
         }
 
-        return -1;
     }
 
     public int UpdateUser(User u) {
@@ -142,7 +139,7 @@ public class UserDAO extends DBContext {
         return getUser(u.getUsername(), u.getPassword());
     }
 
-    public List<User> searchUser(String name) {
+    public List<User> searchUsers(String keyword) {
         List<User> list = new ArrayList<>();
         String sql = "SELECT [user__id]\n"
                 + "      ,[username]\n"
@@ -153,47 +150,30 @@ public class UserDAO extends DBContext {
                 + "      ,[phone]\n"
                 + "      ,[role]\n"
                 + "      ,[balance]\n"
-                + "  FROM [dbo].[Users] \n"
-                + "  WHERE username LIKE ?";
+                + "  FROM [dbo].[Users]\n"
+                + "  WHERE\n"
+                + "	[fullname] LIKE ?";
+        connection = getConnection();
         try {
-            connection = getConnection();
             ps = connection.prepareStatement(sql);
-            ps.setString(1, "%" + name + "%");
+            ps.setObject(1, "%" + keyword + "%");
+
             rs = ps.executeQuery();
-            int user__id;
-            String username, fullname, password, email, address, phone;
-            boolean role;
-            float balance;
             while (rs.next()) {
-                user__id = rs.getInt("user__id");
-                username = rs.getString("username");
-                fullname = rs.getString("fullname");
-                password = rs.getString("password");
-                email = rs.getString("email");
-                address = rs.getString("address");
-                phone = rs.getString("phone");
-                role = rs.getBoolean("role");
-                balance = rs.getFloat("balance");
-                list.add(new User(user__id, username, fullname, password, email, address, phone, role, balance));
+                int id = rs.getInt("user__id");
+                String username = rs.getString("username");
+                String fullname = rs.getString("fullname");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String phone = rs.getString("phone");
+                boolean role = rs.getBoolean("role");
+                float balance = rs.getFloat("balance");
+                list.add(new User(id, username, fullname, password, email, address, phone, role, balance));
             }
         } catch (SQLException e) {
-            System.out.println("Exception at searchUser" + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Exception at searchUser" + e.getMessage());
-            }
+            System.out.println(e);
         }
-
         return list;
     }
 
@@ -223,5 +203,42 @@ public class UserDAO extends DBContext {
             System.out.println("Exception at getUser" + e.getMessage());
         }
         return null;
+    }
+
+    public List<User> getAllUsers() {
+        connection = getConnection();
+        List<User> listUsers = new ArrayList<>();
+        String sql = "SELECT [user__id]\n"
+                + "      ,[username]\n"
+                + "      ,[fullname]\n"
+                + "      ,[password]\n"
+                + "      ,[email]\n"
+                + "      ,[address]\n"
+                + "      ,[phone]\n"
+                + "      ,[role]\n"
+                + "      ,[balance]\n"
+                + "  FROM [dbo].[Users]";
+
+        try {
+            ps = connection.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("user__id");
+                String username = rs.getString("username");
+                String fullname = rs.getString("fullname");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String phone = rs.getString("phone");
+                boolean role = rs.getBoolean("role");
+                float balance = rs.getFloat("balance");
+                listUsers.add(new User(id, username, fullname, password, email, address, phone, role, balance));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return listUsers;
     }
 }
