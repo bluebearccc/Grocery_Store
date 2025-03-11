@@ -36,6 +36,7 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog" style="width: 100%">
                     <div class="modal-content">
+<<<<<<< HEAD
                         <form action="ManageSupplier?action=submitEdit" method="post">
                             <div class="modal-header">						
                                 <h4 class="modal-title">Edit Supplier Information</h4>
@@ -55,6 +56,33 @@
                                 <div class="form-group">
                                     <label>Phone</label>
                                     <input name="phone" class="form-control" required value="${requestScope.find.phone}">
+=======
+                        <form action="updateSupplier" method="get">
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Edit Supplier Information</h4>
+                                <a href="managersupplier">
+                                    <button style="position: absolute; right: 20px; top: 20px; color: black" type="button" class="close" data-dismiss="modal" 
+                                            aria-hidden="true">&times;
+                                    </button> 
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>ID</label>
+                                    <input value="${find.supplierId}" name="id" type="text" class="form-control" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input value="${find.companyName}" name="companyName" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact Name</label>
+                                    <input value="${find.contactName}" name="contactName" type="text" class="form-control" >
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input name="phone" class="form-control" required value="${find.phone}">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                 </div>
                             </div>
                             <div class="modal-footer">

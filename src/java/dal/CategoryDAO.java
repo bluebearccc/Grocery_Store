@@ -159,6 +159,7 @@ public class CategoryDAO extends DBContext {
         return list;
     }
 
+<<<<<<< HEAD
     public List<Category> getAllCategories() {
         String sql = "SELECT [category__id]\n"
                 + "      ,[category__name]\n"
@@ -197,4 +198,6 @@ public class CategoryDAO extends DBContext {
         return list;
     }
 
+=======
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
 }

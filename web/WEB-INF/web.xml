@@ -8,6 +8,10 @@
         <filter-name>UserAccountFilter</filter-name>
         <filter-class>filter.UserAccountFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>AdminAccountFilter</filter-name>
+        <filter-class>filter.AdminAccountFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>FilteFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -15,6 +19,10 @@
     <filter-mapping>
         <filter-name>UserAccountFilter</filter-name>
         <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminAccountFilter</filter-name>
+        <url-pattern>/dashboard/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>HomeController</servlet-name>
@@ -78,4 +86,60 @@
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>ProServlet</servlet-name>
+        <servlet-class>ProServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageAccount</servlet-name>
+        <servlet-class>controller.admin.account.ManageAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllerAdmin</servlet-name>
+        <servlet-class>ControllerAdmin.ControllerAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageSupplier</servlet-name>
+        <servlet-class>controller.admin.supplier.ManageSupplier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSupplier</servlet-name>
+        <servlet-class>controller.admin.supplier.UpdateSupplier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageProduct</servlet-name>
+        <servlet-class>controller.admin.product.ManageProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>controller.admin.product.AddProduct</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProServlet</servlet-name>
+        <url-pattern>/ProServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageAccount</servlet-name>
+        <url-pattern>/manageAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerAdmin</servlet-name>
+        <url-pattern>/controllerAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageSupplier</servlet-name>
+        <url-pattern>/manageSupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSupplier</servlet-name>
+        <url-pattern>/updateSupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageProduct</servlet-name>
+        <url-pattern>/manageProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/addProduct</url-pattern>
+    </servlet-mapping>
 </web-app>

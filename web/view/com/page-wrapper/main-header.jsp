@@ -64,7 +64,12 @@
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <div class="main-menu__login">
-                        <a href="home?site=account"><i class="organik-icon-user"></i>Welcome ${user.getFullname()} !</a>
+                        <c:if test="${sessionScope.user.isRole() == true}">
+                            <a href="home?site=account"><i class="organik-icon-user"></i>Welcome ${user.getFullname()} !</a>
+                        </c:if>
+                        <c:if test="${sessionScope.user.isRole() == false}">
+                            <a href="home?site=admin"><i class="organik-icon-user"></i>Welcome ${user.getFullname()} !</a>
+                        </c:if>
                     </div><!-- /.main-menu__login -->
                 </c:if>
                 <ul class="main-menu__list">

@@ -124,12 +124,20 @@
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
+<<<<<<< HEAD
                                     <form action="ManageSupplier?action=search" method="post" style="display: flex; justify-content: center">
+=======
+                                    <form action="manageSupplier?action=search" method="post" style="display: flex; justify-content: center">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                         <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search company name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
+<<<<<<< HEAD
+=======
+                        <% List<Supplier> suppliers = (List<Supplier>) request.getAttribute("listAllSupplier"); %>
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover text-nowrap">
@@ -145,6 +153,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="contentt">
+<<<<<<< HEAD
                                         <c:forEach var="supplier" items="${requestScope.listAllSupplier}">
                                             <tr>
                                                 <td>${supplier.supplier__id}</td>
@@ -162,6 +171,25 @@
                                                         <button type="submit" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
                                                             <input type="hidden" name="id" value="${supplier.supplier__id}">
+=======
+                                        <c:forEach var="supplier" items="${listAllSupplier}">
+                                            <tr>
+                                                <td>${supplier.supplierId}</td>
+                                                <td>${supplier.companyName}</td>
+                                                <td>${supplier.contactName}</td>
+                                                <td>${supplier.phone}</td>
+                                                <td class="text_page" style="padding: 0 12px 16px">
+                                                    <form action="manageSupplier?action=edit" method="post">
+                                                        <button type="submit" class="btn btn-warning">
+                                                            <i class="fa-solid fa-pen"></i>
+                                                            <input type="hidden" name="id" value="${supplier.supplierId}">
+                                                        </button>
+                                                    </form>
+                                                    <form action="manageSupplier?action=delete" method="post">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
+                                                            <input type="hidden" name="id" value="${supplier.supplierId}">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                                         </button>
                                                     </form>
                                                 </td> 
@@ -184,7 +212,11 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
+<<<<<<< HEAD
                     <form action="ManageSupplier?action=add" method="post">
+=======
+                    <form action="manageSupplier?action=add" method="post">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                         <div class="modal-header">						
                             <h4 class="modal-title">Add Supplier</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

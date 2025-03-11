@@ -120,13 +120,31 @@
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
+<<<<<<< HEAD
                                     <form action="AdminAccountController?action=search" method="post" style="display: flex; justify-content: center">
                                         <input name="valueSearch" value="${requestScope.valueSearch != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search user name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+=======
+                                    <form action="manageAccount?action=search" method="post" style="display: flex; justify-content: center">
+                                        <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search user name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
 
+<<<<<<< HEAD
+=======
+                        <c:if test="${error!=null }">
+                            <div style="margin-top: 20px" class="alert alert-danger" role="alert">
+                                ${error}
+                            </div>
+                        </c:if>
+                        <c:if test="${mess!=null }">
+                            <div style="margin-top: 20px" class="alert alert-success" role="alert">
+                                ${mess}
+                            </div>
+                        </c:if>
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
 
                         <div class="card-body" style="padding: 0">
                             <div class="table-responsive">
@@ -144,6 +162,7 @@
                                         <c:forEach items="${requestScope.listAccounts}" var="u">
                                             <tr>
                                                 <td class="text_page" style="font-weight: 500">${u.fullname}</td>
+<<<<<<< HEAD
                                                 <td class="text_page"  style="font-weight: 500">${u.username}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.address}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.role == false?"Admin":"Customer"}</td>
@@ -154,6 +173,18 @@
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>                                                          
                                                         </button>
                                                         <input type="hidden" name="id" value="${u.user__id}"/>
+=======
+                                                <td class="text_page"  style="font-weight: 500">${u.userName}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.address}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.role == 0?"Admin":"Customer"}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.phone}</td>
+                                                <td class="text_page"  style="padding: 0 12px 16px">
+                                                    <form action="manageAccount?action=delete" method="post">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>                                                          
+                                                        </button>
+                                                        <input type="hidden" name="id" value="${u.userId}"/>
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                                     </form>                                                   
                                                 </td>
                                             </tr>
@@ -185,6 +216,63 @@
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
 
         <script src="js/calender.js"></script>
+<<<<<<< HEAD
    
+=======
+        <script type="text/javascript">
+            dates('option');
+            months('option', 11, 12);
+            years('option', 1980, 2023);
+
+            function monthNameToNumber(monthName) {
+                var months = [
+                    'January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'
+                ];
+                var lowerMonthName = monthName.toLowerCase();
+                var monthIndex = months.findIndex(function (month) {
+                    return month.toLowerCase() === lowerMonthName;
+                });
+                return monthIndex !== -1 ? monthIndex + 1 : -1;
+            }
+
+            function submitForm() {
+                var here = document.querySelector('#here');
+                var form = document.getElementById('form');
+                var dobDay = document.getElementById('dobDay').value;
+                var dobMonthText = document.getElementById('dobMonth').value;
+                var dobMonth = monthNameToNumber(dobMonthText);
+                var dobYear = document.getElementById('dobYear').value;
+                if (dobMonth < 10 && dobDay < 10) {
+                    dobFull = dobYear + '-0' + dobMonth + '-0' + dobDay;
+                } else if (dobMonth < 10 && !(dobDay < 10)) {
+                    dobFull = dobYear + '-0' + dobMonth + '-' + dobDay;
+                } else if (dobDay < 10 && !(dobMonth < 10)) {
+                    dobFull = dobYear + '-' + dobMonth + '-0' + dobDay;
+                } else {
+                    dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
+                }
+
+                here.value = dobFull;
+                form.submit();
+            }
+            function searchByName() {
+                var text = document.querySelector("#searchId").value;
+                $.ajax({
+                    url: "/PefumeMN-Website/searchAccount",
+                    type: "get",
+                    data: {
+                        txt: text
+                    },
+                    success: function (data) {
+                        var row = document.getElementById("contentt");
+                        row.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                    }
+                });
+            }
+        </script>
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
     </body>
 </html>

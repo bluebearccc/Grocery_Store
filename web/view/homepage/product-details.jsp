@@ -122,14 +122,18 @@
                         <div class="block-title__decor"></div><!-- /.block-title__decor -->
                         <h3>Similar Products</h3>
                     </div><!-- /.block-title -->
+                    <c:if test="${SameCategoryList.isEmpty()}">
+                        <h3 style="text-align: center">Sorry there is no similar product 😔</h3>
+                    </c:if>
                     <div class="thm-tiny__slider" id="product-two__carousel">
+
                         <c:forEach items="${SameCategoryList}" var="product_sameCate">
                             <div>
                                 <div class="product-card__two">
                                     <div class="product-card__two-image">
                                         <img src="${pageContext.request.contextPath}/${product_sameCate.getImage()}" alt="">
                                         <div class="product-card__two-image-content">
-                                            <a href="#"><i class="organik-icon-visibility"></i></a>
+                                            <a href="home?site=product-details&productId=${product_sameCate.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
                                             <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                         </div><!-- /.product-card__two-image-content -->
                                     </div><!-- /.product-card__two-image -->
