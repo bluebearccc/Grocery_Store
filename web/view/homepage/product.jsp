@@ -63,7 +63,6 @@
                 </div><!-- /.container -->
             </section><!-- /.page-header -->
 
-
             <section class="products-page">
                 <div class="container">
                     <div class="row">
@@ -79,19 +78,25 @@
                                 </div><!-- /.product-sidebar__single -->
                                 <div class="product-sidebar__single">
                                     <h3>Price</h3>
-                                    <div class="product-sidebar__price-range">
-                                        <div class="range-slider-price" id="range-slider-price"></div>
-                                        <div class="form-group">
-                                            <div class="left">
-                                                <p>$<span id="min-value-rangeslider"></span></p>
-                                                <span>-</span>
-                                                <p>$<span id="max-value-rangeslider"></span></p>
-                                            </div><!-- /.left -->
-                                            <div class="right">
-                                                <input type="submit" class="thm-btn" value="Filter">
-                                            </div><!-- /.right -->
+                                    <form id="priceFilterForm">
+                                        <!-- Hiển thị giá trị Min và Max -->
+                                        <div class="price-display">
+                                            $<span id="min-price-display">0</span> - $<span id="max-price-display">200</span>
                                         </div>
-                                    </div><!-- /.product-sidebar__price-range -->
+                                        <input type="hidden" id="min-price" name="site" value="product">
+                                        <input type="hidden" id="min-price" name="minPrice">
+                                        <input type="hidden" id="max-price" name="maxPrice">
+
+                                        <!-- Slider Container -->
+                                        <div class="slider-container">
+                                            <div class="slider-track" id="slider-track"></div>
+                                            <div class="thumb" id="min-thumb"></div>
+                                            <div class="thumb" id="max-thumb"></div>
+                                        </div>
+
+                                        <!-- Nút Filter -->
+                                        <a type="#" class="filter-btn" onclick="loadPage(1)">Filter</a>
+                                    </form>
                                 </div><!-- /.product-sidebar__single -->
                                 <div class="product-sidebar__single">
                                     <h3>Categories</h3>
@@ -100,16 +105,17 @@
                                                 <c:forEach items="${CategoryList}" var="c">
                                             <li><a onclick="getCategoryId(${c.getCategory__id()}); loadPage(${pageControl.getPage()})">${c.getCategory__name()} <i class="fa fa-angle-right"></i></a></li>
                                                 </c:forEach>
-<!--                                        <h2>Page: ${pageControl.getPage()}</h2>
-                                        <h2>Total Page: ${pageControl.getTotalPage()}</h2>
-                                        <h2>Record: ${pageControl.getTotalRecord()}</h2>-->
-
                                     </ul><!-- /.list-unstyled product-sidebar__links -->
                                 </div><!-- /.product-sidebar__single -->
                             </div><!-- /.product-sidebar -->
                         </div><!-- /.col-sm-12 col-md-12 col-lg-3 -->
-                        <div class="col-sm-12 col-md-12 col-lg-9">
-                            <div id="content" class="row">
+                        <div id="pagin" class="col-sm-12 col-md-12 col-lg-9">
+                            <div class="product-sorter">
+                                <div class="product-sorter__select">
+                                    <img src="${pageContext.request.contextPath}/images/logo-dark.png" width="105" alt="">
+                                </div><!-- /.product-sorter__select -->
+                            </div><!-- /.product-sorter -->
+                            <div class="row">
                                 <c:forEach items="${ProductList}" var="p">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="product-card">
@@ -189,16 +195,26 @@
         <script src="${pageContext.request.contextPath}/js/vendors/countdown/countdown.min.js"></script>
         <!-- template js -->
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
+        <script src="${pageContext.request.contextPath}/js/organik-money-filter.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <<script>
                                         let currentCategoryId;
+                                        let min = 0, max = 200;
 
                                         function getCategoryId(categoryId) {
                                             currentCategoryId = categoryId;
                                         }
 
+                                        function getMinMax() {
+                                            min = document.getElementById('min-price').value;
+                                            max = document.getElementById('max-price').value;
+                                        }
+
                                         function loadPage(page) {
+                                            getMinMax();
+                                            console.log(min);
+                                            console.log(max);
                                             console.log(currentCategoryId);
                                             $.ajax({
                                                 url: "/Grocery_Store/home",
@@ -206,10 +222,12 @@
                                                 data: {
                                                     site: "product",
                                                     categoryId: currentCategoryId,
-                                                    page: page
+                                                    page: page,
+                                                    min: min,
+                                                    max: max
                                                 },
                                                 success: function (data) {
-                                                    let row = document.getElementById('content');
+                                                    let row = document.getElementById('pagin');
                                                     row.innerHTML = data;
                                                 },
                                                 error: function (e) {
@@ -217,10 +235,6 @@
                                                 }
                                             });
                                         }
-
-
-
-
         </script>
     </body>
 </html>

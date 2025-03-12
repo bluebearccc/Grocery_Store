@@ -108,17 +108,6 @@
     });
   }
 
-  if ($(".video-popup").length) {
-    $(".video-popup").magnificPopup({
-      type: "iframe",
-      mainClass: "mfp-fade",
-      removalDelay: 160,
-      preloader: true,
-
-      fixedContentPos: false
-    });
-  }
-
   if ($(".img-popup").length) {
     var groups = {};
     $(".img-popup").each(function () {

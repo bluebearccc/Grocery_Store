@@ -350,15 +350,18 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
-    public int findTotalRecordByCategory(int cateId) {
+    public int findTotalRecordByCategory(int cateId, int min, int max) {
         int total = 0;
         String sql = "SELECT count(*) \n"
                 + "	FROM Products\n"
-                + "	WHERE category__id=?";
+                + "	WHERE category__id=? AND"
+                + "     [unit__price] BETWEEN ? AND ?";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
             ps.setInt(1, cateId);
+            ps.setInt(2, min);
+            ps.setInt(3, max);
             rs = ps.executeQuery();
             while (rs.next()) {
                 total = rs.getInt(1);
@@ -371,13 +374,16 @@ public class ProductDAO extends DBContext {
         return total;
     }
 
-    public int findTotalRecordPagnition() {
+    public int findTotalRecordPagnition(int min, int max) {
         int total = 0;
         String sql = "SELECT count(*) \n"
-                + "	FROM Products\n";
+                + "	FROM Products\n"
+                + "     WHERE [unit__price] BETWEEN ? AND ?";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
+            ps.setInt(1, min);
+            ps.setInt(2, max);
             rs = ps.executeQuery();
             while (rs.next()) {
                 total = rs.getInt(1);
@@ -437,14 +443,6 @@ public class ProductDAO extends DBContext {
             System.out.println(e);
         }
         closeResources();
-    }
-
-    public static void main(String[] args) {
-        ProductDAO dao = new ProductDAO();
-//        for (Product product : dao.searchProduct("")) {
-//            System.out.println(product);
-//        }
-        System.out.println(dao.findTotalRecordPagnition());
     }
 
     public void deleteProductById(int productId) {
@@ -613,5 +611,125 @@ public class ProductDAO extends DBContext {
             }
         }
         return sum;
+    }
+
+    public List<Product> getProductsInRangePagination(int min, int max, int page) {
+        if (max < min) {
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+        List<Product> listProduct = new ArrayList<>();
+        connection = getConnection();
+
+        String sql = "SELECT [product__id]\n"
+                + "      ,[product__name]\n"
+                + "      ,[supplier__id]\n"
+                + "      ,[category__id]\n"
+                + "      ,[quantity__per__unit]\n"
+                + "      ,[unit__price]\n"
+                + "      ,[unit__in__stock]\n"
+                + "      ,[quantity__sold]\n"
+                + "      ,[star__rating]\n"
+                + "      ,[image]\n"
+                + "      ,[describe]\n"
+                + "      ,[release__date]\n"
+                + "  FROM [dbo].[Products]"
+                + "  WHERE [unit__price] BETWEEN ? AND ?"
+                + "  ORDER BY [product__id]"
+                + "	OFFSET ? ROWS \n"
+                + "	FETCH NEXT ? ROWS ONLY";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, min);
+            ps.setInt(2, max);
+            ps.setInt(3, (page - 1) * CommonConst.RECORD_PER_PAGE);
+            ps.setInt(4, CommonConst.RECORD_PER_PAGE);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("product__id");
+                String productName = rs.getString("product__name");
+                int supID = rs.getInt("supplier__id");
+                int cateID = rs.getInt("category__id");
+                String quantityPerUnit = rs.getString("quantity__per__unit");
+                double unitPrice = rs.getDouble("unit__price");
+                int unitInStock = rs.getInt("unit__in__stock");
+                int quantitySold = rs.getInt("quantity__sold");
+                int starRating = rs.getInt("star__rating");
+                String image = rs.getString("image");
+                String describe = rs.getString("describe");
+                Date releaseDate = rs.getDate("release__date");
+
+                Product product = new Product(id, productName, supID, cateID, quantityPerUnit, (float) unitPrice, unitInStock, quantitySold, starRating, image, describe, releaseDate);
+                listProduct.add(product);
+            }
+        } catch (SQLException e) {
+        }
+        return listProduct;
+    }
+
+    public List<Product> getProductsInRangePaginationCate(int min, int max, int page, int categoryId) {
+        if (max < min) {
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+        List<Product> listProduct = new ArrayList<>();
+        connection = getConnection();
+
+        String sql = "SELECT [product__id]\n"
+                + "      ,[product__name]\n"
+                + "      ,[supplier__id]\n"
+                + "      ,[category__id]\n"
+                + "      ,[quantity__per__unit]\n"
+                + "      ,[unit__price]\n"
+                + "      ,[unit__in__stock]\n"
+                + "      ,[quantity__sold]\n"
+                + "      ,[star__rating]\n"
+                + "      ,[image]\n"
+                + "      ,[describe]\n"
+                + "      ,[release__date]\n"
+                + "  FROM [dbo].[Products]"
+                + "  WHERE [category__id] = ? AND [unit__price] BETWEEN ? AND ?"
+                + "  ORDER BY [product__id]"
+                + "	OFFSET ? ROWS \n"
+                + "	FETCH NEXT ? ROWS ONLY";
+        System.out.println(sql);
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, categoryId);
+            ps.setInt(2, min);
+            ps.setInt(3, max);
+            ps.setInt(4, (page - 1) * CommonConst.RECORD_PER_PAGE);
+            ps.setInt(5, CommonConst.RECORD_PER_PAGE);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("product__id");
+                String productName = rs.getString("product__name");
+                int supID = rs.getInt("supplier__id");
+                int cateID = rs.getInt("category__id");
+                String quantityPerUnit = rs.getString("quantity__per__unit");
+                double unitPrice = rs.getDouble("unit__price");
+                int unitInStock = rs.getInt("unit__in__stock");
+                int quantitySold = rs.getInt("quantity__sold");
+                int starRating = rs.getInt("star__rating");
+                String image = rs.getString("image");
+                String describe = rs.getString("describe");
+                Date releaseDate = rs.getDate("release__date");
+
+                Product product = new Product(id, productName, supID, cateID, quantityPerUnit, (float) unitPrice, unitInStock, quantitySold, starRating, image, describe, releaseDate);
+                listProduct.add(product);
+            }
+        } catch (SQLException e) {
+        }
+        return listProduct;
+    }
+
+    public static void main(String[] args) {
+        ProductDAO dao = new ProductDAO();
+//        for (Product product : dao.getProductsInRangePagination(0, 3, 1)) {
+//            System.out.println(product);
+//        }
+        System.out.println(dao.findTotalRecordPagnition(0, 200));
     }
 }

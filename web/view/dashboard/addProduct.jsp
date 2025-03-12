@@ -77,10 +77,8 @@
                 <label for="unitInStock">Quantity</label>
                 <input type="number" id="unitInStock" name="unitInStock" required>
 
-                <label for="quantitySold">Quantity Sold</label>
                 <input type="hidden" id="quantitySold" name="quantitySold" value="0">
 
-                <label for="starRating">Star rating</label>
                 <input type="hidden" id="starRating" name="starRating" min="1" max="5" value="5">
 
                 <label for="image">Image</label>

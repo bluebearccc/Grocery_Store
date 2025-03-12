@@ -9,7 +9,10 @@ package constant;
  * @author admin
  */
 public class CommonConst {
+
     public static final int RECORD_PER_PAGE = 6;
+    public static final int MIN_PRICE = 0;
+    public static final int MAX_PRICE = 200;
     public static final String SESSION_ACCOUNT = "user";
     public static final String SESSION_PRODUCT = "product";
     public static final String SESSION_CATEGORY = "category";

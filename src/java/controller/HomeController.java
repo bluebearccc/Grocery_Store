@@ -45,14 +45,16 @@ public class HomeController extends HttpServlet {
         String productId = request.getParameter("productId") == null ? "3" : request.getParameter("productId").trim();
         String productName = request.getParameter("productName");
         String pageRaw = request.getParameter("page");
+        int min = Integer.parseInt(request.getParameter("min") == null ? "0" : request.getParameter("min"));
+        int max = Integer.parseInt(request.getParameter("max") == null ? "200" : request.getParameter("max"));
 
         //GET DATA FROM DAO
         Product pro = pdao.getProduct(Integer.parseInt(productId));
 
         //PROCESS DATA
         String url = processUrl(request, response);
-        handlePage(request, response, categoryId);
-        List<Product> ProductList = getProductList(request, url, productName, categoryId, pro, pageControl.getPage(), pageRaw);
+        handlePage(request, response, categoryId, min, max);
+        List<Product> ProductList = getProductList(request, url, productName, categoryId, pro, pageControl.getPage(), pageRaw, min, max);
         List<Category> CategoryList = getCategoryList(request);
         Category cate = null;
         Supplier sup = null;
@@ -157,7 +159,7 @@ public class HomeController extends HttpServlet {
         return url;
     }
 
-    public void handlePage(HttpServletRequest request, HttpServletResponse response, String categoryId) {
+    public void handlePage(HttpServletRequest request, HttpServletResponse response, String categoryId, int min, int max) {
         //get page
         String pageRaw = request.getParameter("page");
         int page;
@@ -171,8 +173,8 @@ public class HomeController extends HttpServlet {
             page = 1;
         }
         //calculate totalRecord by categoryId
-        int totalRecord = 
-                categoryId.equals("all") ? pdao.findTotalRecordPagnition() : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId));
+        int totalRecord
+                = categoryId.equals("all") ? pdao.findTotalRecordPagnition(min, max) : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId), min, max);
 
         //total page
         int totalPage = totalRecord % CommonConst.RECORD_PER_PAGE == 0
@@ -189,6 +191,12 @@ public class HomeController extends HttpServlet {
         try {
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
+            out.print("<div class=\"product-sorter\">\n"
+                    + " <div class=\"product-sorter__select\">\n"
+                    + "     <img src=\"/Grocery_Store/images/logo-dark.png\" width=\"105\" alt=\"\">\n"
+                    + " </div><!-- /.product-sorter__select -->\n"
+                    + "</div><!-- /.product-sorter -->"
+                    + "<div class=\"row\">\n");
             for (Product p : ProductList) {
                 out.print("<div class=\"col-md-6 col-lg-4\">\n"
                         + "    <div class=\"product-card\">\n"
@@ -214,15 +222,50 @@ public class HomeController extends HttpServlet {
                         + "        </div><!-- /.product-card__content -->\n"
                         + "    </div><!-- /.product-card -->\n"
                         + "</div><!-- /.col-md-6 col-lg-4 -->");
-
             }
+
+            out.print("</div><!-- /.row -->"
+                    + "<ul id=\"paginationButton\" class=\"list-unstyled post-pagination d-flex justify-content-center\" style=\"margin-top: 30px\">\n");
+
+            if (pageControl.getPage() > 1) {
+                out.print("    <li><a onclick=\"loadPage(" + (pageControl.getPage() - 1) + ")\"><i class=\"fa fa-angle-left\"></i></a></li>\n");
+            }
+            if (pageControl.getPage() == 1) {
+                out.print("    <li><a onclick=\"loadPage(" + pageControl.getPage() + ")\"><i class=\"fa fa-angle-left\"></i></a></li>\n");
+            }
+            for (int i = 1; i <= pageControl.getTotalPage(); i++) {
+                out.print("<li><a onclick=\"loadPage(" + i + ")\">" + i + "</a></li>\n");
+            }
+            if (pageControl.getPage() < pageControl.getTotalPage()) {
+                out.print("<li><a onclick=\"loadPage(" + (pageControl.getPage() + 1) + ")\"><i class=\"fa fa-angle-right\"></i></a></li>\n");
+            }
+            if (pageControl.getPage() == pageControl.getTotalPage()) {
+                out.print("<li><a onclick=\"loadPage(" + pageControl.getPage() + ")\"><i class=\"fa fa-angle-right\"></i></a></li>\n");
+            }
+            out.print("</ul><!-- /.post-pagination -->");
+
         } catch (IOException e) {
         }
 
     }
 
-    public List<Product> getProductList(HttpServletRequest request, String url, String productName, String categoryId, Product p, int page, String pageRaw) {
+    public List<Product> getProductList(HttpServletRequest request, String url, String productName, String categoryId, Product p, int page, String pageRaw, int min, int max) {
+        if (min > max) {
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+
         List<Product> list = null;
+
+        if (min != CommonConst.MIN_PRICE || max != CommonConst.MAX_PRICE) {
+            if (categoryId.equals("all")) {
+                return pdao.getProductsInRangePagination(min, max, pageControl.getPage());
+            } else {
+                return pdao.getProductsInRangePaginationCate(min, max, pageControl.getPage(), Integer.parseInt(categoryId));
+            }
+        }
+
         if (url.contains("home.jsp")) {
             list = pdao.getThreeLastestProduct();
         } else if (url.contains("product.jsp")) {

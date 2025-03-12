@@ -4716,15 +4716,15 @@ h6 {
 }
 
 .feature-box__single {
-  padding-left: 20px;
-  padding-right: 20px;
-  position: relative;
-  padding-top: 51.5px;
-  padding-bottom: 51.5px;
-  border: 2px solid #f4f4f4;
-  background-color: #fff;
-  /*display: inline;*/
-  display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    padding-top: 51.5px;
+    padding-bottom: 51.5px;
+    border: 2px solid #f4f4f4;
+    background-color: #fff;
+    /*display: inline;*/
+    display: flex;
 }
 
 @media (min-width: 1200px) {
@@ -7751,6 +7751,67 @@ h6 {
 
 .gallery-one__item:hover > a {
     opacity: 1;
+}
+
+.price-filter {
+    width: 100%;
+    max-width: 350px;
+}
+
+.price-filter h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.slider-container {
+    position: relative;
+    height: 5px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.slider-track {
+    height: 5px;
+    background-color: #66bb6a;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.thumb {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #66bb6a;
+    border-radius: 50%;
+    cursor: pointer;
+    top: -8px;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.price-display {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.filter-btn {
+    background-color: #66bb6a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.filter-btn:hover {
+    background-color: #4caf50;
 }
 
 /*# sourceMappingURL=organik.css.map */
