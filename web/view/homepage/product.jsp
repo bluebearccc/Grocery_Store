@@ -96,9 +96,9 @@
                                 <div class="product-sidebar__single">
                                     <h3>Categories</h3>
                                     <ul class="list-unstyled product-sidebar__links">
-                                        <li><a onclick="loadPage(${pageControl.getPage()}, ${c.getCategory__id()})" > All <i class ="fa fa-angle-right"></i></a></li>
+                                        <li><a onclick="getCategoryId(null); loadPage(${pageControl.getPage()})" > All <i class ="fa fa-angle-right"></i></a></li>
                                                 <c:forEach items="${CategoryList}" var="c">
-                                            <li><a onclick="loadPage(${pageControl.getPage()}, ${c.getCategory__id()})">${c.getCategory__name()} <i class="fa fa-angle-right"></i></a></li>
+                                            <li><a onclick="getCategoryId(${c.getCategory__id()}); loadPage(${pageControl.getPage()})">${c.getCategory__name()} <i class="fa fa-angle-right"></i></a></li>
                                                 </c:forEach>
 <!--                                        <h2>Page: ${pageControl.getPage()}</h2>
                                         <h2>Total Page: ${pageControl.getTotalPage()}</h2>
@@ -192,13 +192,20 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <<script>
-                                        function loadPage(page, categoryId) {
+                                        let currentCategoryId;
+
+                                        function getCategoryId(categoryId) {
+                                            currentCategoryId = categoryId;
+                                        }
+
+                                        function loadPage(page) {
+                                            console.log(currentCategoryId);
                                             $.ajax({
                                                 url: "/Grocery_Store/home",
                                                 type: "get",
                                                 data: {
                                                     site: "product",
-                                                    categoryId: categoryId,
+                                                    categoryId: currentCategoryId,
                                                     page: page
                                                 },
                                                 success: function (data) {
@@ -210,6 +217,8 @@
                                                 }
                                             });
                                         }
+
+
 
 
         </script>

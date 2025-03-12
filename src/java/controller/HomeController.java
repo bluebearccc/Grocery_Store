@@ -41,7 +41,7 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         //GET DATA FROM REQUEST
-        String categoryId = request.getParameter("categoryId") == null ? "all" : request.getParameter("categoryId");
+        String categoryId = request.getParameter("categoryId") == null || request.getParameter("categoryId").equals("") ? "all" : request.getParameter("categoryId");
         String productId = request.getParameter("productId") == null ? "3" : request.getParameter("productId").trim();
         String productName = request.getParameter("productName");
         String pageRaw = request.getParameter("page");
@@ -111,6 +111,9 @@ public class HomeController extends HttpServlet {
         url = switch (site) {
             case "product" -> {
                 yield "view/homepage/product.jsp";
+            }
+            case "maindashboard" -> {
+                yield "AdminController";
             }
             case "product-details" -> {
                 yield "view/homepage/product-details.jsp";
