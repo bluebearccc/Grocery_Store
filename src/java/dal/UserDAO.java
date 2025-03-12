@@ -56,7 +56,6 @@ public class UserDAO extends DBContext {
                 + "      ,[address] = ?\n"
                 + "      ,[phone] = ?\n"
                 + "      ,[role] = ?\n"
-                + "      ,[balance] = ?\n"
                 + " WHERE  user__id = ?";
         try {
             connection = getConnection();
@@ -68,8 +67,7 @@ public class UserDAO extends DBContext {
             ps.setString(5, u.getAddress());
             ps.setString(6, u.getPhone());
             ps.setBoolean(7, u.isRole());
-            ps.setFloat(8, u.getBalance());
-            ps.setInt(9, u.getUser__id());
+            ps.setInt(8, u.getUser__id());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Exception at UpdateUser" + e.getMessage());
@@ -223,5 +221,10 @@ public class UserDAO extends DBContext {
             System.out.println("Exception at getUser" + e.getMessage());
         }
         return null;
+    }
+    
+    public static void main(String[] args) {
+        UserDAO dao = new UserDAO();
+        dao.UpdateUser(User.builder().user__id(31).username("na").fullname("NgocAnh").password("abcc1").email("pdphamngocanh@gmail.com").address("Thai Nguyen").phone("123456833").role(true).balance(0).build());
     }
 }

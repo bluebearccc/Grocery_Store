@@ -134,7 +134,7 @@
                                     <span>$19.98 USD</span>
                                 </li>
                                 <li>
-                                    <span>Shipping Cost</span>
+                                    <span>Free Ship</span>
                                     <span>$0.00 USD</span>
                                 </li>
                                 <li>

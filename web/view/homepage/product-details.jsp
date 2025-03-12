@@ -122,12 +122,12 @@
                         <div class="block-title__decor"></div><!-- /.block-title__decor -->
                         <h3>Similar Products</h3>
                     </div><!-- /.block-title -->
-                    <c:if test="${SameCategoryList.isEmpty()}">
+                    <c:if test="${ProductList.isEmpty()}">
                         <h3 style="text-align: center">Sorry there is no similar product 😔</h3>
                     </c:if>
                     <div class="thm-tiny__slider" id="product-two__carousel">
 
-                        <c:forEach items="${SameCategoryList}" var="product_sameCate">
+                        <c:forEach items="${ProductList}" var="product_sameCate">
                             <div>
                                 <div class="product-card__two">
                                     <div class="product-card__two-image">

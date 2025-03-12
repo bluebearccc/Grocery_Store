@@ -28,9 +28,4 @@ public class PageControl {
     private int totalRecord;
     private int page;
     private String urlPattern;
-    public static void main(String[] args) {
-        PageControl pg = new PageControl();
-        
-    }
-    
 }

@@ -34,4 +34,8 @@ public class User {
     private String phone;
     private boolean role;
     private float balance;
+    public static void main(String[] args) {
+        User u = new User();
+        
+    }
 }

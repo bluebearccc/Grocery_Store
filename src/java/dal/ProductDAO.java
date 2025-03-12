@@ -99,7 +99,9 @@ public class ProductDAO extends DBContext {
             ps = connection.prepareStatement(sql);
             ps.setInt(1, productId);
             rs = ps.executeQuery();
+            String image;
             if (rs.next()) {
+                image = rs.getString("image");
                 return new Product(
                         rs.getInt("product__id"),
                         rs.getString("product__name"),
@@ -110,7 +112,7 @@ public class ProductDAO extends DBContext {
                         rs.getInt("unit__in__stock"),
                         rs.getInt("quantity__sold"),
                         rs.getInt("star__rating"),
-                        rs.getString("image"),
+                        image,
                         rs.getString("describe"),
                         rs.getDate("release__date")
                 );
@@ -384,10 +386,9 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-//        for (Product product : dao.getProductPagination(1)) {
+//        for (Product product : dao.searchProduct("")) {
 //            System.out.println(product);
 //        }
-        System.out.println(dao.findTotalRecordPagnition());
     }
 
 }

@@ -44,8 +44,8 @@
                         <p>Phone <a href="#">0123456789</a></p>
                     </div><!-- /.topbar__info -->
                     <div class="topbar__buttons">
-                        <a href="#" class="search-toggler"><i class="organik-icon-magnifying-glass"></i></a>
-                        <a href="#" class="mini-cart__toggler"><i class="organik-icon-shopping-cart"></i></a>
+                        <a href="home?site=about" ><i class="organik-icon-farmer"></i></a>
+                        <a href="home?site=product" class="organik-icon-boiled"></a>
                     </div><!-- /.topbar__buttons -->
                 </div><!-- /.topbar__left -->
 
@@ -65,10 +65,10 @@
                 <c:if test="${sessionScope.user != null}">
                     <div class="main-menu__login">
                         <c:if test="${sessionScope.user.isRole() == true}">
-                            <a href="home?site=account"><i class="organik-icon-user"></i>Welcome ${user.getFullname()} !</a>
+                            <a href="home?site=account"><i class="organik-icon-user"></i>Welcome ${sessionScope.user.getFullname()} !</a>
                         </c:if>
                         <c:if test="${sessionScope.user.isRole() == false}">
-                            <a href="home?site=admin"><i class="organik-icon-user"></i>Welcome ${user.getFullname()} !</a>
+                            <a href="home?site=admin"><i class="organik-icon-user"></i>Welcome ${sessionScope.user.getFullname()} !</a>
                         </c:if>
                     </div><!-- /.main-menu__login -->
                 </c:if>
@@ -84,10 +84,10 @@
                         <ul>
                             <li><a href="home?site=product">Shop</a></li>
                             <li><a href="home?site=product-details">Product Details</a></li>
-                            <li><a href="home?site=cart">Cart Page</a></li>
                         </ul>
                     </li>
                     <li><a href="home?site=contact">Contact</a></li>
+                    <li><a href="home?site=cart">Cart</a></li>
                 </ul>
                 <c:if test="${sessionScope.user != null}">
                     <div class="main-menu__login">

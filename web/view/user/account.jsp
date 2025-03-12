@@ -192,45 +192,47 @@
                             <h2>Account Details</h2>
                             <hr>
                             <div class="form-container">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" placeholder="First Name" required>
-                                        <input type="text" placeholder="Last Name" required>
-                                    </div>
-                                    <input type="text" placeholder="Display Name" required>
-                                    <input type="email" placeholder="Email" required>
-                                    <input type="text" placeholder="Address" required>
+                                <form action="home" method="POST">
+                                    <input type="hidden" name="site" value="alterinfo">
+                                    <input type="hidden" name="id" value="${sessionScope.user.getUser__id()}">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Fullname" name="fullname" value="${sessionScope.user.getFullname()}" required>
+                                    <input type="text" placeholder="Username" name="username" value="${sessionScope.user.getUsername()}" required readonly>
+                                </div>
+                                <input type="text" placeholder="Phone" name="phone" required value="${sessionScope.user.getPhone()}">
+                                <input type="email" placeholder="Email" name="email" required value="${sessionScope.user.getEmail()}">
+                                <input type="text" placeholder="Address" name="address" required value="${sessionScope.user.getAddress()}">
 
-                                    <h3>Password change</h3>
-                                    <hr>
-                                    <input type="password" placeholder="Current Password">
-                                    <div class="form-group">
-                                        <input type="password" placeholder="New Password">
-                                        <input type="password" placeholder="Confirm Password">
-                                    </div>
-                                    <button type="submit">Save Changes</button>
-                                </form>
-                            </div>
+                                <h3>Password</h3>
+                                <hr>
+                                <div class="form-group">
+                                    <input type="password" name="newpassword" placeholder="New Password" value="${sessionScope.user.getPassword()}">
+                                    <input type="password" name="newpasswordconfirm" placeholder="Confirm Password">
+                                </div>
+                                <P style="color: red; text-align: center">${error}</P>
+                                <button type="submit" onclick="this.closest('form').submit()">Save Changes</button>
+                            </form>
                         </div>
                     </div>
-                    <script>
-                        function showSection(section) {
-                            document.getElementById('orders').classList.add('hidden');
-                            document.getElementById('accountDetails').classList.add('hidden');
-                            document.getElementById(section).classList.remove('hidden');
-
-                            document.getElementById('ordersTab').classList.remove('active');
-                            document.getElementById('accountTab').classList.remove('active');
-
-                            if (section === 'orders') {
-                                document.getElementById('ordersTab').classList.add('active');
-                            } else {
-                                document.getElementById('accountTab').classList.add('active');
-                            }
-                        }
-
-                    </script>
                 </div>
+                <script>
+                    function showSection(section) {
+                        document.getElementById('orders').classList.add('hidden');
+                        document.getElementById('accountDetails').classList.add('hidden');
+                        document.getElementById(section).classList.remove('hidden');
+
+                        document.getElementById('ordersTab').classList.remove('active');
+                        document.getElementById('accountTab').classList.remove('active');
+
+                        if (section === 'orders') {
+                            document.getElementById('ordersTab').classList.add('active');
+                        } else {
+                            document.getElementById('accountTab').classList.add('active');
+                        }
+                    }
+
+                </script>
+            </div>
             <jsp:include page="../com/page-wrapper/site-footer.jsp"></jsp:include><!-- /.site-footer -->
             </div><!-- /.page-wrapper -->
 

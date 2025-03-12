@@ -51,7 +51,7 @@
                     <input type="password" name="password-confirm" placeholder="Confirm Password" required>
                 </div>
                 <button type="submit" class="register-btn">Sign Up</button>
-
+                <P style="color: red">${error}</P>
                 <p class="login-link">Already have an account? <a href="home?site=login">Login</a></p>
             </form>
         </div>

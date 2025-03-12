@@ -34,6 +34,7 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("home?site=home").forward(request, response);
     }
 
     /**
@@ -55,6 +56,9 @@ public class AccountController extends HttpServlet {
                 break;
             case "registeruser":
                 userRegister(request, response, session);
+                break;
+            case "alterinfo":
+                userAlterInfo(request, response);
                 break;
             default:
                 request.getRequestDispatcher("view/homepage/home.jsp").forward(request, response);
@@ -95,11 +99,34 @@ public class AccountController extends HttpServlet {
         if (!password.equals(passwordConfirm)) {
             request.setAttribute("error", "⚠️ password are not matching. Please try again!");
             request.getRequestDispatcher("view/homepage/register.jsp").forward(request, response);
+        } else if (udao.getUser(username, password) != null) {
+            request.setAttribute("error", "⚠️ User already exist. Please try again!");
+            request.getRequestDispatcher("view/homepage/register.jsp").forward(request, response);
+        } else {
+            User u = User.builder().username(username).fullname(fullname).password(password).email(email).phone(phone).address(address).role(true).balance(0).build();
+            u = udao.CreateUser(u);
+            session.setAttribute(CommonConst.SESSION_ACCOUNT, u);
+            response.sendRedirect("home");
         }
+    }
 
-        User u = User.builder().username(username).fullname(fullname).password(password).email(email).phone(phone).address(address).role(true).balance(0).build();
-        u = udao.CreateUser(u);
-        session.setAttribute(CommonConst.SESSION_ACCOUNT, u);
-        response.sendRedirect("home");
+    private void userAlterInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String username = request.getParameter("username");
+        String fullname = request.getParameter("fullname");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String newPassword = request.getParameter("newpassword");
+        String newPasswordConfirm = request.getParameter("newpasswordconfirm") == null || request.getParameter("newpasswordconfirm").equals("") ? request.getParameter("newpassword") : request.getParameter("newpasswordconfirm");
+        if (!newPassword.equals(newPasswordConfirm)) {
+            request.setAttribute("error", "⚠️ new password are not matching. Please try again!");
+            request.getRequestDispatcher("home?site=account").forward(request, response);
+        } else {
+            User u = new User(Integer.parseInt(id), username, fullname, newPassword, email, address, phone, true, 0);
+            udao.UpdateUser(u);
+            request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, u);
+            request.getRequestDispatcher("home?site=account").forward(request, response);
+        }
     }
 }

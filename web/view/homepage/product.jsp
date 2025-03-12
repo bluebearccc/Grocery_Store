@@ -96,16 +96,20 @@
                                 <div class="product-sidebar__single">
                                     <h3>Categories</h3>
                                     <ul class="list-unstyled product-sidebar__links">
-                                        <li><a href="home?site=product&categoryId=all">All <i class="fa fa-angle-right"></i></a></li>
+                                        <li><a onclick="loadPage(${pageControl.getPage()}, ${c.getCategory__id()})" > All <i class ="fa fa-angle-right"></i></a></li>
                                                 <c:forEach items="${CategoryList}" var="c">
-                                            <li><a href="home?site=product&categoryId=${c.getCategory__id()}">${c.getCategory__name()} <i class="fa fa-angle-right"></i></a></li>
+                                            <li><a onclick="loadPage(${pageControl.getPage()}, ${c.getCategory__id()})">${c.getCategory__name()} <i class="fa fa-angle-right"></i></a></li>
                                                 </c:forEach>
+<!--                                        <h2>Page: ${pageControl.getPage()}</h2>
+                                        <h2>Total Page: ${pageControl.getTotalPage()}</h2>
+                                        <h2>Record: ${pageControl.getTotalRecord()}</h2>-->
+
                                     </ul><!-- /.list-unstyled product-sidebar__links -->
                                 </div><!-- /.product-sidebar__single -->
                             </div><!-- /.product-sidebar -->
                         </div><!-- /.col-sm-12 col-md-12 col-lg-3 -->
                         <div class="col-sm-12 col-md-12 col-lg-9">
-                            <div class="row">
+                            <div id="content" class="row">
                                 <c:forEach items="${ProductList}" var="p">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="product-card">
@@ -131,12 +135,22 @@
                                     </div><!-- /.col-md-6 col-lg-4 -->
                                 </c:forEach>
                             </div><!-- /.row -->
-                            <ul class="list-unstyled post-pagination d-flex justify-content-center" style="margin-top: 30px">
-                                <li><a href="${pageControl.getUrlPattern()}page=${pageControl.getPage() - 1}"><i class="fa fa-angle-left"></i></a></li>
-                                    <c:forEach begin="1" end="${pageControl.getTotalPage()}" var="pageNumber">
-                                    <li><a href="${pageControl.getUrlPattern()}page=${pageNumber}">${pageNumber}</a></li>
+                            <ul id="paginationButton" class="list-unstyled post-pagination d-flex justify-content-center" style="margin-top: 30px">
+                                <c:if test="${pageControl.getPage() > 1}">
+                                    <li><a onclick="loadPage(${pageControl.getPage() - 1})"><i class="fa fa-angle-left"></i></a></li>
+                                        </c:if>
+                                        <c:if test="${pageControl.getPage() == 1}">
+                                    <li><a onclick="loadPage(${pageControl.getPage()})"><i class="fa fa-angle-left"></i></a></li>
+                                        </c:if>
+                                        <c:forEach begin="1" end="${pageControl.getTotalPage()}" var="pageNumber">
+                                    <li><a onclick="loadPage(${pageNumber})">${pageNumber}</a></li>
                                     </c:forEach>
-                                <li><a href="${pageControl.getUrlPattern()}page=${pageControl.getPage() + 1}""><i class="fa fa-angle-right"></i></a></li>
+                                    <c:if test="${pageControl.getPage() < pageControl.getTotalPage()}">
+                                    <li><a onclick="loadPage(${pageControl.getPage() + 1})"><i class="fa fa-angle-right"></i></a></li>
+                                        </c:if>
+                                        <c:if test="${pageControl.getPage() == pageControl.getTotalPage()}">
+                                    <li><a onclick="loadPage(${pageControl.getPage()})"><i class="fa fa-angle-right"></i></a></li>
+                                        </c:if>
                             </ul><!-- /.post-pagination -->
                         </div><!-- /.col-sm-12 col-md-12 col-lg-9 -->
                     </div><!-- /.row -->
@@ -175,5 +189,29 @@
         <script src="${pageContext.request.contextPath}/js/vendors/countdown/countdown.min.js"></script>
         <!-- template js -->
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <<script>
+                                        function loadPage(page, categoryId) {
+                                            $.ajax({
+                                                url: "/Grocery_Store/home",
+                                                type: "get",
+                                                data: {
+                                                    site: "product",
+                                                    categoryId: categoryId,
+                                                    page: page
+                                                },
+                                                success: function (data) {
+                                                    let row = document.getElementById('content');
+                                                    row.innerHTML = data;
+                                                },
+                                                error: function (e) {
+                                                    alert('Error: ' + e);
+                                                }
+                                            });
+                                        }
+
+
+        </script>
     </body>
 </html>
