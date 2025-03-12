@@ -124,20 +124,12 @@
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
-<<<<<<< HEAD
-                                    <form action="ManageSupplier?action=search" method="post" style="display: flex; justify-content: center">
-=======
-                                    <form action="manageSupplier?action=search" method="post" style="display: flex; justify-content: center">
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+                                    <form action="AdminSupplierController?action=search" method="post" style="display: flex; justify-content: center">
                                         <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search company name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
-                        <% List<Supplier> suppliers = (List<Supplier>) request.getAttribute("listAllSupplier"); %>
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover text-nowrap">
@@ -153,7 +145,6 @@
                                         </tr>
                                     </thead>
                                     <tbody id="contentt">
-<<<<<<< HEAD
                                         <c:forEach var="supplier" items="${requestScope.listAllSupplier}">
                                             <tr>
                                                 <td>${supplier.supplier__id}</td>
@@ -161,35 +152,16 @@
                                                 <td>${supplier.contact__name}</td>
                                                 <td>${supplier.phone}</td>
                                                 <td class="text_page" style="padding: 0 12px 16px">
-                                                    <form action="ManageSupplier?action=edit" method="post">
+                                                    <form action="AdminSupplierController?action=edit" method="post">
                                                         <button type="submit" class="btn btn-warning">
                                                             <i class="fa-solid fa-pen"></i>
                                                             <input type="hidden" name="id" value="${supplier.supplier__id}">
                                                         </button>
                                                     </form>
-                                                    <form action="ManageSupplier?action=delete" method="post">
+                                                    <form action="AdminSupplierController?action=delete" method="post">
                                                         <button type="submit" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
                                                             <input type="hidden" name="id" value="${supplier.supplier__id}">
-=======
-                                        <c:forEach var="supplier" items="${listAllSupplier}">
-                                            <tr>
-                                                <td>${supplier.supplierId}</td>
-                                                <td>${supplier.companyName}</td>
-                                                <td>${supplier.contactName}</td>
-                                                <td>${supplier.phone}</td>
-                                                <td class="text_page" style="padding: 0 12px 16px">
-                                                    <form action="manageSupplier?action=edit" method="post">
-                                                        <button type="submit" class="btn btn-warning">
-                                                            <i class="fa-solid fa-pen"></i>
-                                                            <input type="hidden" name="id" value="${supplier.supplierId}">
-                                                        </button>
-                                                    </form>
-                                                    <form action="manageSupplier?action=delete" method="post">
-                                                        <button type="submit" class="btn btn-danger">
-                                                            <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
-                                                            <input type="hidden" name="id" value="${supplier.supplierId}">
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                                         </button>
                                                     </form>
                                                 </td> 
@@ -212,34 +184,30 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-<<<<<<< HEAD
-                    <form action="ManageSupplier?action=add" method="post">
-=======
-                    <form action="manageSupplier?action=add" method="post">
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Add Supplier</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label>Company Name</label>
-                                <input name="CompanyName" type="text" class="form-control" required>
+                    <form action="AdminSupplierController?action=add" method="post">
+                            <div class="modal-header">						
+                                <h4 class="modal-title">Add Supplier</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                            <div class="form-group">
-                                <label>Contact Name</label>
-                                <input name="ContactName" type="text" class="form-control" required>
+                            <div class="modal-body">					
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input name="CompanyName" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact Name</label>
+                                    <input name="ContactName" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input name="Phone" type="text" class="form-control" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input name="Phone" type="text" class="form-control" required>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                <input type="submit" class="btn btn-success" value="Add">
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add">
-                        </div>
-                    </form>
+                        </form>
                 </div>
             </div>
         </div>

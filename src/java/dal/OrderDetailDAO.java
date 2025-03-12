@@ -8,6 +8,7 @@ import entity.OrderDetail;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+
 /**
  *
  * @author FPT
@@ -158,11 +159,41 @@ public class OrderDetailDAO extends DBContext {
             System.out.println("Exception at closeResources: " + e.getMessage());
         }
     }
-    
+
     public static void main(String[] args) {
         OrderDetailDAO dao = new OrderDetailDAO();
         for (OrderDetail allOrderDetail : dao.getAllOrderDetails()) {
             System.out.println(allOrderDetail);
         }
+    }
+
+    public int totalMoney() {
+        int total = 0;
+        String sql = "SELECT SUM(quantity * unit_price) FROM OrderDetails";
+        try {
+            connection = getConnection(); // Ensure this method is properly implemented
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1); // Retrieve the sum value
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Print exception for debugging
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return total;
     }
 }

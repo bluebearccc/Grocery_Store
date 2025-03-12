@@ -4,15 +4,19 @@
  */
 package controller;
 
+import dal.CategoryDAO;
+import dal.OrderDetailDAO;
+import dal.ProductDAO;
+import dal.SupplierDAO;
 import dal.UserDAO;
-import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
+import jakarta.servlet.http.HttpSession;
+
 
 /**
  *
@@ -59,7 +63,12 @@ public class AdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String site = request.getParameter("site");
-        
+        request.setAttribute("totalProduct", new ProductDAO().totalProduct());
+        request.setAttribute("totalSoldProduct", new ProductDAO().totalQuantitySold());
+        request.setAttribute("totalUser", new UserDAO().totalUser());
+        request.setAttribute("totalCate", new CategoryDAO().totalCategory());
+        request.setAttribute("totalSupplier", new SupplierDAO().totalSupplier());
+        request.setAttribute("totalMoney", new OrderDetailDAO().totalMoney());
         if (site == null) {
             response.sendRedirect("AdminController?site=maindashboard");
             return;
@@ -68,11 +77,11 @@ public class AdminController extends HttpServlet {
             case "maindashboard":
                 request.getRequestDispatcher("view/dashboard/dashboard.jsp").forward(request, response);
             case "product":
-                request.getRequestDispatcher("AdminProductController").forward(request, response);
+                request.getRequestDispatcher("AdminControllerProduct").forward(request, response);
             case "supplier":
-                response.sendRedirect("ManageSupplier");
+                response.sendRedirect("AdminSupplierController");
             case "account":
-                response.sendRedirect("AdminAccountController");
+                response.sendRedirect("AdminControllerAccount");
         }
     }
 

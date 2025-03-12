@@ -239,4 +239,34 @@ public class UserDAO extends DBContext {
         }
         return listUsers;
     }
+
+    public int totalUser() {
+        int count = 0;
+        String sql = "SELECT count(*) from Users";
+
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+            }
+        }
+        return count;
+    }
 }

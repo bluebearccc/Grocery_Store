@@ -41,20 +41,24 @@
         <servlet-class>controller.PaymentController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ManageSupplier</servlet-name>
+        <servlet-name>AdminControllerProduct</servlet-name>
+        <servlet-class>controller.AdminControllerProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSupplierController</servlet-name>
         <servlet-class>controller.AdminSupplierController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminController</servlet-name>
+        <servlet-name>AdminControllerAccount</servlet-name>
+        <servlet-class>controller.AdminControllerAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminController</servlet-name>
         <servlet-class>controller.AdminController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminAccountController</servlet-name>
-        <servlet-class>controller.AdminAccountController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminProductController</servlet-name>
-        <servlet-class>controller.AdminProductController</servlet-class>
+        <servlet-name>AdminAddProduct</servlet-name>
+        <servlet-class>controller.AdminAddProduct</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
@@ -76,20 +80,24 @@
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ManageSupplier</servlet-name>
-        <url-pattern>/ManageSupplier</url-pattern>
+        <servlet-name>AdminControllerProduct</servlet-name>
+        <url-pattern>/AdminControllerProduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminController</servlet-name>
+        <servlet-name>AdminSupplierController</servlet-name>
+        <url-pattern>/AdminSupplierController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminControllerAccount</servlet-name>
+        <url-pattern>/AdminControllerAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminController</servlet-name>
         <url-pattern>/AdminController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminAccountController</servlet-name>
-        <url-pattern>/AdminAccountController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminProductController</servlet-name>
-        <url-pattern>/AdminProductController</url-pattern>
+        <servlet-name>AdminAddProduct</servlet-name>
+        <url-pattern>/adminAddProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

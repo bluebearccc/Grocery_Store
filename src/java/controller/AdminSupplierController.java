@@ -4,15 +4,18 @@
  */
 package controller;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 import dal.SupplierDAO;
 import entity.Supplier;
-import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -131,8 +134,8 @@ public class AdminSupplierController extends HttpServlet {
                 .phone(phone)
                 .build());
     }
-    
-    private void editASupplier(HttpServletRequest request, HttpServletResponse response){
+
+    private void editASupplier(HttpServletRequest request, HttpServletResponse response) {
         String newCompanyName = request.getParameter("companyName");
         String newContactName = request.getParameter("contactName");
         String newPhone = request.getParameter("phone");

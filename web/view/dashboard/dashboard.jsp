@@ -102,7 +102,7 @@
                                             <div style="text-align: end">
                                                 <h4 style="color: #1B813A">Total Products</h4>
                                                 <p class="mb-0"></p>
-                                                <h2 class="h1 mb-0">${requestScope.arr}</h2>
+                                                <h2 class="h1 mb-0">${requestScope.totalProduct}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@
                                         <div style="text-align: end"> 
                                             <h4 style="color: #06439F;">Number of products sold</h4>
                                             <p class="mb-0"></p>
-                                            <h2 class="h1 mb-0">${requestScope.sumquantitySold}</h2> 
+                                            <h2 class="h1 mb-0">${requestScope.totalSoldProduct}</h2> 
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                         <div style="text-align: end">
                                             <h4 style="color: #E94644;">Total Sales</h4>
                                             <p class="mb-0"></p>
-                                            <h2 class="h1 mb-0">${requestScope.totalmoneyAll}$</h2>
+                                            <h2 class="h1 mb-0">${requestScope.totalMoney}$</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                         <div style="text-align: end">
                                             <h4 style="color: #06439F;">Total Users</h4>
                                             <p class="mb-0"></p>
-                                            <h2 class="h1 mb-0">${requestScope.arr4}</h2>
+                                            <h2 class="h1 mb-0">${requestScope.totalUser}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@
                                         <div style="text-align: end">
                                             <h4 style="color: black;">Total Product Type</h4>
                                             <p class="mb-0"></p>
-                                            <h2 class="h1 mb-0">${requestScope.arr3}</h2>
+                                            <h2 class="h1 mb-0">${requestScope.totalCate}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@
                                         <div style="text-align: end">
                                             <h4 style="color: #1B813A;">Total Supplier</h4>
                                             <p class="mb-0"></p>
-                                            <h2 class="h1 mb-0">${requestScope.arr2}</h2>
+                                            <h2 class="h1 mb-0">${requestScope.totalSupplier}</h2>
                                         </div>
                                     </div>
                                 </div>

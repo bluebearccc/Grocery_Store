@@ -16,34 +16,56 @@ import java.sql.*;
  */
 public class ProductDAO extends DBContext {
 
-    public int createProduct(Product p) {
-        String sql = "INSERT INTO [dbo].[Products] "
-                + "([product__name], [supplier__id], [category__id], [quantity__per__unit], "
-                + "[unit__price], [unit__in__stock], [quantity__sold], [star__rating], "
-                + "[image], [describe], [release__date]) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public int createProduct(String productName, int supplierId, int categoryId, String quantityPerUnit,
+            float unitPrice, int unitInStock, int quantitySold, int starRating,
+            String image, String description, Date releaseDate) {
+
+        String sql = "INSERT INTO [dbo].[Products]\n"
+                + "           ([product__name]\n"
+                + "           ,[supplier__id]\n"
+                + "           ,[category__id]\n"
+                + "           ,[quantity__per__unit]\n"
+                + "           ,[unit__price]\n"
+                + "           ,[unit__in__stock]\n"
+                + "           ,[quantity__sold]\n"
+                + "           ,[star__rating]\n"
+                + "           ,[image]\n"
+                + "           ,[describe]\n"
+                + "           ,[release__date])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?)";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
-            ps.setString(1, p.getProduct__name());
-            ps.setInt(2, p.getSupplier__id());
-            ps.setInt(3, p.getCategory__id());
-            ps.setString(4, p.getQuantity__per__unit());
-            ps.setFloat(5, p.getUnit__price());
-            ps.setInt(6, p.getUnit__in__stock());
-            ps.setInt(7, p.getQuantity__sold());
-            ps.setInt(8, p.getStar__rating());
-            ps.setString(9, p.getImage());
-            ps.setString(10, p.getDescribe());
-            ps.setDate(11, new java.sql.Date(p.getRelease__date().getTime()));
-
+            ps.setString(1, productName);
+            ps.setInt(2, supplierId);
+            ps.setInt(3, categoryId);
+            ps.setString(4, quantityPerUnit);
+            ps.setFloat(5, unitPrice);
+            ps.setInt(6, unitInStock);
+            ps.setInt(7, quantitySold);
+            ps.setInt(8, starRating);
+            ps.setString(9, image);
+            ps.setString(10, description);
+            ps.setDate(11, releaseDate);
             return ps.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Exception at createProduct: " + e.getMessage());
+            System.err.println("Lỗi tại createProduct: " + e.getMessage());
+            e.printStackTrace();
+            return -1;
         } finally {
             closeResources();
         }
-        return -1;
     }
 
     public int updateProduct(Product p) {
@@ -527,5 +549,69 @@ public class ProductDAO extends DBContext {
         } catch (SQLException e) {
         }
         return listProduct;
+    }
+
+    public int totalProduct() {
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM Products";
+
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return count;
+    }
+
+    public int totalQuantitySold() {
+        int sum = 0;
+        String sql = "SELECT sum(quantity__sold) FROM Products";
+
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                sum = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return sum;
     }
 }

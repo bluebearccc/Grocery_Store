@@ -14,13 +14,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.util.List;
 
 /**
  *
  * @author Tranh
  */
-public class AdminProductController extends HttpServlet {
+public class AdminControllerProduct extends HttpServlet {
 
     ProductDAO productDao = new ProductDAO();
     CategoryDAO cateDao = new CategoryDAO();
@@ -41,8 +42,6 @@ public class AdminProductController extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         List<Product> list = productDao.getAllProducts();
-        HttpSession session = request.getSession();
-
         try {
             switch (action) {
                 case "search":
@@ -54,12 +53,15 @@ public class AdminProductController extends HttpServlet {
                     break;
                 case "edit":
                     Product findProduct = productDao.searchProductById(Integer.parseInt(request.getParameter("id")));
-                    session.setAttribute("findProduct", findProduct);
+                    request.setAttribute("findProduct", findProduct);
                     request.getRequestDispatcher("view/dashboard/updateproduct.jsp").forward(request, response);
                     return;
                 case "submitEdit":
                     editProduct(request);
                     list = productDao.getAllProducts();
+                    break;
+                case "add":
+                    request.getRequestDispatcher("view/dashboard/addProduct.jsp").forward(request, response);
                     break;
                 default:
                     throw new IllegalArgumentException("Invalid action: " + action);
@@ -96,4 +98,5 @@ public class AdminProductController extends HttpServlet {
         String newDescription = request.getParameter("describe");
         productDao.editProduct(productId, newProductName, newSupplierId, newCateId, newQuantityPerUnit, newUnitPrice, newDescription);
     }
+
 }

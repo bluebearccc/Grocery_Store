@@ -171,7 +171,8 @@ public class HomeController extends HttpServlet {
             page = 1;
         }
         //calculate totalRecord by categoryId
-        int totalRecord = categoryId.equals("all") ? pdao.findTotalRecordPagnition() : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId));
+        int totalRecord = 
+                categoryId.equals("all") ? pdao.findTotalRecordPagnition() : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId));
 
         //total page
         int totalPage = totalRecord % CommonConst.RECORD_PER_PAGE == 0

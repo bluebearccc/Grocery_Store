@@ -51,11 +51,8 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog" style="width: 100%">
                     <div class="modal-content">
-<<<<<<< HEAD
-                        <form id="form" action="AdminProductController?action=submitEdit" method="post">
-=======
-                        <form id="form" action="manageProduct?action=submitedit" method="post">
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+                        <form id="form" action="AdminControllerProduct?action=submitEdit" method="post">
+
 
                             <div class="modal-header">						
                                 <h4 class="modal-title">Edit Product</h4>
@@ -65,79 +62,60 @@
                                     </button> 
                                 </a>
                             </div>
-                            
+
                             <div class="modal-body">	
-                                
+
                                 <div class="form-group">
-<<<<<<< HEAD
-                                    <input value="${findProduct.product__id}" name="id" type="hidden" class="form-control" readonly required>
-=======
-                                    <input value="${findProduct.productId}" name="id" type="hidden" class="form-control" readonly required>
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+                                    <input value="${requestScope.findProduct.product__id}" name="id" type="hidden" class="form-control" readonly required>
+
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Product Name</label>
-<<<<<<< HEAD
-                                    <input value="${findProduct.product__name}" name="name" type="text" class="form-control" required>
-=======
-                                    <input value="${findProduct.productName}" name="name" type="text" class="form-control" required>
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+
+                                    <input value="${requestScope.findProduct.product__name}" name="name" type="text" class="form-control" required>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Price</label>
-<<<<<<< HEAD
-                                    <input value="${findProduct.unit__price}" name="price" type="number" step="0.01" min="0" class="form-control" >
-=======
-                                    <input value="${findProduct.unitPrice}" name="price" type="number" step="0.01" min="0" class="form-control" >
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+                                    <input value="${requestScope.findProduct.unit__price}" name="price" type="number" step="0.01" min="0" class="form-control" >
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Describe</label>
-                                    <input style="height: 200px" name="describe" class="form-control" required value="${findProduct.describe}">
+                                    <input style="height: 200px" name="describe" class="form-control" required value="${requestScope.findProduct.describe}">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Quantity per unit</label>
-<<<<<<< HEAD
-                                    <input name="quantityperunit" class="form-control" value="${findProduct.quantity__per__unit}">
-=======
-                                    <input name="quantityperunit" class="form-control" value="${findProduct.quantityPerUnit}">
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+                                    <input name="quantityperunit" class="form-control" value="${requestScope.findProduct.quantity__per__unit}">
+
                                 </div>
-                                
+
                                 <div class="form-group">
-                                    <label>Cate</label>
+                                    <label>Category</label>
                                     <select name="category" class="form-select">
-<<<<<<< HEAD
                                         <c:forEach items="${listAllCategories}" var="o">
-                                            <option value="${o.category__id}" ${o.category__id == findProduct.category__id ? 'selected' : ''}>${o.category__name}</option>
-=======
-                                        <c:forEach items="${listCC}" var="o">
-                                            <option value="${o.categoryId}" ${o.categoryId == findProduct.categoryId ? 'selected' : ''}>${o.categoryName}</option>
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+                                            <option value="${o.category__id}" ${o.category__id == findProduct.category__id ? 'selected' : ''}>
+                                                ${o.category__name}
+                                            </option>
                                         </c:forEach>
                                     </select>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Supplier</label>
                                     <select name="supplier" class="form-select">
-<<<<<<< HEAD
                                         <c:forEach items="${listAllSuppliers}" var="o">
-                                            <option value="${o.supplier__id}" ${o.supplier__id == findProduct.supplier__id ? 'selected' : ''}>${o.company__name}</option>
-=======
-                                        <c:forEach items="${list}" var="o">
-                                            <option value="${o.supplierId}" ${o.supplierId == findProduct.supplierId ? 'selected' : ''}>${o.companyName}</option>
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+                                            <option value="${o.supplier__id}" ${o.supplier__id == findProduct.supplier__id ? 'selected' : ''}>
+                                                ${o.company__name}
+                                            </option>
                                         </c:forEach>
                                     </select>
                                 </div>
-                                
+
                             </div>
-                                
+
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-success" value="Edit">
                             </div>

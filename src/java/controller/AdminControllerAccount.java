@@ -1,16 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package controller;
+
 
 import dal.UserDAO;
 import entity.User;
-import java.io.IOException;
-import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
-public class AdminAccountController extends HttpServlet {
-    
+public class AdminControllerAccount extends HttpServlet {
+
     private final UserDAO dao = new UserDAO(); // Reuse DAO instance
 
     @Override
@@ -29,10 +34,10 @@ public class AdminAccountController extends HttpServlet {
             response.sendRedirect("AdminAccountController");
             return;
         }
-        
+
         List<User> list;
         String valueSearch = request.getParameter("valueSearch");
-        
+
         switch (action) {
             case "search":
                 list = searchUserByName(valueSearch);
@@ -48,13 +53,13 @@ public class AdminAccountController extends HttpServlet {
                 response.sendRedirect("AdminAccountController");
                 return;
         }
-        
+
         request.setAttribute("listAccounts", list);
         request.setAttribute("valueSearch", valueSearch);
         request.getRequestDispatcher("view/dashboard/mngaccount.jsp").forward(request, response);
     }
-    
-    private List<User> searchUserByName(String name){
+
+    private List<User> searchUserByName(String name) {
         if (name != null && !name.isEmpty()) {
             return dao.searchUsers(name);
         }

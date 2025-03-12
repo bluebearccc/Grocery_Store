@@ -134,26 +134,20 @@
                                     </h3>
                                 </div>
                                 <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
-<<<<<<< HEAD
-                                    <form action="AdminProductController?action=search" method="post" style="display: flex; justify-content: center">
-=======
-                                    <form action="manageProduct?action=search" method="post" style="display: flex; justify-content: center">
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
+
+                                    <form action="AdminControllerProduct?action=search" method="post" style="display: flex; justify-content: center">
                                         <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search product name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
-                            <div class="col-lg-2">
-                                <form action="addProduct" method="get">
+                                    <div class="col-lg-2" style="margin-top: 30px">
+                                <form action="AdminControllerProduct?action=add" method="post">
                                     <button type="submit" class="btn btn-success" style="height: 40px">
                                         <i class="fa-solid fa-plus"></i>
                                     </button>
                                 </form>
                             </div>
-
                         </div>
-
-
                         <div class="card-body">
                             <div class="table-responsive"  id="contentt">
                                 <table  class="table table-hover text-nowrap">
@@ -166,8 +160,7 @@
                                             <th class="text_page_head" scope="col">Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody >
-<<<<<<< HEAD
+                                    <tbody>
                                         <c:forEach items="${listAllProducts}" var="o">
                                             <tr class="product_items">
                                                 <td class="text_page">${o.product__id}</td>
@@ -177,54 +170,26 @@
                                                 </td>
                                                 <td class="text_page">${o.unit__price}$</td>
                                                 <td class="text_page">
-                                                    <form id="form" action="AdminProductController?action=edit" method="post">
+                                                    <form id="form" action="AdminControllerProduct?action=edit" method="post">
                                                         <button type="submit" class="btn btn-warning">
                                                             <i class="fa-solid fa-pen"></i>
                                                             <input name="id" type="hidden" value="${o.product__id}">
                                                         </button>
                                                     </form>
-                                                    <form action="AdminProductController?action=delete" method="post">
+                                                    <form action="AdminControllerProduct?action=delete" method="post">
                                                         <button type="submit" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash"></i>
                                                             <input name="id" type="hidden" value="${o.product__id}">
-=======
-                                        <c:forEach items="${listAllProduct}" var="o">
-                                            <tr class="product_items">
-                                                <td class="text_page">${o.productId}</td>
-                                                <td style="max-width: 280px;" class="text_page">${o.productName}</td>
-                                                <td style="text-align: center">
-                                                    <img style="width: 170px; height:180px" src="${o.image}">
-                                                </td>
-                                                <td class="text_page">${o.unitPrice}$</td>
-                                                <td class="text_page">
-                                                    <form id="form" action="manageProduct?action=edit" method="post">
-                                                        <button type="submit" class="btn btn-warning">
-                                                            <i class="fa-solid fa-pen"></i>
-                                                            <input name="id" type="hidden" value="${o.productId}">
                                                         </button>
                                                     </form>
-                                                    <form action="manageProduct?action=delete" method="post">
-                                                        <button type="submit" class="btn btn-danger">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                            <input name="id" type="hidden" value="${o.productId}">
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
+                                                </c:forEach>         
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </section>
-<<<<<<< HEAD
-=======
-                <!--Section: Quan Ly tai Khoan-->
->>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
             </div>
-
 
         </main>    
 

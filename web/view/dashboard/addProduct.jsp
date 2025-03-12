@@ -1,26 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Add Product</title>
+        <title>Add product</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
                 background-color: #f4f4f4;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
+                padding: 20px;
             }
             .container {
+                max-width: 500px;
+                margin: auto;
                 background: white;
                 padding: 20px;
-                border-radius: 10px;
+                border-radius: 8px;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                width: 400px;
             }
             h2 {
                 text-align: center;
@@ -30,97 +27,71 @@
                 display: block;
                 margin-top: 10px;
             }
-            input, select, textarea {
+            input, textarea, button, select {
                 width: 100%;
                 padding: 8px;
+                margin-top: 5px;
                 border: 1px solid #ccc;
-                border-radius: 5px;
+                border-radius: 4px;
             }
-            .btn-container {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 15px;
-            }
-            .btn {
-                padding: 10px 15px;
+            button {
+                background: blue;
+                color: white;
                 border: none;
-                border-radius: 5px;
+                padding: 10px;
+                margin-top: 15px;
                 cursor: pointer;
             }
-            .btn-cancel {
-                background-color: #ccc;
-            }
-            .btn-add {
-                background-color: #28a745;
-                color: white;
+            button:hover {
+                background: darkblue;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <h2>Add Product</h2>
-            
-            <%-- Hiển thị thông báo lỗi nếu có --%>
-            <c:if test="${not empty error}">
-                <p style="color: red; text-align: center;">${error}</p>
-            </c:if>
+            <h2>Add product</h2>
+            <form action="adminAddProduct" method="post" enctype="multipart/form-data">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" required>
 
-            <form action="addProduct" method="post" enctype="multipart/form-data">
-                <label>Product Name</label>
-                <input type="text" name="productName" required>
-
-                <label>Image</label>
-                <input type="file" id="image" name="image">
-                <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 300px; max-height: 300px;">
-
-                <label>Unit Price</label>
-                <input type="number" name="unitPrice" step="0.01" required>
-
-                <label>Description</label>
-                <textarea name="description" rows="3"></textarea>
-
-                <label>Quantity</label>
-                <input type="number" name="quantity" required>
-
-                <label>Quantity Per Unit</label>
-                <input type="text" name="quantityPerUnit">
-
-                <label>Supplier</label>
-                <select name="supplierId">
-                    <option value="">Select Supplier</option>
-                    <c:forEach items="${listSup}" var="s">
-                        <option value="${s.supplierId}">${s.companyName}</option>
+                <label for="categoryId">Category: </label>
+                <select id="categoryId" name="categoryId">
+                    <c:forEach items="${listAllCategories}" var="c">
+                        <option value="${c.category__id}">${c.category__name}</option>
                     </c:forEach>
                 </select>
 
-                <label>Category</label>
-                <select name="categoryId">
-                    <option value="">Select Category</option>
-                    <c:forEach items="${listCate}" var="c">
-                        <option value="${c.categoryId}">${c.categoryName}</option>
+                <label for="supplierId">Supplier: </label>
+                <select id="supplierId" name="supplierId">
+                    <c:forEach items="${listAllSuppliers}" var="s">
+                        <option value="${s.supplier__id}">${s.company__name}</option>
                     </c:forEach>
                 </select>
 
-                <label>Release Date</label>
-                <input type="date" name="releaseDate" required>
+                <label for="quantityPerUnit">Quantity Per Unit</label>
+                <input type="text" id="quantityPerUnit" name="quantityPerUnit" required>
 
-                <div class="btn-container">
-                    <button type="reset" class="btn btn-cancel">Cancel</button>
-                    <button type="submit" class="btn btn-add">Add</button>
-                </div>
+                <label for="unitPrice">Unit Price</label>
+                <input type="number" step="0.01" id="unitPrice" name="unitPrice" required>
+
+                <label for="unitInStock">Quantity</label>
+                <input type="number" id="unitInStock" name="unitInStock" required>
+
+                <label for="quantitySold">Quantity Sold</label>
+                <input type="hidden" id="quantitySold" name="quantitySold" value="0">
+
+                <label for="starRating">Star rating</label>
+                <input type="hidden" id="starRating" name="starRating" min="1" max="5" value="5">
+
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+                <label for="description">description</label>
+                <textarea id="description" name="description" rows="3" required></textarea>
+
+
+                <button type="submit">ADD</button>
             </form>
         </div>
-
-        <script>
-            document.getElementById("image").addEventListener("change", function(event) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    const img = document.getElementById("previewImage");
-                    img.src = reader.result;
-                    img.style.display = "block";
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            });
-        </script>
     </body>
 </html>

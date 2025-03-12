@@ -154,7 +154,39 @@ public class SupplierDAO extends DBContext {
             System.out.println("Exception at closeResources: " + e.getMessage());
         }
     }
-    
+
+    public int totalSupplier() {
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM Suppliers";
+
+        try {
+            connection = getConnection();  // Ensure this method is properly implemented
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1); // Retrieve the count value
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Print exception for debugging
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         System.out.println(new SupplierDAO().getAllSuppliers());
     }
