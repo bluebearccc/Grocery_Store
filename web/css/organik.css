@@ -5387,7 +5387,8 @@ h6 {
 }
 
 .product-card__image > img {
-    width: 100%;
+    width: 270px;
+    height: 283px;
 }
 
 .product-card__image-content {
@@ -5497,7 +5498,8 @@ h6 {
 }
 
 .product-card__two-image > img {
-    width: 100%;
+    width: 370px;
+    height: 387.81px;
 }
 
 .product-card__two-image-content {

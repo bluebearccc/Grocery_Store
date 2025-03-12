@@ -166,7 +166,7 @@
                                                 <td class="text_page">${o.product__id}</td>
                                                 <td style="max-width: 280px;" class="text_page">${o.product__name}</td>
                                                 <td style="text-align: center">
-                                                    <img style="width: 170px; height:180px" src="${o.image}">
+                                                    <img style="width: 170px; height:180px" src="${pageContext.request.getContextPath()}/${o.image}">
                                                 </td>
                                                 <td class="text_page">${o.unit__price}$</td>
                                                 <td class="text_page">

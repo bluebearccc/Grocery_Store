@@ -83,7 +83,7 @@ public class AdminAddProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         addProduct(request, response);
-        request.getRequestDispatcher("view/dashboard/mngproduct.jsp").forward(request, response);
+        response.sendRedirect("AdminControllerProduct");
     }
 
     /**
@@ -131,7 +131,7 @@ public class AdminAddProduct extends HttpServlet {
                 File image = new File(dir, part.getSubmittedFileName());
 
                 part.write(image.getAbsolutePath());
-                pathOfFile = request.getContextPath() + "/img/" + image.getName();
+                pathOfFile = "/img/" + image.getName();
             }
 
             new ProductDAO().createProduct(productName, supplierId, categoryId, quantityPerUnit, (float) unitPrice, quantityInStock, quantitySold, starRating, pathOfFile, description, date);
