@@ -120,13 +120,20 @@
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
+<<<<<<< HEAD
+                                    <form action="AdminAccountController?action=search" method="post" style="display: flex; justify-content: center">
+                                        <input name="valueSearch" value="${requestScope.valueSearch != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search user name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+=======
                                     <form action="manageAccount?action=search" method="post" style="display: flex; justify-content: center">
                                         <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search user name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
 
+<<<<<<< HEAD
+=======
                         <c:if test="${error!=null }">
                             <div style="margin-top: 20px" class="alert alert-danger" role="alert">
                                 ${error}
@@ -137,6 +144,7 @@
                                 ${mess}
                             </div>
                         </c:if>
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
 
                         <div class="card-body" style="padding: 0">
                             <div class="table-responsive">
@@ -154,6 +162,18 @@
                                         <c:forEach items="${requestScope.listAccounts}" var="u">
                                             <tr>
                                                 <td class="text_page" style="font-weight: 500">${u.fullname}</td>
+<<<<<<< HEAD
+                                                <td class="text_page"  style="font-weight: 500">${u.username}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.address}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.role == false?"Admin":"Customer"}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.phone}</td>
+                                                <td class="text_page"  style="padding: 0 12px 16px">
+                                                    <form action="AdminAccountController?action=delete" method="post">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>                                                          
+                                                        </button>
+                                                        <input type="hidden" name="id" value="${u.user__id}"/>
+=======
                                                 <td class="text_page"  style="font-weight: 500">${u.userName}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.address}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.role == 0?"Admin":"Customer"}</td>
@@ -164,6 +184,7 @@
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>                                                          
                                                         </button>
                                                         <input type="hidden" name="id" value="${u.userId}"/>
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                                     </form>                                                   
                                                 </td>
                                             </tr>
@@ -195,6 +216,9 @@
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
 
         <script src="js/calender.js"></script>
+<<<<<<< HEAD
+   
+=======
         <script type="text/javascript">
             dates('option');
             months('option', 11, 12);
@@ -249,5 +273,6 @@
                 });
             }
         </script>
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
     </body>
 </html>

@@ -36,6 +36,5 @@ public class User {
     private float balance;
     public static void main(String[] args) {
         User u = new User();
-        
     }
 }

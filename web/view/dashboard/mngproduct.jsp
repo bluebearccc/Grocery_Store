@@ -134,7 +134,11 @@
                                     </h3>
                                 </div>
                                 <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
+<<<<<<< HEAD
+                                    <form action="AdminProductController?action=search" method="post" style="display: flex; justify-content: center">
+=======
                                     <form action="manageProduct?action=search" method="post" style="display: flex; justify-content: center">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                         <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search product name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
@@ -163,6 +167,27 @@
                                         </tr>
                                     </thead>
                                     <tbody >
+<<<<<<< HEAD
+                                        <c:forEach items="${listAllProducts}" var="o">
+                                            <tr class="product_items">
+                                                <td class="text_page">${o.product__id}</td>
+                                                <td style="max-width: 280px;" class="text_page">${o.product__name}</td>
+                                                <td style="text-align: center">
+                                                    <img style="width: 170px; height:180px" src="${o.image}">
+                                                </td>
+                                                <td class="text_page">${o.unit__price}$</td>
+                                                <td class="text_page">
+                                                    <form id="form" action="AdminProductController?action=edit" method="post">
+                                                        <button type="submit" class="btn btn-warning">
+                                                            <i class="fa-solid fa-pen"></i>
+                                                            <input name="id" type="hidden" value="${o.product__id}">
+                                                        </button>
+                                                    </form>
+                                                    <form action="AdminProductController?action=delete" method="post">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                            <input name="id" type="hidden" value="${o.product__id}">
+=======
                                         <c:forEach items="${listAllProduct}" var="o">
                                             <tr class="product_items">
                                                 <td class="text_page">${o.productId}</td>
@@ -182,6 +207,7 @@
                                                         <button type="submit" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash"></i>
                                                             <input name="id" type="hidden" value="${o.productId}">
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
                                                         </button>
                                                     </form>
                                                 </td>
@@ -193,7 +219,10 @@
                         </div>
                     </div>
                 </section>
+<<<<<<< HEAD
+=======
                 <!--Section: Quan Ly tai Khoan-->
+>>>>>>> a0e0695949a428839d820fd5091dcbaf795acebb
             </div>
 
 

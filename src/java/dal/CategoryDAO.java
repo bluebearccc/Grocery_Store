@@ -159,4 +159,41 @@ public class CategoryDAO extends DBContext {
         return list;
     }
 
+    public List<Category> getAllCategories() {
+        String sql = "SELECT [category__id]\n"
+                + "      ,[category__name]\n"
+                + "      ,[description]\n"
+                + "  FROM [dbo].[Categories]";
+
+        List<Category> list = new ArrayList<>();
+        connection = getConnection();
+        try {
+            ps = connection.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("category__id");
+                String categoryName = rs.getString("category__name");
+                String des = rs.getString("description");
+                list.add(new Category(id, categoryName, des));
+            }
+        } catch (Exception e) {
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception at searchCategory" + e.getMessage());
+            }
+        }
+        return list;
+    }
 }

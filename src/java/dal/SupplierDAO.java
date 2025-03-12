@@ -156,9 +156,6 @@ public class SupplierDAO extends DBContext {
     }
     
     public static void main(String[] args) {
-        SupplierDAO dao = new SupplierDAO();
-        for (Supplier allSupplier : dao.getAllSuppliers()) {
-            System.out.println(allSupplier);
-        }
+        System.out.println(new SupplierDAO().getAllSuppliers());
     }
 }
