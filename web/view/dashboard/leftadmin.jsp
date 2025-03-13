@@ -25,6 +25,11 @@
                 <i style="margin-right: 10px; font-size: 18px" class="fas fa-parachute-box fa-fw me-3"></i>
                 <span style="font-size: 16px; font-weight: 600">Supplier</span>
             </a>
+
+            <a href="AdminController?site=monthlyRevenue" class="list-group-item list-group-item-action" style="margin-top: 10px">
+                <i style="margin-right: 10px; font-size: 18px" class="fas fa-chart-bar fa-fw me-3"></i>
+                <span style="font-size: 16px; font-weight: 600">Revenue by month</span>
+            </a>
         </div>
     </div>
 </nav>

@@ -169,7 +169,7 @@ public class OrderDetailDAO extends DBContext {
 
     public int totalMoney() {
         int total = 0;
-        String sql = "SELECT SUM(quantity * unit_price) FROM OrderDetails";
+        String sql = "SELECT SUM(quantity * unit__price) FROM OrderDetails";
         try {
             connection = getConnection(); // Ensure this method is properly implemented
             ps = connection.prepareStatement(sql);

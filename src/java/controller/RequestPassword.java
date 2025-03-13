@@ -4,25 +4,23 @@
  */
 package controller;
 
-import dal.CategoryDAO;
-import dal.OrderDetailDAO;
-import dal.ProductDAO;
-import dal.SupplierDAO;
+import dal.TokenForgetPasswordDAO;
 import dal.UserDAO;
+import entity.TokenForgetPassword;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
+import java.time.LocalDateTime;
 
 /**
  *
  * @author Tranh
  */
-public class AdminController extends HttpServlet {
+public class RequestPassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +39,10 @@ public class AdminController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminController</title>");
+            out.println("<title>Servlet RequestPassword</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RequestPassword at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,29 +60,7 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String site = request.getParameter("site");
-        request.setAttribute("totalProduct", new ProductDAO().totalProduct());
-        request.setAttribute("totalSoldProduct", new ProductDAO().totalQuantitySold());
-        request.setAttribute("totalUser", new UserDAO().totalUser());
-        request.setAttribute("totalCate", new CategoryDAO().totalCategory());
-        request.setAttribute("totalSupplier", new SupplierDAO().totalSupplier());
-        request.setAttribute("totalMoney", new OrderDetailDAO().totalMoney());
-        if (site == null) {
-            response.sendRedirect("AdminController?site=maindashboard");
-            return;
-        }
-        switch (site) {
-            case "maindashboard":
-                request.getRequestDispatcher("view/dashboard/dashboard.jsp").forward(request, response);
-            case "product":
-                request.getRequestDispatcher("AdminControllerProduct").forward(request, response);
-            case "supplier":
-                response.sendRedirect("AdminSupplierController");
-            case "account":
-                response.sendRedirect("AdminControllerAccount");
-            case "monthlyRevenue":
-                response.sendRedirect("MonthlyRevenue");
-        }
+        request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
     }
 
     /**
@@ -98,6 +74,34 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String email = request.getParameter("email");
+        UserDAO dao = new UserDAO();
+
+        User user = dao.getUserByEmail(email);
+        if (user == null) {
+            request.setAttribute("mess", "Email is not exits");
+            request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
+        } else {
+
+            ResetService service = new ResetService();
+            String token = service.generateToken();
+            String linkReset = "http://localhost:9999/Grocery_Store/ResetPassword?token=" + token;
+
+            TokenForgetPassword newTokenForgetPassword = new TokenForgetPassword(user.getUser__id(), false, token, service.expireDateTime());
+            TokenForgetPasswordDAO daoToken = new TokenForgetPasswordDAO();
+
+            boolean isInsert = daoToken.insertNewToken(newTokenForgetPassword);
+            if (!isInsert) {
+                request.setAttribute("mess", "Have error in server");
+                request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
+            }
+            boolean inSend = service.sendEmail(token, linkReset, user.getUsername());
+            if (!inSend) {
+                request.setAttribute("mess", "Can not send request");
+                request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
+            }
+            request.getRequestDispatcher("view/user/SendEmailSuccessfully.jsp").forward(request, response);
+        }
     }
 
     /**

@@ -4,25 +4,19 @@
  */
 package controller;
 
-import dal.CategoryDAO;
-import dal.OrderDetailDAO;
-import dal.ProductDAO;
-import dal.SupplierDAO;
-import dal.UserDAO;
+import dal.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
 
 /**
  *
  * @author Tranh
  */
-public class AdminController extends HttpServlet {
+public class MonthlyRevenue extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,15 +32,39 @@ public class AdminController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AdminController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AdminController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            response.setContentType("text/html;charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
+            String year_raw = request.getParameter("year");
+            int year = (year_raw == null ? 2023 : Integer.parseInt(year_raw));
+            OrderDAO dao = new OrderDAO();
+            double totalMoneyMonth1 = dao.totalMoneyMonth(1, year);
+            double totalMoneyMonth2 = dao.totalMoneyMonth(2, year);
+            double totalMoneyMonth3 = dao.totalMoneyMonth(3, year);
+            double totalMoneyMonth4 = dao.totalMoneyMonth(4, year);
+            double totalMoneyMonth5 = dao.totalMoneyMonth(5, year);
+            double totalMoneyMonth6 = dao.totalMoneyMonth(6, year);
+            double totalMoneyMonth7 = dao.totalMoneyMonth(7, year);
+            double totalMoneyMonth8 = dao.totalMoneyMonth(8, year);
+            double totalMoneyMonth9 = dao.totalMoneyMonth(9, year);
+            double totalMoneyMonth10 = dao.totalMoneyMonth(10, year);
+            double totalMoneyMonth11 = dao.totalMoneyMonth(11, year);
+            double totalMoneyMonth12 = dao.totalMoneyMonth(12, year);
+
+            request.setAttribute("totalMoneyMonth1", totalMoneyMonth1);
+            request.setAttribute("totalMoneyMonth2", totalMoneyMonth2);
+            request.setAttribute("totalMoneyMonth3", totalMoneyMonth3);
+            request.setAttribute("totalMoneyMonth4", totalMoneyMonth4);
+            request.setAttribute("totalMoneyMonth5", totalMoneyMonth5);
+            request.setAttribute("totalMoneyMonth6", totalMoneyMonth6);
+            request.setAttribute("totalMoneyMonth7", totalMoneyMonth7);
+            request.setAttribute("totalMoneyMonth8", totalMoneyMonth8);
+            request.setAttribute("totalMoneyMonth9", totalMoneyMonth9);
+            request.setAttribute("totalMoneyMonth10", totalMoneyMonth10);
+            request.setAttribute("totalMoneyMonth11", totalMoneyMonth11);
+            request.setAttribute("totalMoneyMonth12", totalMoneyMonth12);
+            request.setAttribute("year", year);
+
+            request.getRequestDispatcher("view/dashboard/MonthlyRevenue.jsp").forward(request, response);
         }
     }
 
@@ -62,29 +80,7 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String site = request.getParameter("site");
-        request.setAttribute("totalProduct", new ProductDAO().totalProduct());
-        request.setAttribute("totalSoldProduct", new ProductDAO().totalQuantitySold());
-        request.setAttribute("totalUser", new UserDAO().totalUser());
-        request.setAttribute("totalCate", new CategoryDAO().totalCategory());
-        request.setAttribute("totalSupplier", new SupplierDAO().totalSupplier());
-        request.setAttribute("totalMoney", new OrderDetailDAO().totalMoney());
-        if (site == null) {
-            response.sendRedirect("AdminController?site=maindashboard");
-            return;
-        }
-        switch (site) {
-            case "maindashboard":
-                request.getRequestDispatcher("view/dashboard/dashboard.jsp").forward(request, response);
-            case "product":
-                request.getRequestDispatcher("AdminControllerProduct").forward(request, response);
-            case "supplier":
-                response.sendRedirect("AdminSupplierController");
-            case "account":
-                response.sendRedirect("AdminControllerAccount");
-            case "monthlyRevenue":
-                response.sendRedirect("MonthlyRevenue");
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -98,6 +94,7 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

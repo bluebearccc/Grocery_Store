@@ -60,6 +60,18 @@
         <servlet-name>AdminAddProduct</servlet-name>
         <servlet-class>controller.AdminAddProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RequestPassword</servlet-name>
+        <servlet-class>controller.RequestPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MonthlyRevenue</servlet-name>
+        <servlet-class>controller.MonthlyRevenue</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPassword</servlet-name>
+        <servlet-class>controller.ResetPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -98,6 +110,18 @@
     <servlet-mapping>
         <servlet-name>AdminAddProduct</servlet-name>
         <url-pattern>/adminAddProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestPassword</servlet-name>
+        <url-pattern>/RequestPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MonthlyRevenue</servlet-name>
+        <url-pattern>/MonthlyRevenue</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPassword</servlet-name>
+        <url-pattern>/ResetPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

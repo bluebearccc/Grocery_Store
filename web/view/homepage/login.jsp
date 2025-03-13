@@ -31,7 +31,7 @@
                     </div>
                     <div class="options">
                         <label><input type="checkbox"> Remember me</label>
-                        <a href="#">Forgot your password?</a>
+                        <a href="RequestPassword">Forgot your password?</a>
                     </div>
                     <button type="submit" class="login-btn">Login</button>
                     <p style="color:red">${error}</p>

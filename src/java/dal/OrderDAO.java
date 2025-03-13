@@ -186,4 +186,32 @@ public class OrderDAO extends DBContext {
             System.out.println(allOrder);
         }
     }
+
+    public double totalMoneyMonth(int month, int year) {
+        String sql = "SELECT \n"
+                + "sum(od.quantity * od.unit__price) \n"
+                + "FROM \n"
+                + "	OrderDetails OD\n"
+                + "INNER JOIN Orders O \n"
+                + "ON \n"
+                + "	OD.order__id = O.order__id \n"
+                + "WHERE \n"
+                + "	YEAR(O.order__date) = ? AND MONTH(O.order__date) = ?";
+
+        connection = getConnection();
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, year);
+            ps.setObject(2, month);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 }
