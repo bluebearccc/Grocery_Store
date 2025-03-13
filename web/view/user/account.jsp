@@ -138,6 +138,57 @@
                 background-color: #F9F9F9;
             }
 
+            .user-dashboard {
+                width: 100%;
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 12px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+            }
+
+            .user-info {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .user-avatar {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 3px solid #ddd;
+            }
+
+            .user-details h2 {
+                font-size: 24px;
+                color: #333;
+                margin: 0;
+            }
+
+            .user-details p {
+                font-size: 16px;
+                color: #777;
+                margin: 4px 0;
+            }
+
+            .edit-btn {
+                margin-top: 10px;
+                padding: 8px 16px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+
+            .edit-btn:hover {
+                background-color: #45a049;
+            }
         </style>
 
     </head>
@@ -158,43 +209,49 @@
                         <a href="#" onclick="showSection('orders')" id="ordersTab">Orders</a>
                         <a href="#" onclick="showSection('accountDetails')" id="accountTab">Account Details</a>
                     </div>
-                    <div class="content">
-                        <div id="orders" class="hidden">
-                            <h2>Orders</h2>
-                            <hr>
-                            <div class="table-container">
-                                <table>
-                                    <tr>
-                                        <th>Order</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Aug 22, 2018</td>
-                                        <td>Pending</td>
-                                        <td>$3000</td>
-                                        <td><button>View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>July 22, 2018</td>
-                                        <td>Approved</td>
-                                        <td>$200</td>
-                                        <td><button>View</button></td>
-                                    </tr>
-                                </table>
-                            </div>
+                    <div class="user-dashboard">
+                        <div class="user-info">
+                            <img src="${pageContext.request.contextPath}/images/user.png" alt="User Avatar" class="user-avatar">
+                        <div class="user-details">
+                            <h2>${sessionScope.user.getFullname()}</h2>
+                            <p>${sessionScope.user.getUsername()}</p>
+                            <p>${sessionScope.user.getEmail()}</p>
+                            <p>${sessionScope.user.getAddress()}</p>
                         </div>
-                        <div id="accountDetails" class="hidden">
-                            <h2>Account Details</h2>
-                            <hr>
-                            <div class="form-container">
-                                <form action="home" method="POST">
-                                    <input type="hidden" name="site" value="alterinfo">
-                                    <input type="hidden" name="id" value="${sessionScope.user.getUser__id()}">
+                    </div>
+                </div>
+                <div class="content">
+                    <div id="orders" class="hidden">
+                        <h2>Orders</h2>
+                        <hr>
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Order Id</th>
+                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Total</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Aug 22, 2018</td>
+                                    <td>Banana</td>
+                                    <td>2</td>
+                                    <td>$3</td>
+                                    <td>$3000</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="accountDetails" class="hidden">
+                        <h2>Account Details</h2>
+                        <hr>
+                        <div class="form-container">
+                            <form action="home" method="POST">
+                                <input type="hidden" name="site" value="alterinfo">
+                                <input type="hidden" name="id" value="${sessionScope.user.getUser__id()}">
                                 <div class="form-group">
                                     <input type="text" placeholder="Fullname" name="fullname" value="${sessionScope.user.getFullname()}" required>
                                     <input type="text" placeholder="Username" name="username" value="${sessionScope.user.getUsername()}" required readonly>

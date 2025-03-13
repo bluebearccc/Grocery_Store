@@ -69,12 +69,15 @@
                         <div class="col-sm-12 col-md-12 col-lg-3">
                             <div class="product-sidebar">
                                 <div class="product-sidebar__single product-sidebar__search-widget">
-                                    <form action="home">
-                                        <input type="hidden" name="site" value="product">
-                                        <input type="hidden" name="action" value="search">
-                                        <input type="text" name="productName" placeholder="Search product name">
-                                        <button class="organik-icon-magnifying-glass" type="submit"></button>
-                                    </form>
+                                    <input id="searchName" type="text" name="productName" placeholder="Search product name" style="border-radius: 5px;">
+                                    <button class="organik-icon-magnifying-glass" onclick="loadPage(1)" style="padding: 10px 20px;
+                                            background-color: #4CAF50;
+                                            color: white;
+                                            border: none;
+                                            border-radius: 5px;
+                                            cursor: pointer;
+                                            font-size: 16px;
+                                            transition: background 0.3s;"></button>
                                 </div><!-- /.product-sidebar__single -->
                                 <div class="product-sidebar__single">
                                     <h3>Price</h3>
@@ -201,18 +204,20 @@
         <<script>
                                         let currentCategoryId;
                                         let min = 0, max = 200;
+                                        let searchName;
 
                                         function getCategoryId(categoryId) {
                                             currentCategoryId = categoryId;
                                         }
 
-                                        function getMinMax() {
+                                        function getMinMaxSearchName() {
                                             min = document.getElementById('min-price').value;
                                             max = document.getElementById('max-price').value;
+                                            searchName = document.getElementById('searchName').value;
                                         }
 
                                         function loadPage(page) {
-                                            getMinMax();
+                                            getMinMaxSearchName();
                                             console.log(min);
                                             console.log(max);
                                             console.log(currentCategoryId);
@@ -224,7 +229,8 @@
                                                     categoryId: currentCategoryId,
                                                     page: page,
                                                     min: min,
-                                                    max: max
+                                                    max: max,
+                                                    productName: searchName
                                                 },
                                                 success: function (data) {
                                                     let row = document.getElementById('pagin');

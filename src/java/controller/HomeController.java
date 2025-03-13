@@ -25,6 +25,8 @@ public class HomeController extends HttpServlet {
     ProductDAO pdao = new ProductDAO();
     CategoryDAO cdao = new CategoryDAO();
     SupplierDAO sdao = new SupplierDAO();
+    OrderDAO odao = new OrderDAO();
+    OrderDetail oddao = new OrderDetail();
     PageControl pageControl = new PageControl();
 
     /**
@@ -53,7 +55,7 @@ public class HomeController extends HttpServlet {
 
         //PROCESS DATA
         String url = processUrl(request, response);
-        handlePage(request, response, categoryId, min, max);
+        handlePage(request, response, categoryId, min, max, productName == null ? "" : productName);
         List<Product> ProductList = getProductList(request, url, productName, categoryId, pro, pageControl.getPage(), pageRaw, min, max);
         List<Category> CategoryList = getCategoryList(request);
         Category cate = null;
@@ -159,7 +161,7 @@ public class HomeController extends HttpServlet {
         return url;
     }
 
-    public void handlePage(HttpServletRequest request, HttpServletResponse response, String categoryId, int min, int max) {
+    public void handlePage(HttpServletRequest request, HttpServletResponse response, String categoryId, int min, int max, String name) {
         //get page
         String pageRaw = request.getParameter("page");
         int page;
@@ -174,7 +176,7 @@ public class HomeController extends HttpServlet {
         }
         //calculate totalRecord by categoryId
         int totalRecord
-                = categoryId.equals("all") ? pdao.findTotalRecordPagnition(min, max) : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId), min, max);
+                = categoryId.equals("all") ? pdao.findTotalRecordPagnition(min, max, name) : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId), min, max, name);
 
         //total page
         int totalPage = totalRecord % CommonConst.RECORD_PER_PAGE == 0
@@ -258,32 +260,55 @@ public class HomeController extends HttpServlet {
 
         List<Product> list = null;
 
-        if (min != CommonConst.MIN_PRICE || max != CommonConst.MAX_PRICE) {
-            if (categoryId.equals("all")) {
-                return pdao.getProductsInRangePagination(min, max, pageControl.getPage());
-            } else {
-                return pdao.getProductsInRangePaginationCate(min, max, pageControl.getPage(), Integer.parseInt(categoryId));
-            }
-        }
-
         if (url.contains("home.jsp")) {
             list = pdao.getThreeLastestProduct();
         } else if (url.contains("product.jsp")) {
-            if (pageRaw != null) {
+            //co min max
+            if (min != CommonConst.MIN_PRICE || max != CommonConst.MAX_PRICE) {
                 if (categoryId.equals("all")) {
-                    list = pdao.getProductPagination(pageControl.getPage());
+                    if (productName != null) {
+                        list = pdao.getProductsInRangeNamePagination(min, max, page, productName);
+                    } else {
+                        list = pdao.getProductsInRangePagination(min, max, pageControl.getPage());
+                    }
                 } else {
-                    list = pdao.getProductPaginationByCate(Integer.parseInt(categoryId), page);
+                    if (productName != null) {
+                        list = pdao.getProductsInRangePaginationCateName(min, max, page, Integer.parseInt(categoryId), productName);
+                    } else {
+                        list = pdao.getProductsInRangePaginationCate(min, max, pageControl.getPage(), Integer.parseInt(categoryId));
+                    }
                 }
-            } else {    //load into product without page - set page to 1
-                if (productName == null) {
-                    list = categoryId == null || categoryId.equals("all")
-                            ? pdao.getProductPagination(page)
-                            : pdao.getProductPaginationByCate(Integer.parseInt(categoryId), page);
-                } else { //search by name 
-                    list = pdao.searchProduct(productName);
+                //co category
+            } else if (!categoryId.equals("all")) {
+                if (productName != null) {
+                    list = pdao.getProductPaginationByCateName(Integer.parseInt(categoryId), pageControl.getPage(), productName);
+                } else {
+                    list = pdao.getProductPaginationByCate(Integer.parseInt(categoryId), pageControl.getPage());
+                }
+                // khong co category - min - max
+            } else {
+                if (productName != null) {
+                    list = pdao.getProductByNamePagination(productName, pageControl.getPage());
+                } else {
+                    list = pdao.getProductByNamePagination("", pageControl.getPage());
                 }
             }
+//            else if (pageRaw != null) {
+//                if (categoryId.equals("all")) {
+//                    list = pdao.getProductPagination(pageControl.getPage());
+//                } else {
+//                    list = pdao.getProductPaginationByCate(Integer.parseInt(categoryId), page);
+//                }
+//            } 
+//            else {    //load into product without page - set page to 1
+//                if (productName == null) {
+//                    list = categoryId == null || categoryId.equals("all")
+//                            ? pdao.getProductPagination(page)
+//                            : pdao.getProductPaginationByCate(Integer.parseInt(categoryId), page);
+//                } else { //search by name 
+//                    list = pdao.getProductByNamePagination(productName, pageControl.getPage());
+//                }
+//            }
         } else if (url.contains("product-details") && p != null) {
             list = pdao.searchProductSameCate(p);
         }
@@ -294,4 +319,15 @@ public class HomeController extends HttpServlet {
         List<Category> list = cdao.searchCategory("");
         return list;
     }
+
+    public List<Order> getOrderList(HttpServletRequest request) {
+        User u = (User) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+        List<Order> list = null;
+        if (u != null) {
+            list = odao.searchOrderByUserId(u.getUser__id());
+        }
+
+        return list;
+    }
+
 }

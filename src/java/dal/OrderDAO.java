@@ -4,6 +4,7 @@
  */
 package dal;
 
+import constant.CommonConst;
 import entity.Order;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +113,35 @@ public class OrderDAO extends DBContext {
         return list;
     }
 
+    public List<Order> searchOrderByUserIdPagination(int userId, int page) {
+        List<Order> list = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Orders] \n"
+                + "		WHERE user__id = ? \n"
+                + "		ORDER BY order__id  \n"
+                + "		OFFSET ? ROWS \n"
+                + "		FETCH NEXT ? ROWS ONLY";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.setInt(2, (page - 1) * CommonConst.RECORD_PER_PAGE);
+            ps.setInt(3, CommonConst.RECORD_PER_PAGE);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Order(
+                        rs.getInt("order__id"),
+                        rs.getInt("user__id"),
+                        rs.getDate("order__date")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception at searchOrderByUserId: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        return list;
+    }
+
     public List<Order> getAllOrders() {
         List<Order> list = new ArrayList<>();
         String sql = "SELECT * FROM [dbo].[Orders]";
@@ -152,7 +182,7 @@ public class OrderDAO extends DBContext {
 
     public static void main(String[] args) {
         OrderDAO dao = new OrderDAO();
-        for (Order allOrder : dao.getAllOrders()) {
+        for (Order allOrder : dao.searchOrderByUserIdPagination(5, 1)) {
             System.out.println(allOrder);
         }
     }
