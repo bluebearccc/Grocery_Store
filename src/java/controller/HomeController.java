@@ -61,10 +61,10 @@ public class HomeController extends HttpServlet {
         Category cate = null;
         Supplier sup = null;
 
-        if (pro != null) {
+        if (pro != null && url.contains("product-details")) {
             cate = cdao.getCategoryById(pro.getCategory__id());
             sup = sdao.getSupplier(pro.getSupplier__id());
-            session.setAttribute(CommonConst.SESSION_PRODUCT, pro);
+            request.setAttribute(CommonConst.SESSION_PRODUCT, pro);
             request.setAttribute(CommonConst.SESSION_SUPPLIER, sup);
             request.setAttribute(CommonConst.SESSION_CATEGORY, cate);
         }
@@ -141,11 +141,14 @@ public class HomeController extends HttpServlet {
                 yield "account";
             }
             case "logout" -> {
-                request.getSession().removeAttribute(CommonConst.SESSION_ACCOUNT);
+                request.getSession().invalidate();
                 yield "view/homepage/home.jsp";
             }
             case "register" -> {
                 yield "view/homepage/register.jsp";
+            }
+            case "payment" -> {
+                yield "payment";
             }
             case "validatelogin" -> {
                 yield "account";
@@ -176,7 +179,8 @@ public class HomeController extends HttpServlet {
         }
         //calculate totalRecord by categoryId
         int totalRecord
-                = categoryId.equals("all") ? pdao.findTotalRecordPagnition(min, max, name) : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId), min, max, name);
+                = categoryId.equals("all") ? pdao.findTotalRecordPagnition(min, max, name)
+                : pdao.findTotalRecordByCategory(Integer.parseInt(categoryId), min, max, name);
 
         //total page
         int totalPage = totalRecord % CommonConst.RECORD_PER_PAGE == 0
@@ -228,21 +232,23 @@ public class HomeController extends HttpServlet {
 
             out.print("</div><!-- /.row -->"
                     + "<ul id=\"paginationButton\" class=\"list-unstyled post-pagination d-flex justify-content-center\" style=\"margin-top: 30px\">\n");
+            if (ProductList.size() != 0) {
+                if (pageControl.getPage() > 1) {
+                    out.print("    <li><a onclick=\"loadPage(" + (pageControl.getPage() - 1) + ")\"><i class=\"fa fa-angle-left\"></i></a></li>\n");
+                }
+                if (pageControl.getPage() == 1) {
+                    out.print("    <li><a onclick=\"loadPage(" + pageControl.getPage() + ")\"><i class=\"fa fa-angle-left\"></i></a></li>\n");
+                }
+                for (int i = 1; i <= pageControl.getTotalPage(); i++) {
+                    out.print("<li><a onclick=\"loadPage(" + i + ")\">" + i + "</a></li>\n");
+                }
+                if (pageControl.getPage() < pageControl.getTotalPage()) {
+                    out.print("<li><a onclick=\"loadPage(" + (pageControl.getPage() + 1) + ")\"><i class=\"fa fa-angle-right\"></i></a></li>\n");
+                }
+                if (pageControl.getPage() == pageControl.getTotalPage()) {
+                    out.print("<li><a onclick=\"loadPage(" + pageControl.getPage() + ")\"><i class=\"fa fa-angle-right\"></i></a></li>\n");
+                }
 
-            if (pageControl.getPage() > 1) {
-                out.print("    <li><a onclick=\"loadPage(" + (pageControl.getPage() - 1) + ")\"><i class=\"fa fa-angle-left\"></i></a></li>\n");
-            }
-            if (pageControl.getPage() == 1) {
-                out.print("    <li><a onclick=\"loadPage(" + pageControl.getPage() + ")\"><i class=\"fa fa-angle-left\"></i></a></li>\n");
-            }
-            for (int i = 1; i <= pageControl.getTotalPage(); i++) {
-                out.print("<li><a onclick=\"loadPage(" + i + ")\">" + i + "</a></li>\n");
-            }
-            if (pageControl.getPage() < pageControl.getTotalPage()) {
-                out.print("<li><a onclick=\"loadPage(" + (pageControl.getPage() + 1) + ")\"><i class=\"fa fa-angle-right\"></i></a></li>\n");
-            }
-            if (pageControl.getPage() == pageControl.getTotalPage()) {
-                out.print("<li><a onclick=\"loadPage(" + pageControl.getPage() + ")\"><i class=\"fa fa-angle-right\"></i></a></li>\n");
             }
             out.print("</ul><!-- /.post-pagination -->");
 

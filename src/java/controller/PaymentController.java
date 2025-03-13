@@ -4,12 +4,17 @@
  */
 package controller;
 
+import constant.CommonConst;
+import entity.Cart;
+import entity.Item;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -43,6 +48,30 @@ public class PaymentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute(CommonConst.SESSION_ACCOUNT);
+
+        String action = request.getParameter("action");
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        float price = Float.parseFloat(request.getParameter("price"));
+        String currentPage = request.getParameter("currentPage") == null ? "home" : request.getParameter("currentPage");
+
+        Cart cart = null;
+        Item i = new Item(productId, quantity, price);
+        if (u == null) {
+            response.sendRedirect("home?site=login");
+            return;
+        }
+        cart = (Cart) session.getAttribute(CommonConst.SESSION_CART);
+        if (cart == null) {
+            cart = new Cart();
+        }
+
+        cart.addItem(i);
+        session.setAttribute(CommonConst.SESSION_CART, cart);
+        response.sendRedirect("home?site=" + currentPage + "&productId=" + productId);
+
     }
 
     /**

@@ -49,9 +49,11 @@ public class CommonFilter implements Filter {
         String site = req.getParameter("site");
         User u = (User) req.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 
-        if (site != null && "account".equals(site)) {
-            if (u == null) {
-                resp.sendRedirect(req.getContextPath() + "/home?site=login");
+        if (site != null) {
+            if ("account".equals(site) || "dashboard".equals(site)) {
+                if (u == null) {
+                    resp.sendRedirect(req.getContextPath() + "/home?site=login");
+                }
             }
         }
     }

@@ -97,29 +97,7 @@
                                         $9.99
                                     </td>
                                     <td>
-                                        <i class="organik-icon-close remove-icon"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="product-box">
-                                            <img src="${pageContext.request.contextPath}/images/products/cart-1-2.jpg" alt="">
-                                            <h3><a href="home?site=product-details.jsp">Tomatoes</a></h3>
-                                        </div><!-- /.product-box -->
-                                    </td>
-                                    <td>$9.99</td>
-                                    <td>
-                                        <div class="quantity-box">
-                                            <button type="button" class="sub">-</button>
-                                            <input type="number" id="2" value="1" />
-                                            <button type="button" class="add">+</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $9.99
-                                    </td>
-                                    <td>
-                                        <i class="organik-icon-close"></i>
+                                        <a href="url"><i class="organik-icon-close remove-icon"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -143,7 +121,6 @@
                                 </li>
                             </ul><!-- /.cart-total -->
                             <div class="button-box">
-                                <a href="#" class="thm-btn">Update</a><!-- /.thm-btn -->
                                 <a href="#" class="thm-btn">Checkout</a><!-- /.thm-btn -->
                             </div><!-- /.button-box -->
                         </div><!-- /.col-lg-4 -->

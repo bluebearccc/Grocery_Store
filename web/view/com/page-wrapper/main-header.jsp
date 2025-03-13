@@ -11,6 +11,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            .cart-container {
+                position: relative;
+                display: inline-block;
+                color: white;
+                border-radius: 8px;
+                border: 2px solid
+            }
+
+            .cart-badge {
+                position: absolute;
+                top: -6px;
+                right: -15px;
+                background-color: white;
+                color:  black;
+                border-radius: 50%;
+                padding: 4px 10px;
+                font-size: 15px;
+                font-weight: bold;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+        </style>
     </head>
     <header class="main-header">
         <div class="topbar">
@@ -20,8 +42,10 @@
                         <img src="${pageContext.request.contextPath}/images/logo-dark.png" width="105" alt="">
                     </a>
                     <div class="mobile-nav__buttons">
-                        <a href="#" class="search-toggler"><i class="organik-icon-magnifying-glass"></i></a>
-                        <a href="#" class="mini-cart__toggler"><i class="organik-icon-shopping-cart"></i></a>
+                        <a href="home?site=about" ><i class="organik-icon-farmer"></i></a>
+                        <div class="cart-container">
+                            <a href="home?site=cart"><i class="organik-icon-shopping-cart"><span class="cart-badge">6</span></i></a>
+                        </div>
                     </div><!-- /.mobile__buttons -->
 
                     <span class="fa fa-bars mobile-nav__toggler"></span>
@@ -43,9 +67,22 @@
                         <i class="organik-icon-calling"></i>
                         <p>Phone <a href="#">0123456789</a></p>
                     </div><!-- /.topbar__info -->
-                    <div class="topbar__buttons">
+                    <div class="topbar__buttons" style="gap: 15px">
                         <a href="home?site=about" ><i class="organik-icon-farmer"></i></a>
-                        <a href="home?site=product" class="organik-icon-boiled"></a>
+                        <div class="cart-container">
+                            <a href="home?site=cart">
+                                <i class="organik-icon-shopping-cart">
+                                    <span class="cart-badge">
+                                        <c:if test="${sessionScope.cart != null}">
+                                            ${cart.getItems().size()}
+                                        </c:if>
+                                        <c:if test="${sessionScope.cart == null}">
+                                        0
+                                        </c:if>
+                                    </span>
+                                </i>
+                            </a>
+                        </div>
                     </div><!-- /.topbar__buttons -->
                 </div><!-- /.topbar__left -->
 

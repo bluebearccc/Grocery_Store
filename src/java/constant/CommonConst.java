@@ -19,4 +19,6 @@ public class CommonConst {
     public static final String SESSION_SUPPLIER = "supplier";
     public static final String SESSION_ORDER = "order";
     public static final String SESSION_ORDER_DETAIL = "order_detail";
+    public static final String SESSION_CART = "cart";
+
 }

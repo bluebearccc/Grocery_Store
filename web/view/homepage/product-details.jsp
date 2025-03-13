@@ -97,14 +97,19 @@
                                 <div class="product-quantity-box">
                                     <div class="quantity-box">
                                         <button type="button" class="sub">-</button>
-                                        <input type="number" id="2" value="1" />
+                                        <input type="number" id="quantity" value="1">
                                         <button type="button" class="add">+</button>
                                     </div>
                                     <div class="addto-cart-box">
-                                        <button class="thm-btn" type="submit">Add to Cart</button>
-                                    </div>
-                                    <div class="wishlist_btn">
-                                        <a href="#" class="thm-btn">Add to Wishlist</a>
+                                        <button class="thm-btn" type="submit" onclick="loadQuantity(); addToCart('mainProForm')">Add to Cart</button>
+                                        <form action="home" method="POST" style="display: none" id="mainProForm">
+                                            <input type="hidden" name="site" value="payment">
+                                            <input type="hidden" name="action" value="add">
+                                            <input type="hidden" name="currentPage" value="product-details">
+                                            <input type="hidden" name="productId" value="${product.getProduct__id()}">
+                                            <input type="hidden" id="inputQuantity" name="quantity" value="">
+                                            <input type="hidden" name="price" value="${product.getUnit__price()}">
+                                        </form>
                                     </div>
                                 </div>
                                 <ul class="list-unstyled category_tag_list">
@@ -134,7 +139,15 @@
                                         <img src="${pageContext.request.contextPath}/${product_sameCate.getImage()}" alt="">
                                         <div class="product-card__two-image-content">
                                             <a href="home?site=product-details&productId=${product_sameCate.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
-                                            <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
+                                            <a href="#" onclick="addToCart('smallProForm')"><i class="organik-icon-shopping-cart"></i></a>
+                                            <form action="home" method="POST" style="display: none" id="smallProForm">
+                                                <input type="hidden" name="site" value="payment">
+                                                <input type="hidden" name="action" value="add">
+                                                <input type="hidden" name="currentPage" value="product-details">
+                                                <input type="hidden" id="productId" name="productId" value="${product.getProduct__id()}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="price" value="${product.getUnit__price()}">
+                                            </form>
                                         </div><!-- /.product-card__two-image-content -->
                                     </div><!-- /.product-card__two-image -->
                                     <div class="product-card__two-content">
@@ -185,5 +198,23 @@
         <script src="${pageContext.request.contextPath}/js/vendors/countdown/countdown.min.js"></script>
         <!-- template js -->
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+                                                let quantity;
+
+                                                function loadQuantity() {
+                                                    let number = document.getElementById('quantity').value;
+                                                    quantity = number;
+                                                }
+
+                                                function addToCart(e) {
+                                                    let inputQuantity = document.getElementById('inputQuantity');
+                                                    let mainProForm = document.getElementById(e);
+                                                    let productId = document.getElementById('productId');
+                                                    console.log(productId.value);
+                                                    inputQuantity.value = quantity;
+                                                    mainProForm.submit();
+                                                }
+        </script>
     </body>
 </html>

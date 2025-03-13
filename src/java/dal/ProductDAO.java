@@ -433,7 +433,7 @@ public class ProductDAO extends DBContext {
                 + "	FROM Products\n"
                 + "	WHERE category__id=? AND"
                 + "     [unit__price] BETWEEN ? AND ?"
-                + "     [product__name] LIKE ?";
+                + "     AND [product__name] LIKE ?";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
@@ -924,9 +924,9 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        for (Product product : dao.getProductPaginationByCateName(2, 1, "a")) {
-            System.out.println(product);
-        }
-//        System.out.println(dao.findTotalRecordPagnition(2, 6, "a"));
+//        for (Product product : dao.getProductPaginationByCateName(2, 1, "a")) {
+//            System.out.println(product);
+//        }
+        System.out.println(dao.findTotalRecordPagnition(0, 200, ""));
     }
 }
