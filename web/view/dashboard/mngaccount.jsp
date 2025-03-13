@@ -137,12 +137,14 @@
                                             <th class="text_page_head">Address</th>
                                             <th class="text_page_head">Role</th>
                                             <th class="text_page_head">Phone</th>
+                                            <th class="text_page_head">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="contentt">
                                         <c:forEach items="${requestScope.listAccounts}" var="u">
                                             <tr>
                                                 <td class="text_page"  style="font-weight: 500">${u.fullname}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.username}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.address}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.role == false?"Admin":"Customer"}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.phone}</td>
