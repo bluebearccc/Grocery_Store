@@ -100,7 +100,12 @@
                                             ${item.getPrice() * item.getQuantity()}
                                         </td>
                                         <td>
-                                            <a href="url"><i class="organik-icon-close remove-icon"></i></a>
+                                            <form action="home" method="POST" id="deleteForm">
+                                                <input type="hidden" name="site" value="payment">
+                                                <input type="hidden" name="action" value="delete">
+                                                <input type="hidden" name="productId" value="${item.getProduct().getProduct__id()}">
+                                                <button onclick="this.closest('form').submit()"><i class="organik-icon-close remove-icon"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -117,7 +122,7 @@
                                 </li>
                                 <li>
                                     <span>Free Ship</span>
-                                    <span>$2.00 USD</span>
+                                    <span>$2.0 USD</span>
                                 </li>
                                 <li>
                                     <span>Total</span>
@@ -165,8 +170,11 @@
         <script src="${pageContext.request.contextPath}/js/vendors/countdown/countdown.min.js"></script>
         <!-- template js -->
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
-        
+
         <script>
+                submitForm() {
+                    
+                }
             
         </script>
     </body>

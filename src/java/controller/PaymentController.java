@@ -52,30 +52,40 @@ public class PaymentController extends HttpServlet {
         HttpSession session = request.getSession();
         ProductDAO pdao = new ProductDAO();
         User u = (User) session.getAttribute(CommonConst.SESSION_ACCOUNT);
+        Cart cart;
 
         String action = request.getParameter("action");
         int productId = Integer.parseInt(request.getParameter("productId"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        float price = Float.parseFloat(request.getParameter("price"));
         String currentPage = request.getParameter("currentPage") == null ? "home" : request.getParameter("currentPage");
+        cart = (Cart) session.getAttribute(CommonConst.SESSION_CART);
 
-        Cart cart;
-        Item i = new Item(pdao.getProduct(productId), quantity, price);
         if (u == null) {
             session.setAttribute("currentPage", currentPage + "&productId=" + productId);
             request.getRequestDispatcher("home?site=login").forward(request, response);
             return;
         }
-        
-        
-        cart = (Cart) session.getAttribute(CommonConst.SESSION_CART);
-        if (cart == null) {
-            cart = new Cart();
-        }
 
-        cart.addItem(i);
-        session.setAttribute(CommonConst.SESSION_CART, cart);
-        response.sendRedirect("home?site=" + currentPage + "&productId=" + productId);
+        switch (action) {
+            case "add":
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                float price = Float.parseFloat(request.getParameter("price"));
+                Item i = new Item(pdao.getProduct(productId), quantity, price);
+                if (cart == null) {
+                    cart = new Cart();
+                    session.setAttribute(CommonConst.SESSION_CART, cart);
+                }
+                cart.addItem(i);
+                response.sendRedirect("home?site=" + currentPage + "&productId=" + productId);
+                break;
+            case "delete":
+                if (cart != null) {
+                    cart.removeItem(productId);
+                }
+                response.sendRedirect("home?site=cart");
+                break;
+            default:
+                throw new AssertionError();
+        }
 
     }
 
