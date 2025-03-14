@@ -40,6 +40,7 @@
 
         <!-- template styles -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/organik.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product.css" />
     </head>
 
     <body>
@@ -139,15 +140,6 @@
                                         <img src="${pageContext.request.contextPath}/${product_sameCate.getImage()}" alt="">
                                         <div class="product-card__two-image-content">
                                             <a href="home?site=product-details&productId=${product_sameCate.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
-                                            <a href="#" onclick="addToCart('smallProForm')"><i class="organik-icon-shopping-cart"></i></a>
-                                            <form action="home" method="POST" style="display: none" id="smallProForm">
-                                                <input type="hidden" name="site" value="payment">
-                                                <input type="hidden" name="action" value="add">
-                                                <input type="hidden" name="currentPage" value="product-details">
-                                                <input type="hidden" id="productId" name="productId" value="${product.getProduct__id()}">
-                                                <input type="hidden" name="quantity" value="1">
-                                                <input type="hidden" name="price" value="${product.getUnit__price()}">
-                                            </form>
                                         </div><!-- /.product-card__two-image-content -->
                                     </div><!-- /.product-card__two-image -->
                                     <div class="product-card__two-content">
@@ -164,6 +156,11 @@
                         </c:forEach>
                     </div>
                 </div><!-- /.container -->
+                <div class="col-log-12" style="display: flex; justify-content: center">
+                    <a href="home?site=product">
+                        <button class="more-btn" onclick="">Click Here for More Product</button>
+                    </a>
+                </div>
             </section><!-- /.product-two -->
 
             <jsp:include page="../com/page-wrapper/site-footer.jsp"></jsp:include><!-- /.site-footer -->
@@ -200,21 +197,20 @@
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
-                                                let quantity;
+                                            let quantity = 1;
 
-                                                function loadQuantity() {
-                                                    let number = document.getElementById('quantity').value;
-                                                    quantity = number;
-                                                }
+                                            function loadQuantity() {
+                                                let number = document.getElementById('quantity').value;
+                                                quantity = number;
+                                            }
 
-                                                function addToCart(e) {
-                                                    let inputQuantity = document.getElementById('inputQuantity');
-                                                    let mainProForm = document.getElementById(e);
-                                                    let productId = document.getElementById('productId');
-                                                    console.log(productId.value);
-                                                    inputQuantity.value = quantity;
-                                                    mainProForm.submit();
-                                                }
+                                            function addToCart(e) {
+                                                let inputQuantity = document.getElementById('inputQuantity');
+                                                let mainProForm = document.getElementById(e);
+                                                let productId = document.getElementById('productId');
+                                                inputQuantity.value = quantity;
+                                                mainProForm.submit();
+                                            }
         </script>
     </body>
 </html>

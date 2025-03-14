@@ -77,10 +77,18 @@ public class AccountController extends HttpServlet {
     public void userLogin(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String currentPage = (String) session.getAttribute("currentPage");
+        session.removeAttribute("currentPage");
         User u = udao.getUser(username, password);
+
         if (u != null) {
             session.setAttribute(CommonConst.SESSION_ACCOUNT, u);
-            response.sendRedirect("home");
+            if (currentPage != null) {
+                response.sendRedirect("home?site=" + currentPage);
+                session.removeAttribute("currentPage");
+            } else {
+                response.sendRedirect("home");
+            }
         } else {
             request.setAttribute("error", "⚠️ Incorrect username or password. Please try again!");
             request.getRequestDispatcher("view/homepage/login.jsp").forward(request, response);
@@ -95,6 +103,8 @@ public class AccountController extends HttpServlet {
         String address = request.getParameter("address");
         String password = request.getParameter("password");
         String passwordConfirm = request.getParameter("password-confirm");
+        String currentPage = request.getParameter("currentPage");
+
         if (!password.equals(passwordConfirm)) {
             request.setAttribute("error", "⚠️ password are not matching. Please try again!");
             request.getRequestDispatcher("view/homepage/register.jsp").forward(request, response);

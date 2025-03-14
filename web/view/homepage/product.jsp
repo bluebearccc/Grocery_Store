@@ -69,7 +69,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-3">
                             <div class="product-sidebar">
                                 <div class="product-sidebar__single product-sidebar__search-widget">
-                                    <input id="searchName" type="text" name="productName" placeholder="Search product name" style="border-radius: 5px;">
+                                    <input id="searchName" type="text" name="productName" placeholder="Search product name" style="border-radius: 7px; padding: 5px; font-size: 16px; border: 2px solid #f4f4f4">
                                     <button class="organik-icon-magnifying-glass" onclick="loadPage(1)" style="padding: 10px 20px;
                                             background-color: #4CAF50;
                                             color: white;
@@ -77,7 +77,7 @@
                                             border-radius: 5px;
                                             cursor: pointer;
                                             font-size: 16px;
-                                            transition: background 0.3s;"></button>
+                                            "></button>
                                 </div><!-- /.product-sidebar__single -->
                                 <div class="product-sidebar__single">
                                     <h3>Price</h3>
@@ -114,10 +114,11 @@
                         </div><!-- /.col-sm-12 col-md-12 col-lg-3 -->
                         <div id="pagin" class="col-sm-12 col-md-12 col-lg-9">
                             <div class="product-sorter">
-                                <div class="product-sorter__select">
+                                <div class="product-sorter__select col-sm-12 col-md-12 col-lg-4">
                                     <img src="${pageContext.request.contextPath}/images/logo-dark.png" width="105" alt="">
                                 </div><!-- /.product-sorter__select -->
                             </div><!-- /.product-sorter -->
+
                             <div class="row">
                                 <c:forEach items="${ProductList}" var="p">
                                     <div class="col-md-6 col-lg-4">
@@ -126,7 +127,6 @@
                                                 <img src="${pageContext.request.contextPath}/${p.getImage()}" alt="">
                                                 <div class="product-card__image-content">
                                                     <a href="home?site=product-details&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
-                                                    <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                                 </div><!-- /.product-card__image-content -->
                                             </div><!-- /.product-card__image -->
                                             <div class="product-card__content">
@@ -205,7 +205,6 @@
                                         let currentCategoryId;
                                         let min = 0, max = 200;
                                         let searchName;
-
                                         function getCategoryId(categoryId) {
                                             currentCategoryId = categoryId;
                                         }

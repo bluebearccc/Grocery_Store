@@ -27,5 +27,4 @@ public class PageControl {
     private int totalPage;
     private int totalRecord;
     private int page;
-    private String urlPattern;
 }

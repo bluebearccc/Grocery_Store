@@ -210,7 +210,6 @@ public class HomeController extends HttpServlet {
                         + "            <img src=\"/Grocery_Store/" + p.getImage() + "\" alt=\"\">\n"
                         + "            <div class=\"product-card__image-content\">\n"
                         + "                <a href=\"home?site=product-details&productId=" + p.getProduct__id() + "\"><i class=\"organik-icon-visibility\"></i></a>\n"
-                        + "                <a href=\"home?site=cart\"><i class=\"organik-icon-shopping-cart\"></i></a>\n"
                         + "            </div><!-- /.product-card__image-content -->\n"
                         + "        </div><!-- /.product-card__image -->\n"
                         + "        <div class=\"product-card__content\">\n"
@@ -232,7 +231,7 @@ public class HomeController extends HttpServlet {
 
             out.print("</div><!-- /.row -->"
                     + "<ul id=\"paginationButton\" class=\"list-unstyled post-pagination d-flex justify-content-center\" style=\"margin-top: 30px\">\n");
-            if (ProductList.size() != 0) {
+            if (!ProductList.isEmpty()) {
                 if (pageControl.getPage() > 1) {
                     out.print("    <li><a onclick=\"loadPage(" + (pageControl.getPage() - 1) + ")\"><i class=\"fa fa-angle-left\"></i></a></li>\n");
                 }
@@ -299,22 +298,6 @@ public class HomeController extends HttpServlet {
                     list = pdao.getProductByNamePagination("", pageControl.getPage());
                 }
             }
-//            else if (pageRaw != null) {
-//                if (categoryId.equals("all")) {
-//                    list = pdao.getProductPagination(pageControl.getPage());
-//                } else {
-//                    list = pdao.getProductPaginationByCate(Integer.parseInt(categoryId), page);
-//                }
-//            } 
-//            else {    //load into product without page - set page to 1
-//                if (productName == null) {
-//                    list = categoryId == null || categoryId.equals("all")
-//                            ? pdao.getProductPagination(page)
-//                            : pdao.getProductPaginationByCate(Integer.parseInt(categoryId), page);
-//                } else { //search by name 
-//                    list = pdao.getProductByNamePagination(productName, pageControl.getPage());
-//                }
-//            }
         } else if (url.contains("product-details") && p != null) {
             list = pdao.searchProductSameCate(p);
         }

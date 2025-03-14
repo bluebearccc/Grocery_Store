@@ -15,6 +15,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
         <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
+
     </head>
     <div class="container">
         <div class="left-image">

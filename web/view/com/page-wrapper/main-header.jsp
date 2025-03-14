@@ -77,11 +77,16 @@
                                             ${cart.getItems().size()}
                                         </c:if>
                                         <c:if test="${sessionScope.cart == null}">
-                                        0
+                                            0
                                         </c:if>
                                     </span>
                                 </i>
                             </a>
+                            <div class="cart-items" id="cart-items">
+                                <c:forEach items="${sessionScope.cart.getItems()}" var="item">
+                                    
+                                </c:forEach>
+                            </div>
                         </div>
                     </div><!-- /.topbar__buttons -->
                 </div><!-- /.topbar__left -->

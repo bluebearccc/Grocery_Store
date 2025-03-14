@@ -156,7 +156,6 @@
                                         <img src="${pageContext.request.contextPath}/${p.getImage()}" alt="">
                                         <div class="product-card__two-image-content">
                                             <a href="home?site=product-details&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
-                                            <a href="home?site=cart"><i class="organik-icon-shopping-cart"></i></a>
                                         </div><!-- /.product-card__two-image-content -->
                                     </div><!-- /.product-card__two-image -->
                                     <div class="product-card__two-content">

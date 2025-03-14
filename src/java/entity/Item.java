@@ -24,8 +24,7 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Item {
-
-    private int productId;
+    private Product product;
     private int quantity;
     private double price;
 }

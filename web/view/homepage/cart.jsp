@@ -4,6 +4,8 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,28 +80,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="product-box">
-                                            <img src="${pageContext.request.contextPath}/images/products/cart-1-1.jpg" alt="">
-                                            <h3><a href="home?site=product-details.jsp">Banana</a></h3>
-                                        </div><!-- /.product-box -->
-                                    </td>
-                                    <td>$9.99</td>
-                                    <td>
-                                        <div class="quantity-box">
-                                            <button type="button" class="sub">-</button>
-                                            <input type="number" id="2" value="1" />
-                                            <button type="button" class="add">+</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $9.99
-                                    </td>
-                                    <td>
-                                        <a href="url"><i class="organik-icon-close remove-icon"></i></a>
-                                    </td>
-                                </tr>
+                                <c:forEach items="${sessionScope.cart.getItems()}" var="item">
+                                    <tr>
+                                        <td>
+                                            <div class="product-box">
+                                                <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}" alt="">
+                                                <h3><a href="home?site=product-details.jsp">${item.getProduct().getProduct__name()}</a></h3>
+                                            </div><!-- /.product-box -->
+                                        </td>
+                                        <td>$${item.getPrice()}</td>
+                                        <td>
+                                            <div class="quantity-box">
+                                                <button type="button" class="sub">-</button>
+                                                <input type="number" id="2" value="${item.getQuantity()}" />
+                                                <button type="button" class="add">+</button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            ${item.getPrice() * item.getQuantity()}
+                                        </td>
+                                        <td>
+                                            <a href="url"><i class="organik-icon-close remove-icon"></i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
 
                         </table><!-- /.table -->
@@ -109,18 +113,19 @@
                             <ul class="cart-total list-unstyled">
                                 <li>
                                     <span>Subtotal</span>
-                                    <span>$19.98 USD</span>
+                                    <span>$${cart.getTotalMoney()} USD</span>
                                 </li>
                                 <li>
                                     <span>Free Ship</span>
-                                    <span>$0.00 USD</span>
+                                    <span>$2.00 USD</span>
                                 </li>
                                 <li>
                                     <span>Total</span>
-                                    <span>$19.98 USD</span>
+                                    <span>$${cart.getTotalMoney() + 2} USD</span>
                                 </li>
                             </ul><!-- /.cart-total -->
                             <div class="button-box">
+                                <a href="#" class="thm-btn">Update</a><!-- /.thm-btn -->
                                 <a href="#" class="thm-btn">Checkout</a><!-- /.thm-btn -->
                             </div><!-- /.button-box -->
                         </div><!-- /.col-lg-4 -->
@@ -141,7 +146,7 @@
             <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
-        <script src="${pageContext.request.contextPath}/js/vendors/jquery/jquery-3.5.1.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/vendors/jquery/jquery-3.5.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/vendors/bootstrap/bootstrap.bundle.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/vendors/bootstrap-select/bootstrap-select.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/vendors/jarallax/jarallax.min.js"></script>
@@ -160,5 +165,9 @@
         <script src="${pageContext.request.contextPath}/js/vendors/countdown/countdown.min.js"></script>
         <!-- template js -->
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
+        
+        <script>
+            
+        </script>
     </body>
 </html>

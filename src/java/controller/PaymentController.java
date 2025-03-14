@@ -5,6 +5,7 @@
 package controller;
 
 import constant.CommonConst;
+import dal.ProductDAO;
 import entity.Cart;
 import entity.Item;
 import entity.User;
@@ -49,6 +50,7 @@ public class PaymentController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        ProductDAO pdao = new ProductDAO();
         User u = (User) session.getAttribute(CommonConst.SESSION_ACCOUNT);
 
         String action = request.getParameter("action");
@@ -57,12 +59,15 @@ public class PaymentController extends HttpServlet {
         float price = Float.parseFloat(request.getParameter("price"));
         String currentPage = request.getParameter("currentPage") == null ? "home" : request.getParameter("currentPage");
 
-        Cart cart = null;
-        Item i = new Item(productId, quantity, price);
+        Cart cart;
+        Item i = new Item(pdao.getProduct(productId), quantity, price);
         if (u == null) {
-            response.sendRedirect("home?site=login");
+            session.setAttribute("currentPage", currentPage + "&productId=" + productId);
+            request.getRequestDispatcher("home?site=login").forward(request, response);
             return;
         }
+        
+        
         cart = (Cart) session.getAttribute(CommonConst.SESSION_CART);
         if (cart == null) {
             cart = new Cart();
