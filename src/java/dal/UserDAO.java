@@ -269,18 +269,18 @@ public class UserDAO extends DBContext {
         }
         return count;
     }
-    
-    public User getUserByEmail(String email){
+
+    public User getUserByEmail(String email) {
         String sql = "SELECT * FROM Users WHERE email = ?";
-        
+
         connection = getConnection();
         try {
             ps = connection.prepareStatement(sql);
-            
+
             ps.setObject(1, email);
-            
+
             rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 return new User(rs.getInt("user__id"), rs.getString("username"), rs.getString("fullname"), rs.getString("password"), email, rs.getString("address"), rs.getString("phone"), rs.getBoolean("role"), rs.getFloat("balance"));
             }
@@ -288,7 +288,42 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
-    
+
+    public User getUserById(int id) {
+        String sql = "SELECT * FROM Users WHERE user__id = ?";
+
+        connection = getConnection();
+        try {
+            ps = connection.prepareStatement(sql);
+
+            ps.setObject(1, id);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new User(rs.getInt("user__id"), rs.getString("username"), rs.getString("fullname"), rs.getString("password"), rs.getString("email"), rs.getString("address"), rs.getString("phone"), rs.getBoolean("role"), rs.getFloat("balance"));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public void updatePassword(String email, String newPassword) {
+        String sql = "UPDATE [dbo].[Users]\n"
+                + "   SET [password] = ?\n"
+                + "   WHERE email = ?";
+
+        connection = getConnection();
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, newPassword);
+            ps.setObject(2, email);
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
-
-

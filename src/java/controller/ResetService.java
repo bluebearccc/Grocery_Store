@@ -9,7 +9,6 @@ import java.util.Properties;
 import java.util.UUID;
 import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -18,24 +17,15 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author Tranh
+ * @author HP
  */
 public class ResetService {
 
-    private final int LIMIT_MINUS = 10;
-    private final String from = "anhht080305@gmail.com";
-    private final String password = "dxiqirexqhokrxtc";
+    static final String from = "anhht080305@gmail.com";
+    static final String password = "ywikejhpexvgmxix";
 
     public String generateToken() {
         return UUID.randomUUID().toString();
-    }
-
-    public LocalDateTime expireDateTime() {
-        return LocalDateTime.now().plusMinutes(LIMIT_MINUS);
-    }
-
-    public boolean isExpireTime(LocalDateTime time) {
-        return LocalDateTime.now().isAfter(time);
     }
 
     public boolean sendEmail(String to, String link, String name) {
@@ -52,27 +42,25 @@ public class ResetService {
             }
         };
 
-        Session sesion = Session.getInstance(props, auth);
+        Session session = Session.getInstance(props, auth);
 
-        MimeMessage msg = new MimeMessage(sesion);
+        MimeMessage msg = new MimeMessage(session);
 
         try {
             msg.addHeader("Content-type", "text/html; charset=UTF-8");
             msg.setFrom(from);
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
             msg.setSubject("Reset Password", "UTF-8");
-            String content = "<h1>Hello" + name + "</h1>"
-                    + "<p>Click the link to reset password"
-                    + "<a href=" + link + "></a></p>";
-            msg.setContent(content, "text/html, charset=UTF-8");
+            String content = "<h1>Hello" + name + "</h1>" + "<p>Click the link to reset password "
+                    + "<a href=" + link + ">Click here</a></p>";
+            msg.setContent(content, "text/html; charset=UTF-8");
             Transport.send(msg);
             System.out.println("Send successfully");
             return true;
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             System.out.println("Send error");
             System.out.println(e);
             return false;
         }
     }
-
 }

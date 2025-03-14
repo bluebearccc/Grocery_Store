@@ -15,7 +15,8 @@
         <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/images/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
         <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/request-reset.css">
+        
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg); no-repeat center center/cover">
         <div class="login-container">

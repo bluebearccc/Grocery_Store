@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dal.TokenForgetPasswordDAO;
+import dal.DAOTokenForget;
 import dal.UserDAO;
 import entity.TokenForgetPassword;
 import entity.User;
@@ -14,7 +14,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.time.LocalDateTime;
 
 /**
  *
@@ -74,41 +73,39 @@ public class RequestPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UserDAO daoUser = new UserDAO();
         String email = request.getParameter("email");
-        UserDAO dao = new UserDAO();
-
-        User user = dao.getUserByEmail(email);
+        //email co ton tai trong db
+        User user = daoUser.getUserByEmail(email);
         if (user == null) {
-            request.setAttribute("mess", "Email is not exits");
+            request.setAttribute("mess", "email khong ton tai");
             request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
-        } else {
-
-            ResetService service = new ResetService();
-            String token = service.generateToken();
-            String linkReset = "http://localhost:9999/Grocery_Store/ResetPassword?token=" + token;
-
-            TokenForgetPassword newTokenForgetPassword = new TokenForgetPassword(user.getUser__id(), false, token, service.expireDateTime());
-            TokenForgetPasswordDAO daoToken = new TokenForgetPasswordDAO();
-
-            boolean isInsert = daoToken.insertNewToken(newTokenForgetPassword);
-            if (!isInsert) {
-                request.setAttribute("mess", "Have error in server");
-                request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
-            }
-            boolean inSend = service.sendEmail(token, linkReset, user.getUsername());
-            if (!inSend) {
-                request.setAttribute("mess", "Can not send request");
-                request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
-            }
-            request.getRequestDispatcher("view/user/SendEmailSuccessfully.jsp").forward(request, response);
+            return;
         }
+        ResetService service = new ResetService();
+        String token = service.generateToken();
+        String linkReset = "http://localhost:9999/Grocery_Store/ResetPassword?token=" + token;
+        TokenForgetPassword newTokenForget = new TokenForgetPassword(
+                user.getUser__id(), false, token);
+        
+        DAOTokenForget daoToken = new DAOTokenForget();
+        boolean isInsert = daoToken.insertTokenForget(newTokenForget);
+        
+        if (!isInsert) {
+            request.setAttribute("mess", "have error in server");
+            request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
+            return;     
+        }
+        boolean isSend = service.sendEmail(email, linkReset, user.getUsername());
+        if (!isSend) {
+            request.setAttribute("mess", "can not send request");
+            request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
+            return;
+        }
+        request.setAttribute("mess", "send request success");
+        request.getRequestDispatcher("view/user/RequestPassword.jsp").forward(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -1,64 +1,70 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%-- 
+    Document   : login.jsp
+    Created on : 4 Jun, 2024, 4:48:55 AM
+    Author     : HP
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="vi">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reset Password</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login page</title>
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-6/assets/css/login-6.css">
+        
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                background: linear-gradient(to right, #007bff, #0056b3);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-            }
-            .container {
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                width: 350px;
-                text-align: center;
-            }
-            h2 {
-                margin-bottom: 20px;
-            }
-            input {
-                width: 100%;
-                padding: 10px;
-                margin: 10px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-            button {
-                width: 100%;
-                padding: 10px;
-                background: #007bff;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-            }
-            button:hover {
-                background: #0056b3;
-            }
+            
         </style>
     </head>
-    <body>
-
-        <div class="container">
-            <h2>Reset password</h2>
-            <form action="ResetPassword" method="post">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
-                <button type="submit">Reset password</button>
-            </form>
-        </div>
-
+    <body style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg); no-repeat center center/cover">
+        <section class="p-3 p-md-4 p-xl-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+                        <div class="card border-0 shadow-sm rounded-4" style="margin-top: 170px">
+                            <div class="card-body p-3 p-md-4 p-xl-5">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-5">
+                                            <h3>Reset password</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="ResetPassword" method="POST">
+                                    <div class="row gy-3 overflow-hidden">
+                                        <div class="col-12">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="form-control" value="${email}" name="email" id="email" placeholder="name@example.com" required>
+                                                <label for="email" class="form-label">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating mb-3">
+                                                <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
+                                                <label for="password" class="form-label">Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-floating mb-3">
+                                                <input type="password" class="form-control" name="confirm_password" id="confirm_password" value="" placeholder="Password" required>
+                                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button class="btn bsb-btn-2xl btn-primary" type="submit">Reset password</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-danger">${mess}</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>
+
