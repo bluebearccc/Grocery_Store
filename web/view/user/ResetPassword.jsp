@@ -12,59 +12,37 @@
         <title>Login page</title>
         <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-6/assets/css/login-6.css">
-        
-        <style>
-            
-        </style>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg); no-repeat center center/cover">
-        <section class="p-3 p-md-4 p-xl-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
-                        <div class="card border-0 shadow-sm rounded-4" style="margin-top: 170px">
-                            <div class="card-body p-3 p-md-4 p-xl-5">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="mb-5">
-                                            <h3>Reset password</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="ResetPassword" method="POST">
-                                    <div class="row gy-3 overflow-hidden">
-                                        <div class="col-12">
-                                            <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" value="${email}" name="email" id="email" placeholder="name@example.com" required>
-                                                <label for="email" class="form-label">Email</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating mb-3">
-                                                <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
-                                                <label for="password" class="form-label">Password</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-floating mb-3">
-                                                <input type="password" class="form-control" name="confirm_password" id="confirm_password" value="" placeholder="Password" required>
-                                                <label for="confirm_password" class="form-label">Confirm Password</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="d-grid">
-                                                <button class="btn bsb-btn-2xl btn-primary" type="submit">Reset password</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="text-danger">${mess}</p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+        
+        <div class="form-container">
+            <form action="ResetPassword" class="register-form" method="POST">
+                <h3 style="text-align: center; margin-bottom: 15px">Reset Password</h3>
+                <div class="input-group">
+                    <input type="email" class="form-control" value="${email}" name="email" id="email" placeholder="name@example.com" required>
                 </div>
-            </div>
-        </section>
+                <div class="input-group">
+                    <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" value="" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Reset password</button>
+                <p class="text-danger">${mess}</p>
+                <a href="home?site=home" class="btn-home" style="    background-color: #4CAF50;
+                   color: white;
+                   padding: 12px 24px;
+                   border: none;
+                   border-radius: 8px;
+                   cursor: pointer;
+                   font-size: 16px;
+                   transition: background-color 0.3s ease;
+                   text-decoration: none;
+                   margin-top: 30px;
+                   display: inline-block;">🏠 HomePage</a>
+            </form>
+        </div>
     </body>
 </html>
 

@@ -40,6 +40,7 @@
 
         <!-- template styles -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/organik.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product.css" />
     </head>
 
     <body>
@@ -66,7 +67,7 @@
                 </div><!-- /.container -->
             </section><!-- /.page-header -->
 
-            <section class="cart-page">
+            <section class="cart-page" id="tableContent">
                 <div class="container">
                     <div class="table-responsive">
                         <table class="table cart-table">
@@ -85,27 +86,28 @@
                                         <td>
                                             <div class="product-box">
                                                 <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}" alt="">
-                                                <h3><a href="home?site=product-details.jsp">${item.getProduct().getProduct__name()}</a></h3>
+                                                <h3><a href="home?site=product-details&productId=${item.getProduct().getProduct__id()}">${item.getProduct().getProduct__name()}</a></h3>
                                             </div><!-- /.product-box -->
                                         </td>
                                         <td>$${item.getPrice()}</td>
                                         <td>
-                                            <div class="quantity-box">
-                                                <button type="button" class="sub">-</button>
-                                                <input type="number" id="2" value="${item.getQuantity()}" />
-                                                <button type="button" class="add">+</button>
+                                            <div>
+                                                <button type="button" class="compute" onclick="decreaseQuantity(this)">-</button>
+                                                <input type="number" class="productQuantity" name="productQuantity" value="${item.getQuantity()}"  style="    width: 50px;
+                                                       text-align: center;
+                                                       border: none;
+                                                       outline: none;
+                                                       font-size: 20px;
+                                                       background-color: #f9f9f9;"/>
+                                                <button type="button" class="compute" onclick="increaseQuantity(this)">+</button>
                                             </div>
                                         </td>
                                         <td>
                                             ${item.getPrice() * item.getQuantity()}
                                         </td>
                                         <td>
-                                            <form action="home" method="POST" id="deleteForm">
-                                                <input type="hidden" name="site" value="payment">
-                                                <input type="hidden" name="action" value="delete">
-                                                <input type="hidden" name="productId" value="${item.getProduct().getProduct__id()}">
-                                                <button onclick="this.closest('form').submit()"><i class="organik-icon-close remove-icon"></i></button>
-                                            </form>
+                                            <input type="hidden" name="productId" value="${item.getProduct().getProduct__id()}">
+                                            <button onclick="deleteProduct(this)" style="background: none; border: none"><i class="organik-icon-close remove-icon"></i></button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -115,7 +117,7 @@
                     </div><!-- /.table-responsive -->
                     <div class="row">
                         <div class="col-lg-4">
-                            <ul class="cart-total list-unstyled">
+                            <ul id="total-money" class="cart-total list-unstyled">
                                 <li>
                                     <span>Subtotal</span>
                                     <span>$${cart.getTotalMoney()} USD</span>
@@ -130,8 +132,8 @@
                                 </li>
                             </ul><!-- /.cart-total -->
                             <div class="button-box">
-                                <a href="#" class="thm-btn">Update</a><!-- /.thm-btn -->
-                                <a href="#" class="thm-btn">Checkout</a><!-- /.thm-btn -->
+                                <button onclick="update()" class="thm-btn">Update</button><!-- /.thm-btn -->
+                                <button onclick="checkout()" class="thm-btn">Checkout</button><!-- /.thm-btn -->
                             </div><!-- /.button-box -->
                         </div><!-- /.col-lg-4 -->
                     </div><!-- /.row -->
@@ -171,11 +173,122 @@
         <!-- template js -->
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
-                submitForm() {
-                    
-                }
-            
+
+
+                                    function increaseQuantity(button) {
+                                        let input = button.parentElement.querySelector('input[name="productQuantity"]');
+                                        input.value = parseInt(input.value) + 1;
+                                    }
+
+                                    function decreaseQuantity(button) {
+                                        let input = button.parentElement.querySelector('input[name="productQuantity"]');
+                                        if (parseInt(input.value) > 1) {
+                                            input.value = parseInt(input.value) - 1;
+                                        }
+                                    }
+
+                                    function deleteProduct(e) {
+                                        let td = e.closest('td');
+                                        let product_ID = td.querySelector("input[name='productId']").value;
+                                        $.ajax({
+                                            url: '/Grocery_Store/home?',
+                                            method: 'POST',
+                                            data: {
+                                                site: "payment",
+                                                action: "delete",
+                                                productId: product_ID
+                                            },
+                                            success: function (response) {
+                                                let content = document.getElementById('tableContent');
+                                                content.innerHTML = response;
+                                                updateSmallCart();
+                                            },
+                                            error: function (xhr) {
+                                                console.error('Error:', xhr.status, xhr.statusText);
+                                            }
+                                        });
+                                    }
+
+                                    function checkout() {
+                                        let quantities = document.querySelectorAll('input[name="productQuantity"]');
+                                        let productId = document.querySelectorAll('input[name="productId"]');
+                                        if (quantities.length !== 0 || productId.length !== 0) {
+                                            $.ajax({
+                                                url: '/Grocery_Store/home?',
+                                                method: 'POST',
+                                                data: {
+                                                    site: "payment",
+                                                    action: "checkout"
+                                                },
+                                                success: function (response) {
+                                                    let content = document.getElementById('tableContent');
+                                                    content.innerHTML = response;
+                                                    updateSmallCart();
+                                                },
+                                                error: function (xhr) {
+                                                    console.error('Error:', xhr.status, xhr.statusText);
+                                                }
+                                            });
+                                        }
+                                    }
+
+                                    function update() {
+                                        let quantities = document.querySelectorAll('input[name="productQuantity"]');
+                                        let productId = document.querySelectorAll('input[name="productId"]');
+                                        let cart = [];
+                                        if (quantities.length !== 0 && productId.length !== 0) {
+                                            productId.forEach((id, index) => {
+                                                let pId = id.value;
+                                                let quantity = quantities[index].value;
+                                                cart.push({pId, quantity});
+                                            });
+
+                                            let params = new URLSearchParams();
+                                            cart.forEach(item => {
+                                                params.append("productId", item.pId);
+                                                params.append("quantity", item.quantity);
+                                            });
+
+                                            console.log(params.toString());
+                                            $.ajax({
+                                                url: '/Grocery_Store/home?' + params.toString(),
+                                                method: 'POST',
+                                                data: {
+                                                    site: "payment",
+                                                    action: "update"
+                                                },
+                                                success: function (response) {
+                                                    let content = document.getElementById('tableContent');
+                                                    content.innerHTML = response;
+                                                    updateSmallCart();
+                                                },
+                                                error: function (xhr) {
+                                                    console.error('Error:', xhr.status, xhr.statusText);
+                                                }
+                                            });
+                                        }
+                                    }
+
+                                    function updateSmallCart() {
+                                        $.ajax({
+                                            url: '/Grocery_Store/home?',
+                                            method: 'POST',
+                                            data: {
+                                                site: "payment",
+                                                action: "updateSmallCart"
+                                            },
+                                            success: function (response) {
+                                                let cart_quantity = document.getElementById('cart_quantity');
+                                                cart_quantity.innerHTML = response;
+                                            },
+                                            error: function (xhr) {
+                                                console.error('Error:', xhr.status, xhr.statusText);
+                                            }
+                                        });
+                                    }
+
         </script>
     </body>
 </html>

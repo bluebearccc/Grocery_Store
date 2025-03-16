@@ -15,9 +15,8 @@
             .cart-container {
                 position: relative;
                 display: inline-block;
-                color: white;
                 border-radius: 8px;
-                border: 2px solid
+                border: none;
             }
 
             .cart-badge {
@@ -32,6 +31,31 @@
                 font-weight: bold;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }
+
+            /* Nội dung của cart (mặc định ẩn đi) */
+            .cart-content {
+                display: none;
+                position: absolute;
+                top: 40px;
+                left: 0;
+                background-color: #ffffff;
+                padding: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                width: 200px;
+                border-radius: 8px;
+            }
+
+            /* Hiển thị nội dung khi hover vào giỏ hàng */
+            .cart:hover .cart-content {
+                display: block;
+            }
+
+            /* Tùy chỉnh nội dung bên trong */
+            .cart-content p {
+                margin: 5px 0;
+                border-bottom: 1px solid #eee;
+            }
+
         </style>
     </head>
     <header class="main-header">
@@ -69,10 +93,10 @@
                     </div><!-- /.topbar__info -->
                     <div class="topbar__buttons" style="gap: 15px">
                         <a href="home?site=about" ><i class="organik-icon-farmer"></i></a>
-                        <div class="cart-container">
+                        <div class="cart-container cart" id="cart_quantity">
                             <a href="home?site=cart">
                                 <i class="organik-icon-shopping-cart">
-                                    <span class="cart-badge">
+                                    <span class="cart-badge" >
                                         <c:if test="${sessionScope.cart != null}">
                                             ${cart.getItems().size()}
                                         </c:if>
@@ -82,10 +106,19 @@
                                     </span>
                                 </i>
                             </a>
-                            <div class="cart-items" id="cart-items">
-                                <c:forEach items="${sessionScope.cart.getItems()}" var="item">
-                                    
-                                </c:forEach>
+                            <div class="cart-content" id="cart-items">
+                                <table>
+                                    <c:forEach items="${sessionScope.cart.getItems()}" var="item">
+                                        <tr>
+                                            <td>
+                                                <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}" alt="" style="width: 50px">
+                                            </td>
+                                            <td>
+                                                <p>${item.getProduct().getProduct__name()} - ${item.getQuantity()}</p>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
                             </div>
                         </div>
                     </div><!-- /.topbar__buttons -->

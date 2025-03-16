@@ -9,6 +9,7 @@ import entity.Order;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+import java.util.Calendar;
 
 /**
  *
@@ -28,6 +29,28 @@ public class OrderDAO extends DBContext {
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Exception at createOrder: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        return -1;
+    }
+
+    public int createOrderGetId(Order o) {
+        String sql = "INSERT INTO [dbo].[Orders] "
+                + "([user__id], [order__date]) "
+                + "VALUES (?, ?)";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, o.getUser__id());
+            ps.setDate(2, new java.sql.Date(o.getOrder__date().getTime()));
+            ps.executeUpdate();
+            rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception at createOrderGetId: " + e.getMessage());
         } finally {
             closeResources();
         }
@@ -180,13 +203,6 @@ public class OrderDAO extends DBContext {
         }
     }
 
-    public static void main(String[] args) {
-        OrderDAO dao = new OrderDAO();
-        for (Order allOrder : dao.searchOrderByUserIdPagination(5, 1)) {
-            System.out.println(allOrder);
-        }
-    }
-
     public double totalMoneyMonth(int month, int year) {
         String sql = "SELECT \n"
                 + "sum(od.quantity * od.unit__price) \n"
@@ -214,4 +230,9 @@ public class OrderDAO extends DBContext {
         }
         return 0;
     }
+    
+    public List<Order> getOrderNOrderDetail(int userId) {
+        return null;
+    }
+
 }

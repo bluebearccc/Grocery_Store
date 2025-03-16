@@ -25,8 +25,7 @@ public class HomeController extends HttpServlet {
     ProductDAO pdao = new ProductDAO();
     CategoryDAO cdao = new CategoryDAO();
     SupplierDAO sdao = new SupplierDAO();
-    OrderDAO odao = new OrderDAO();
-    OrderDetail oddao = new OrderDetail();
+    AccountOrderDAO aodao = new AccountOrderDAO();
     PageControl pageControl = new PageControl();
 
     /**
@@ -55,9 +54,10 @@ public class HomeController extends HttpServlet {
 
         //PROCESS DATA
         String url = processUrl(request, response);
-        handlePage(request, response, categoryId, min, max, productName == null ? "" : productName);
+        handlePageProduct(request, response, categoryId, min, max, productName == null ? "" : productName);
         List<Product> ProductList = getProductList(request, url, productName, categoryId, pro, pageControl.getPage(), pageRaw, min, max);
         List<Category> CategoryList = getCategoryList(request);
+        List<AccountOrder> AccountOrderList = null;
         Category cate = null;
         Supplier sup = null;
 
@@ -69,10 +69,15 @@ public class HomeController extends HttpServlet {
             request.setAttribute(CommonConst.SESSION_CATEGORY, cate);
         }
 
+        if (url.contains("account")) {
+            AccountOrderList = getAccountOrderList(request, (User) session.getAttribute(CommonConst.SESSION_ACCOUNT));
+        }
         //SET DATA INTO REQUEST
         request.setAttribute("pageControl", pageControl);
         request.setAttribute("ProductList", ProductList);
         request.setAttribute("CategoryList", CategoryList);
+        request.setAttribute("AccountOrderList", AccountOrderList);
+
         //REQUEST FORWARDING
         if (pageRaw != null) {
             paginationPage(request, response, pageControl, ProductList);
@@ -164,7 +169,7 @@ public class HomeController extends HttpServlet {
         return url;
     }
 
-    public void handlePage(HttpServletRequest request, HttpServletResponse response, String categoryId, int min, int max, String name) {
+    public void handlePageProduct(HttpServletRequest request, HttpServletResponse response, String categoryId, int min, int max, String name) {
         //get page
         String pageRaw = request.getParameter("page");
         int page;
@@ -309,13 +314,11 @@ public class HomeController extends HttpServlet {
         return list;
     }
 
-    public List<Order> getOrderList(HttpServletRequest request) {
-        User u = (User) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-        List<Order> list = null;
+    public List<AccountOrder> getAccountOrderList(HttpServletRequest request, User u) {
+        List<AccountOrder> list = null;
         if (u != null) {
-            list = odao.searchOrderByUserId(u.getUser__id());
+            list = aodao.getAllAccountOrder(u.getUser__id(), 1);
         }
-
         return list;
     }
 

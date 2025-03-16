@@ -4,6 +4,7 @@
     Author     : FPT
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 
 <!DOCTYPE html>
@@ -141,7 +142,6 @@
             .user-dashboard {
                 width: 100%;
                 max-width: 600px;
-                margin: 20px auto;
                 padding: 20px;
                 background-color: #f9f9f9;
                 border-radius: 12px;
@@ -227,21 +227,21 @@
                         <div class="table-container">
                             <table>
                                 <tr>
-                                    <th>Order Id</th>
                                     <th>Date</th>
                                     <th>Product</th>
                                     <th>Quantity</th>
                                     <th>Unit Price</th>
                                     <th>Total</th>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Aug 22, 2018</td>
-                                    <td>Banana</td>
-                                    <td>2</td>
-                                    <td>$3</td>
-                                    <td>$3000</td>
-                                </tr>
+                                <c:forEach items="${AccountOrderList}" var="acc">
+                                    <tr>
+                                        <td>${acc.order__date}</td>
+                                        <td>${acc.product__name}</td>
+                                        <td>${acc.quantity}</td>
+                                        <td>$${acc.unit__price}</td>
+                                        <td>$${acc.unit__price * acc.quantity}</td>
+                                    </tr>
+                                </c:forEach>
                             </table>
                         </div>
                     </div>

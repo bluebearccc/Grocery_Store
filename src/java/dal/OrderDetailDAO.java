@@ -160,13 +160,6 @@ public class OrderDetailDAO extends DBContext {
         }
     }
 
-    public static void main(String[] args) {
-        OrderDetailDAO dao = new OrderDetailDAO();
-        for (OrderDetail allOrderDetail : dao.getAllOrderDetails()) {
-            System.out.println(allOrderDetail);
-        }
-    }
-
     public int totalMoney() {
         int total = 0;
         String sql = "SELECT SUM(quantity * unit__price) FROM OrderDetails";

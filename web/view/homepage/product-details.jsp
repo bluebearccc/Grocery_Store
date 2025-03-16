@@ -96,10 +96,15 @@
                                     <li>Unit In Stock: ${product.getUnit__in__stock()}</li>
                                 </ul>
                                 <div class="product-quantity-box">
-                                    <div class="quantity-box">
-                                        <button type="button" class="sub">-</button>
-                                        <input type="number" id="quantity" value="1">
-                                        <button type="button" class="add">+</button>
+                                    <div>
+                                        <button type="button" class="compute" onclick="decreaseQuantity(this)">-</button>
+                                        <input type="number" class="productQuantity" name="productQuantity" value="1" id="quantity"  style="    width: 50px;
+                                               text-align: center;
+                                               border: none;
+                                               outline: none;
+                                               font-size: 20px;
+                                               background-color: #f9f9f9;"/>
+                                        <button type="button" class="compute" onclick="increaseQuantity(this)">+</button>
                                     </div>
                                     <div class="addto-cart-box">
                                         <button class="thm-btn" type="submit" onclick="loadQuantity(); addToCart('mainProForm')">Add to Cart</button>
@@ -198,6 +203,18 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
                                             let quantity = 1;
+
+                                            function increaseQuantity(button) {
+                                                let input = button.parentElement.querySelector('input[name="productQuantity"]');
+                                                input.value = parseInt(input.value) + 1;
+                                            }
+
+                                            function decreaseQuantity(button) {
+                                                let input = button.parentElement.querySelector('input[name="productQuantity"]');
+                                                if (parseInt(input.value) > 1) {
+                                                    input.value = parseInt(input.value) - 1;
+                                                }
+                                            }
 
                                             function loadQuantity() {
                                                 let number = document.getElementById('quantity').value;

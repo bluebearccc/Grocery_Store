@@ -84,7 +84,7 @@ public class RequestPassword extends HttpServlet {
         }
         ResetService service = new ResetService();
         String token = service.generateToken();
-        String linkReset = "http://localhost:9999/Grocery_Store/ResetPassword?token=" + token;
+        String linkReset = "http://localhost:8080/Grocery_Store/ResetPassword?token=" + token;
         TokenForgetPassword newTokenForget = new TokenForgetPassword(
                 user.getUser__id(), false, token);
         

@@ -37,7 +37,7 @@ public class Cart {
 
     public Item getItemById(int id) {
         for (Item Item1 : Items) {
-            if (Item1.getProduct().getProduct__id()== id) {
+            if (Item1.getProduct().getProduct__id() == id) {
                 return Item1;
             }
         }
@@ -65,10 +65,5 @@ public class Cart {
             t += i.getQuantity() * i.getPrice();
         }
         return t;
-    }
-    
-    public static void main(String[] args) {
-        Cart c = new Cart();
-        
     }
 }

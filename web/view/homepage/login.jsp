@@ -15,8 +15,8 @@
         <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/images/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/images/favicons/favicon-16x16.png" />
         <link rel="manifest" href="${pageContext.request.contextPath}/images/favicons/site.webmanifest" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/request-reset.css">
-        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
+
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg); no-repeat center center/cover">
         <div class="login-container">
@@ -37,6 +37,17 @@
                     <button type="submit" class="login-btn">Login</button>
                     <p style="color:red">${error}</p>
                     <p class="signup">Not a member? <a href="home?site=register">Sign up now</a></p>
+                    <a href="home?site=home" class="btn-home" style="    background-color: #4CAF50;
+                       color: white;
+                       padding: 12px 24px;
+                       border: none;
+                       border-radius: 8px;
+                       cursor: pointer;
+                       font-size: 16px;
+                       transition: background-color 0.3s ease;
+                       text-decoration: none;
+                       margin-top: 30px;
+                       display: inline-block;">🏠 HomePage</a>
                 </form>
                 <img src="${pageContext.request.contextPath}/images/backgrounds/funfact-bg-1-1.jpg" alt="Side Image">
             </div>

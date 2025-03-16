@@ -9,42 +9,30 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login-register.css">
     </head>
     <body style="background-image: url(${pageContext.request.contextPath}/images/backgrounds/page-header-bg-1-1.jpg); no-repeat center center/cover">
-        <section class="p-3 p-md-4 p-xl-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
-                        <div class="card border-0 shadow-sm rounded-4" style="margin-top: 250px;">
-                            <div class="card-body p-3 p-md-4 p-xl-5">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="mb-5">
-                                            <h3>Send to email</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form action="RequestPassword" method="POST">
-                                    <div class="row gy-3 overflow-hidden">
-                                        <div class="col-12">
-                                            <div class="form-floating mb-3">
-                                                <input type="email" class="form-control"
-                                                       name="email" 
-                                                       id="email" placeholder="name@example.com" required>
-                                                <label for="email" class="form-label">Email</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="d-grid">
-                                                <button class="btn bsb-btn-2xl btn-primary" type="submit">Reset password</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <p class="text-danger">${mess}</p>
-                            </div>
-                        </div>
+        <div class="login-container">
+            <div class="overlay"></div>
+            <div class="content">
+                <form action="RequestPassword" class="form-login" method="POST">
+                    <h3 style="text-align: center">Send to email</h3>
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="name@example.com" required>
                     </div>
-                </div>
+                    <button type="submit" class="login-btn">Reset password</button>
+                    <p class="text-danger">${mess}</p>
+                    <a href="home?site=home" class="btn-home" style="    background-color: #4CAF50;
+                       color: white;
+                       padding: 12px 24px;
+                       border: none;
+                       border-radius: 8px;
+                       cursor: pointer;
+                       font-size: 16px;
+                       transition: background-color 0.3s ease;
+                       text-decoration: none;
+                       margin-top: 30px;
+                       display: inline-block;">🏠 HomePage</a>
+                </form>
+                <img src="${pageContext.request.contextPath}/images/backgrounds/funfact-bg-1-1.jpg" alt="Side Image">
             </div>
-        </section>
+        </div>
     </body>
 </html>

@@ -4,6 +4,7 @@
  */
 package entity;
 
+import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,8 +24,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Item {
-    private Product product;
+public class AccountOrder {
+
+    private int order__id;
+    private int user__id;
+    private Date order__date;
+    private String product__name;
     private int quantity;
-    private float price;
+    private double unit__price;
 }
