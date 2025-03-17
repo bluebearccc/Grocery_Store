@@ -9,6 +9,7 @@ import dal.UserDAO;
 import entity.User;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -77,12 +78,25 @@ public class AccountController extends HttpServlet {
     public void userLogin(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String remember = request.getParameter("remember");
         String currentPage = (String) session.getAttribute("currentPage");
         session.removeAttribute("currentPage");
         User u = udao.getUser(username, password);
 
         if (u != null) {
             session.setAttribute(CommonConst.SESSION_ACCOUNT, u);
+            if (remember != null) {
+                Cookie userCookie = new Cookie("userCookie", username.trim());
+                Cookie passCookie = new Cookie("passCookie", password.trim());
+                Cookie remCookie = new Cookie("remCookie", remember.trim());
+                userCookie.setMaxAge(3600 * 2);
+                passCookie.setMaxAge(3600 * 2);
+                remCookie.setMaxAge(3600 * 2);
+                response.addCookie(userCookie);
+                response.addCookie(passCookie);
+                response.addCookie(remCookie);
+            }
+
             if (currentPage != null) {
                 response.sendRedirect("home?site=" + currentPage);
                 session.removeAttribute("currentPage");

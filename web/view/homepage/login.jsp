@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -25,13 +26,13 @@
                 <form action="home" class="form-login" method="POST">
                     <input type="hidden" name="site" value="validatelogin">
                     <div class="input-group">
-                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="text" name="username" placeholder="Username" value="${cookie['userCookie'].value}" required>
                     </div>
                     <div class="input-group">
-                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" value="${cookie['passCookie'].value}" required>
                     </div>
                     <div class="options">
-                        <label><input type="checkbox"> Remember me</label>
+                        <label><input name="remember" type="checkbox" value="1" <c:if test="${cookie['remCookie'] != null}">checked="true"</c:if> > Remember me</label>
                         <a href="RequestPassword">Forgot your password?</a>
                     </div>
                     <button type="submit" class="login-btn">Login</button>
