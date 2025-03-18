@@ -5,32 +5,32 @@
 package controller;
 
 import constant.CommonConst;
-import dal.*;
-import entity.*;
+import dal.CategoryDAO;
+import dal.ProductDAO;
+import dal.SupplierDAO;
+import entity.Category;
+import entity.Product;
+import entity.Supplier;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.io.PrintWriter;
 import java.util.List;
 
 /**
  *
  * @author admin
  */
-public class HomeController extends HttpServlet {
+public class ProductDetailController extends HttpServlet {
 
     ProductDAO pdao = new ProductDAO();
     CategoryDAO cdao = new CategoryDAO();
     SupplierDAO sdao = new SupplierDAO();
-    AccountOrderDAO aodao = new AccountOrderDAO();
-    PageControl pageControl = new PageControl();
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -40,15 +40,18 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //PROCESS DATA
-        String url = processUrl(request, response);
-        List<Product> ProductList = getProductList();
+        String productId = request.getParameter("productId") == null || request.getParameter("productId").equals("0") ? "3" : request.getParameter("productId").trim();
+        //GET DATA FROM DAO
+        Product pro = pdao.getProduct(Integer.parseInt(productId));
+        Category cate = cdao.getCategoryById(pro.getCategory__id());
+        Supplier sup = sdao.getSupplier(pro.getSupplier__id());
+        request.setAttribute(CommonConst.SESSION_PRODUCT, pro);
+        request.setAttribute(CommonConst.SESSION_SUPPLIER, sup);
+        request.setAttribute(CommonConst.SESSION_CATEGORY, cate);
+        List<Product> ProductList = getProductList(pro);
 
-        //SET DATA INTO REQUEST
         request.setAttribute("ProductList", ProductList);
-
-        //REQUEST FORWARDING
-        request.getRequestDispatcher(url).forward(request, response);
+        request.getRequestDispatcher("view/homepage/product-details.jsp").forward(request, response);
     }
 
     /**
@@ -75,28 +78,8 @@ public class HomeController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public String processUrl(HttpServletRequest request, HttpServletResponse response) {
-        String url;
-        //get site that user want to navigate to
-        String site = request.getParameter("site") == null ? "default" : request.getParameter("site").trim().toLowerCase();
-
-        //get site's url
-        url = switch (site) {
-            case "contact" -> {
-                yield "view/homepage/contact.jsp";
-            }
-            case "about" -> {
-                yield "view/homepage/about.jsp";
-            }
-            default -> {
-                yield "view/homepage/home.jsp";
-            }
-        };
-
-        return url;
-    }
-
-    public List<Product> getProductList() {
-        return pdao.getThreeLastestProduct();
+    public List<Product> getProductList(Product p) {
+        List<Product> list = pdao.searchProductSameCate(p);
+        return list;
     }
 }

@@ -68,7 +68,7 @@
                     <div class="mobile-nav__buttons">
                         <a href="home?site=about" ><i class="organik-icon-farmer"></i></a>
                         <div class="cart-container">
-                            <a href="home?site=cart"><i class="organik-icon-shopping-cart"><span class="cart-badge">6</span></i></a>
+                            <a href="payment"><i class="organik-icon-shopping-cart"><span class="cart-badge">6</span></i></a>
                         </div>
                     </div><!-- /.mobile__buttons -->
 
@@ -94,7 +94,7 @@
                     <div class="topbar__buttons" style="gap: 15px">
                         <a href="home?site=about" ><i class="organik-icon-farmer"></i></a>
                         <div class="cart-container cart" id="cart_quantity">
-                            <a href="home?site=cart">
+                            <a href="payment">
                                 <i class="organik-icon-shopping-cart">
                                     <span class="cart-badge" >
                                         <c:if test="${sessionScope.cart != null}">
@@ -130,43 +130,43 @@
             <div class="container">
                 <c:if test="${sessionScope.user == null}">
                     <div class="main-menu__login">
-                        <a href="home?site=login"><i class="organik-icon-user"></i>Login</a>
+                        <a href="account?action=login"><i class="organik-icon-user"></i>Login</a>
                     </div><!-- /.main-menu__login -->
                     <div class="divider">/</div>
                     <div class="main-menu__login">
-                        <a href="home?site=register">Register</a>
+                        <a href="account?action=register">Register</a>
                     </div><!-- /.main-menu__login -->
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <div class="main-menu__login">
                         <c:if test="${sessionScope.user.isRole() == true}">
-                            <a href="home?site=account"><i class="organik-icon-user"></i>Welcome ${sessionScope.user.getFullname()} !</a>
+                            <a href="account"><i class="organik-icon-user"></i>Welcome ${sessionScope.user.getFullname()} !</a>
                         </c:if>
                         <c:if test="${sessionScope.user.isRole() == false}">
-                            <a href="home?site=maindashboard"><i class="organik-icon-user"></i>Welcome ${sessionScope.user.getFullname()} !</a>
+                            <a href="AdminController"><i class="organik-icon-user"></i>Welcome ${sessionScope.user.getFullname()} !</a>
                         </c:if>
                     </div><!-- /.main-menu__login -->
                 </c:if>
                 <ul class="main-menu__list">
                     <li>
-                        <a href="home?site=home">Home</a>
+                        <a href="home">Home</a>
                     </li>
                     <li>
                         <a href="home?site=about">About</a>
                     </li>
                     <li class="dropdown">
-                        <a href="home?site=product">Shop</a>
+                        <a href="product">Shop</a>
                         <ul>
-                            <li><a href="home?site=product">Shop</a></li>
-                            <li><a href="home?site=product-details">Product Details</a></li>
+                            <li><a href="product">Shop</a></li>
+                            <li><a href="productdetail">Product Details</a></li>
                         </ul>
                     </li>
                     <li><a href="home?site=contact">Contact</a></li>
-                    <li><a href="home?site=cart">Cart</a></li>
+                    <li><a href="payment">Cart</a></li>
                 </ul>
                 <c:if test="${sessionScope.user != null}">
                     <div class="main-menu__login">
-                        <a href="home?site=logout"><i class="organik-icon-user-logout">🔓</i> Logout</a>
+                        <a href="account?action=logout"><i class="organik-icon-user-logout">🔓</i> Logout</a>
                     </div><!-- /.main-menu__login -->
                 </c:if>    
             </div><!-- /.container -->

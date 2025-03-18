@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-public class AdminAccountFilter implements Filter {
+public class AccountFilter implements Filter {
 
     private static final boolean debug = true;
 
@@ -32,27 +32,27 @@ public class AdminAccountFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public AdminAccountFilter() {
+    public AccountFilter() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("AdminAccountFilter:DoBeforeProcessing");
+            log("AccountFilter:DoBeforeProcessing");
         }
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         User u = (User) req.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-        if (u == null || !u.isRole()) {
-            resp.sendRedirect(req.getContextPath() + "/home?site=login");
+        if (u == null || u.isRole()) {
+            resp.sendRedirect(req.getContextPath() + "/account?action=login");
         }
     }
 
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("AdminAccountFilter:DoAfterProcessing");
+            log("AccountFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -88,7 +88,7 @@ public class AdminAccountFilter implements Filter {
             throws IOException, ServletException {
 
         if (debug) {
-            log("AdminAccountFilter:doFilter()");
+            log("AccountFilter:doFilter()");
         }
 
         doBeforeProcessing(request, response);
@@ -148,7 +148,7 @@ public class AdminAccountFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("AdminAccountFilter:Initializing filter");
+                log("AccountFilter:Initializing filter");
             }
         }
     }
@@ -159,9 +159,9 @@ public class AdminAccountFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("AdminAccountFilter()");
+            return ("AccountFilter()");
         }
-        StringBuffer sb = new StringBuffer("AdminAccountFilter(");
+        StringBuffer sb = new StringBuffer("AccountFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

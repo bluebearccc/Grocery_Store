@@ -87,7 +87,7 @@
                                         <td>
                                             <div class="product-box">
                                                 <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}" alt="" style="width: 270px; height: 283px">
-                                                <h3><a href="home?site=product-details&productId=${item.getProduct().getProduct__id()}">${item.getProduct().getProduct__name()}</a></h3>
+                                                <h3><a href="productdetail&productId=${item.getProduct().getProduct__id()}">${item.getProduct().getProduct__name()}</a></h3>
                                             </div><!-- /.product-box -->
                                         </td>
                                         <td>${item.getProduct().getUnit__in__stock()}</td>
@@ -95,7 +95,7 @@
                                         <td>
                                             <div>
                                                 <button type="button" class="compute" onclick="decreaseQuantity(this), update()">-</button>
-                                                <input type="text" class="productQuantity" oninput="checkQuantity(this, ${item.getProduct().getUnit__in__stock()})" name="productQuantity" value="${item.getQuantity()}" style="width: 50px;
+                                                <input type="text" class="productQuantity" required oninput="checkQuantity(this, ${item.getProduct().getUnit__in__stock()})" name="productQuantity" value="${item.getQuantity()}" style="width: 50px;
                                                        text-align: center;
                                                        border: none;
                                                        outline: none;
@@ -205,10 +205,9 @@
                                         let td = e.closest('td');
                                         let product_ID = td.querySelector("input[name='productId']").value;
                                         $.ajax({
-                                            url: '/Grocery_Store/home?',
+                                            url: '/Grocery_Store/payment',
                                             method: 'POST',
                                             data: {
-                                                site: "payment",
                                                 action: "delete",
                                                 productId: product_ID
                                             },
@@ -228,10 +227,9 @@
                                         let productId = document.querySelectorAll('input[name="productId"]');
                                         if (quantities.length !== 0 || productId.length !== 0) {
                                             $.ajax({
-                                                url: '/Grocery_Store/home?',
+                                                url: '/Grocery_Store/payment',
                                                 method: 'POST',
                                                 data: {
-                                                    site: "payment",
                                                     action: "checkout"
                                                 },
                                                 success: function (response) {
@@ -265,10 +263,9 @@
 
                                             console.log(params.toString());
                                             $.ajax({
-                                                url: '/Grocery_Store/home?' + params.toString(),
+                                                url: '/Grocery_Store/payment' + params.toString(),
                                                 method: 'POST',
                                                 data: {
-                                                    site: "payment",
                                                     action: "update"
                                                 },
                                                 success: function (response) {
@@ -285,10 +282,9 @@
 
                                     function updateSmallCart() {
                                         $.ajax({
-                                            url: '/Grocery_Store/home?',
+                                            url: '/Grocery_Store/payment',
                                             method: 'POST',
                                             data: {
-                                                site: "payment",
                                                 action: "updateSmallCart"
                                             },
                                             success: function (response) {

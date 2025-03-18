@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-public class UserAccountFilter implements Filter {
+public class DashBoardFIlter implements Filter {
 
     private static final boolean debug = true;
 
@@ -32,27 +32,27 @@ public class UserAccountFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public UserAccountFilter() {
+    public DashBoardFIlter() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("UserAccountFilter:DoBeforeProcessing");
+            log("DashBoardFIlter:DoBeforeProcessing");
         }
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         User u = (User) req.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-        if (u == null || u.isRole()) {
-            resp.sendRedirect(req.getContextPath() + "/home?site=login");
+        if (u == null || !u.isRole()) {
+            resp.sendRedirect(req.getContextPath() + "/account?action=login");
         }
     }
 
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("UserAccountFilter:DoAfterProcessing");
+            log("DashBoardFIlter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -88,7 +88,7 @@ public class UserAccountFilter implements Filter {
             throws IOException, ServletException {
 
         if (debug) {
-            log("UserAccountFilter:doFilter()");
+            log("DashBoardFIlter:doFilter()");
         }
 
         doBeforeProcessing(request, response);
@@ -148,7 +148,7 @@ public class UserAccountFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("UserAccountFilter:Initializing filter");
+                log("DashBoardFIlter:Initializing filter");
             }
         }
     }
@@ -159,9 +159,9 @@ public class UserAccountFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("UserAccountFilter()");
+            return ("DashBoardFIlter()");
         }
-        StringBuffer sb = new StringBuffer("UserAccountFilter(");
+        StringBuffer sb = new StringBuffer("DashBoardFIlter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

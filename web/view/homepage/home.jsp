@@ -74,7 +74,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="home?site=product" class=" thm-btn">Order Now</a>
+                                        <a href="product" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -89,7 +89,7 @@
                                     <div class="col-xl-12 col-lg-12 text-center">
                                         <h2><span>Organic</span> <br>
                                             Food Market</h2>
-                                        <a href="home?site=product" class=" thm-btn">Order Now</a>
+                                        <a href="product" class=" thm-btn">Order Now</a>
                                         <!-- /.thm-btn dynamic-radius -->
                                     </div><!-- /.col-lg-7 text-right -->
                                 </div><!-- /.row -->
@@ -155,11 +155,11 @@
                                     <div class="product-card__two-image">
                                         <img src="${pageContext.request.contextPath}/${p.getImage()}" alt="">
                                         <div class="product-card__two-image-content">
-                                            <a href="home?site=product-details&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
+                                            <a href="productdetail&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
                                         </div><!-- /.product-card__two-image-content -->
                                     </div><!-- /.product-card__two-image -->
                                     <div class="product-card__two-content">
-                                        <h3><a href="home?site=product-details&productId=${p.getProduct__id()}">${p.getProduct__name()}</a></h3>
+                                        <h3><a href="productdetail&productId=${p.getProduct__id()}">${p.getProduct__name()}</a></h3>
                                         <p>$${p.getUnit__price()}</p>
                                     </div><!-- /.product-card__two-content -->
                                 </div><!-- /.product-card__two -->
@@ -177,7 +177,7 @@
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
@@ -186,7 +186,7 @@
                                 <div class="offer-banner__content">
                                     <h3><span>100%</span> <br>Organic</h3>
                                     <p>Quality Organic Food Store</p>
-                                    <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                    <a href="product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                                 </div><!-- /.offer-banner__content -->
                             </div><!-- /.offer-banner__box -->
                         </div><!-- /.col-md-6 -->
@@ -231,7 +231,7 @@
                                         </div><!-- /.col-md-6 -->
                                     </div><!-- /.row -->
                                 </div><!-- /.call-to-action__wrap -->
-                                <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action__content -->
                         </div><!-- /.col-md-12 col-lg-12 col-xl-12 -->
                     </div><!-- /.row -->
@@ -290,7 +290,7 @@
                                         </ul><!-- /.list-unstyled -->
                                     </div><!-- /.col-md-6 -->
                                 </div><!-- /.row -->
-                                <a href="home?site=product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
+                                <a href="product" class="thm-btn">Order Now</a><!-- /.thm-btn -->
                             </div><!-- /.call-to-action-two__content -->
                         </div><!-- /.col-md-6 -->
 

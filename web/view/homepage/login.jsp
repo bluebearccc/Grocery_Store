@@ -30,6 +30,7 @@
                     </div>
                     <div class="input-group">
                         <input type="password" name="password" placeholder="Password" value="${cookie['passCookie'].value}" required>
+                        <input type="hidden" name="currentPage" value="${requestScope.currentPage}">
                     </div>
                     <div class="options">
                         <label><input name="remember" type="checkbox" value="1" <c:if test="${cookie['remCookie'] != null}">checked="true"</c:if> > Remember me</label>
@@ -37,8 +38,8 @@
                     </div>
                     <button type="submit" class="login-btn">Login</button>
                     <p style="color:red">${error}</p>
-                    <p class="signup">Not a member? <a href="home?site=register">Sign up now</a></p>
-                    <a href="home?site=home" class="btn-home" style="    background-color: #4CAF50;
+                    <p class="signup">Not a member? <a href="account?action=register">Sign up now</a></p>
+                    <a href="home" class="btn-home" style="    background-color: #4CAF50;
                        color: white;
                        padding: 12px 24px;
                        border: none;

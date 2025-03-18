@@ -4,8 +4,6 @@
  */
 package filter;
 
-import constant.CommonConst;
-import entity.User;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -16,7 +14,6 @@ import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -24,8 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebFilter(filterName = "CommonFilter", urlPatterns = {"/home"})
-public class CommonFilter implements Filter {
+public class FileFilter implements Filter {
 
     private static final boolean debug = true;
 
@@ -34,34 +30,26 @@ public class CommonFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public CommonFilter() {
+    public FileFilter() {
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("CommonFilter:DoBeforeProcessing");
+            log("FileFilter:DoBeforeProcessing");
         }
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-
-        String site = req.getParameter("site");
-        User u = (User) req.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-
-        if (site != null) {
-            if ("account".equals(site) || "dashboard".equals(site)) {
-                if (u == null) {
-                    resp.sendRedirect(req.getContextPath() + "/home?site=login");
-                }
-            }
+        if (req.getServletPath().contains(".jsp")) {
+            resp.sendRedirect(req.getContextPath() + "/home");
         }
     }
 
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("CommonFilter:DoAfterProcessing");
+            log("FileFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -97,7 +85,7 @@ public class CommonFilter implements Filter {
             throws IOException, ServletException {
 
         if (debug) {
-            log("CommonFilter:doFilter()");
+            log("FileFilter:doFilter()");
         }
 
         doBeforeProcessing(request, response);
@@ -157,7 +145,7 @@ public class CommonFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("CommonFilter:Initializing filter");
+                log("FileFilter:Initializing filter");
             }
         }
     }
@@ -168,9 +156,9 @@ public class CommonFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("CommonFilter()");
+            return ("FileFilter()");
         }
-        StringBuffer sb = new StringBuffer("CommonFilter(");
+        StringBuffer sb = new StringBuffer("FileFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

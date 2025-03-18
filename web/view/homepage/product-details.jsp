@@ -158,11 +158,11 @@
                                     <div class="product-card__two-image">
                                         <img src="${pageContext.request.contextPath}/${product_sameCate.getImage()}" alt="">
                                         <div class="product-card__two-image-content">
-                                            <a href="home?site=product-details&productId=${product_sameCate.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
+                                            <a href="productdetail&productId=${product_sameCate.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
                                         </div><!-- /.product-card__two-image-content -->
                                     </div><!-- /.product-card__two-image -->
                                     <div class="product-card__two-content">
-                                        <h3><a href="home?site=product-details">${product_sameCate.getProduct__name()}</a></h3>
+                                        <h3><a href="productdetail?productId=${product_sameCate.getProduct__id()}">${product_sameCate.getProduct__name()}</a></h3>
                                         <div class="product-card__two-stars">
                                             <c:forEach begin="1" end="${product_sameCate.getStar__rating()}">
                                                 <i class="fa fa-star"></i>
@@ -176,7 +176,7 @@
                     </div>
                 </div><!-- /.container -->
                 <div class="col-log-12" style="display: flex; justify-content: center">
-                    <a href="home?site=product">
+                    <a href="product">
                         <button class="more-btn" onclick="">Click Here for More Product</button>
                     </a>
                 </div>

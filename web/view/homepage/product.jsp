@@ -126,12 +126,12 @@
                                             <div class="product-card__image">
                                                 <img src="${pageContext.request.contextPath}/${p.getImage()}" alt="">
                                                 <div class="product-card__image-content">
-                                                    <a href="home?site=product-details&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
+                                                    <a href="productdetail&productId=${p.getProduct__id()}"><i class="organik-icon-visibility"></i></a>
                                                 </div><!-- /.product-card__image-content -->
                                             </div><!-- /.product-card__image -->
                                             <div class="product-card__content">
                                                 <div class="product-card__left">
-                                                    <h3><a href="home?site=product-details">${p.getProduct__name()}</a></h3>
+                                                    <h3><a href="productdetail">${p.getProduct__name()}</a></h3>
                                                     <p>$${p.getUnit__price()}</p>
                                                 </div><!-- /.product-card__left -->
                                                 <div class="product-card__right">
@@ -217,9 +217,6 @@
 
                                         function loadPage(page) {
                                             getMinMaxSearchName();
-                                            console.log(min);
-                                            console.log(max);
-                                            console.log(currentCategoryId);
                                             $.ajax({
                                                 url: "/Grocery_Store/home",
                                                 type: "get",

@@ -30,7 +30,7 @@
                 </div>
                 <button type="submit" class="login-btn">Reset password</button>
                 <p class="text-danger">${mess}</p>
-                <a href="home?site=home" class="btn-home" style="    background-color: #4CAF50;
+                <a href="home" class="btn-home" style="    background-color: #4CAF50;
                    color: white;
                    padding: 12px 24px;
                    border: none;

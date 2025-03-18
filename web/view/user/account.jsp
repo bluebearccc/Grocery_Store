@@ -263,7 +263,7 @@
                                 <h3>Password</h3>
                                 <hr>
                                 <div class="form-group">
-                                    <input type="password" name="newpassword" placeholder="New Password" value="${sessionScope.user.getPassword()}">
+                                    <input type="password" name="newpassword" placeholder="Password" value="${sessionScope.user.getPassword()}">
                                     <input type="password" name="newpasswordconfirm" placeholder="Confirm Password">
                                 </div>
                                 <P style="color: red; text-align: center">${error}</P>

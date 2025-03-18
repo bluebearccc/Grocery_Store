@@ -53,7 +53,7 @@
                                     <a href="home">Home</a>
                                 </li>
                                 <li>
-                                    <a href="home?site=product">Shopping</a>
+                                    <a href="product">Shopping</a>
                                 </li>
                                 <li>
                                     <a href="home?site=about">About Store</a>
@@ -69,7 +69,7 @@
                             <h3 class="footer-widget__title">Explore</h3><!-- /.footer-widget__title -->
                             <ul class="list-unstyled footer-widget__links">
                                 <li>
-                                    <a href="home?site=account">My Account</a>
+                                    <a href="account">My Account</a>
                                 </li>
                                 <li>
                                     <a href="home?site=contact">Support/FAQs</a>

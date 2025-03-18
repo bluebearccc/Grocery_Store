@@ -63,15 +63,16 @@ public class PaymentController extends HttpServlet {
         Cart cart;
 
         String action = request.getParameter("action");
-        int productId = Integer.parseInt(request.getParameter("productId") == null ? "-1" : request.getParameter("productId"));
-        String currentPage = request.getParameter("currentPage") == null ? "home" : request.getParameter("currentPage");
+        int productId = Integer.parseInt(request.getParameter("productId") == null ? "0" : request.getParameter("productId"));
+        String currentPage = request.getParameter("currentPage") == null ? "home" : request.getParameter("currentPage").trim();
         cart = (Cart) session.getAttribute(CommonConst.SESSION_CART);
 
         if (u == null && action.equals("add")) {
-            if (productId != -1) {
-                session.setAttribute("currentPage", currentPage + "&productId=" + productId);
+            if (productId != 0) {
+                request.setAttribute("currentPage", currentPage + "?productId=" + productId);
             }
-            request.getRequestDispatcher("home?site=login").forward(request, response);
+            request.setAttribute("action", "login");
+            request.getRequestDispatcher("account").forward(request, response);
         }
 
         switch (action) {
@@ -84,7 +85,7 @@ public class PaymentController extends HttpServlet {
                     session.setAttribute(CommonConst.SESSION_CART, cart);
                 }
                 cart.addItem(i);
-                response.sendRedirect("home?site=" + currentPage + "&productId=" + productId);
+                response.sendRedirect(currentPage + "?productId=" + productId);
             }
             case "delete" -> {
                 if (cart != null) {
@@ -99,7 +100,9 @@ public class PaymentController extends HttpServlet {
 
                     if (quantity != null && product != null) {
                         for (int i = 0; i < quantity.length; i++) {
-                            cart.getItemById(Integer.parseInt(product[i])).setQuantity(Integer.parseInt(quantity[i]));
+                            if (!product[i].trim().isEmpty() && !quantity[i].trim().isEmpty()) {
+                                cart.getItemById(Integer.parseInt(product[i])).setQuantity(Integer.parseInt(quantity[i]));
+                            }
                         }
                     }
                     updateCart(response, cart);
@@ -143,7 +146,7 @@ public class PaymentController extends HttpServlet {
 
     public void updateSmallCart(HttpServletResponse response, Cart cart) {
         try (PrintWriter out = response.getWriter()) {
-            out.print("<a href=\"home?site=cart\">\n"
+            out.print("<a href=\"payment\">\n"
                     + "                                <i class=\"organik-icon-shopping-cart\">\n"
                     + "                                    <span class=\"cart-badge\" >\n");
             if (cart != null) {
@@ -198,7 +201,7 @@ public class PaymentController extends HttpServlet {
                         + "                                        <td>\n"
                         + "                                            <div class=\"product-box\">\n"
                         + "                                                <img src=\"/Grocery_Store/" + item.getProduct().getImage() + "\" alt=\"\" style=\"width: 270px; height: 283px\">\n"
-                        + "                                                <h3><a href=\"home?site=product-details\">" + item.getProduct().getProduct__name() + "</a></h3>\n"
+                        + "                                                <h3><a href=\"productdetail\">" + item.getProduct().getProduct__name() + "</a></h3>\n"
                         + "                                            </div><!-- /.product-box -->\n"
                         + "                                        </td>\n"
                         + "                                        <td>" + item.getProduct().getUnit__in__stock() + "</td>"
@@ -206,7 +209,7 @@ public class PaymentController extends HttpServlet {
                         + "                                        <td>\n"
                         + "                                            <div>\n"
                         + "                                                <button type=\"button\" class=\"compute\" onclick=\"decreaseQuantity(this), update()\">-</button>\n"
-                        + "                                                <input type=\"text\" class=\"productQuantity\" oninput=\"checkQuantity(this, " + item.getProduct().getUnit__in__stock() + ")\" name=\"productQuantity\" value=\"" + item.getQuantity() + "\" style=\"width: 50px;\n"
+                        + "                                                <input type=\"text\" class=\"productQuantity\" required oninput=\"checkQuantity(this, " + item.getProduct().getUnit__in__stock() + ")\" name=\"productQuantity\" value=\"" + item.getQuantity() + "\" style=\"width: 50px;\n"
                         + "                                                       text-align: center;\n"
                         + "                                                       border: none;\n"
                         + "                                                       outline: none;\n"
