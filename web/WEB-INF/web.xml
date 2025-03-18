@@ -68,6 +68,18 @@
         <servlet-name>ResetPassword</servlet-name>
         <servlet-class>controller.ResetPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminCategoryController</servlet-name>
+        <servlet-class>controller.AdminCategoryController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCategory</servlet-name>
+        <servlet-class>controller.AdminAddCategory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminOrderDetail</servlet-name>
+        <servlet-class>controller.AdminOrderDetail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -114,6 +126,18 @@
     <servlet-mapping>
         <servlet-name>ResetPassword</servlet-name>
         <url-pattern>/ResetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminCategoryController</servlet-name>
+        <url-pattern>/AdminCategoryController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCategory</servlet-name>
+        <url-pattern>/AddCategory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminOrderDetail</servlet-name>
+        <url-pattern>/AdminOrderDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>15</session-timeout>
