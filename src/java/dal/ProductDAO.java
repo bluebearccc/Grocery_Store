@@ -526,6 +526,25 @@ public class ProductDAO extends DBContext {
         closeResources();
     }
 
+    public void editProductQuantity(int productId, int newQuantity, int newQuantitySold) {
+        String sql = "UPDATE [dbo].[Products]\n"
+                + "SET [unit__in__stock] = ?, [quantity__sold] = ?\n"
+                + "WHERE [product__id] = ?";
+
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, newQuantity);
+            ps.setInt(2, newQuantitySold);
+            ps.setInt(3, productId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Exception at searchProduct: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+    }
+
     public void deleteProductById(int productId) {
 
         String sql = "DELETE FROM [dbo].[Products] WHERE [product__id] = ?";
@@ -924,9 +943,6 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-//        for (Product product : dao.getProductPaginationByCateName(2, 1, "a")) {
-//            System.out.println(product);
-//        }
-        System.out.println(dao.findTotalRecordPagnition(0, 200, ""));
+        dao.editProductQuantity(3, 99, 51);
     }
 }

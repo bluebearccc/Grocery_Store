@@ -38,5 +38,5 @@ public class Product {
     private String image;
     private String describe;
     private Date release__date;
-
+   
 }

@@ -71,7 +71,14 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6">
                             <div class="product_detail_image">
-                                <img src="${pageContext.request.contextPath}/${product.getImage()}" alt="">
+                                <c:if test="${product.getUnit__in__stock() == 0}">
+                                    <img class="out-of-stock" src="${pageContext.request.contextPath}/images/out-of-stock.png" alt="" style="    position: absolute;
+                                         width: 30px;
+                                         border-radius: 50%;
+                                         width: 40%;
+                                         transform: translateY(50%) translateX(60%); ">
+                                </c:if>
+                                <img src="${pageContext.request.contextPath}/${product.getImage()}" style="width: 570px; height: 597.44px" alt="">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6">
@@ -95,29 +102,36 @@
                                     <li>From: ${supplier.getCompany__name()}</li>
                                     <li>Unit In Stock: ${product.getUnit__in__stock()}</li>
                                 </ul>
-                                <div class="product-quantity-box">
-                                    <div>
-                                        <button type="button" class="compute" onclick="decreaseQuantity(this)">-</button>
-                                        <input type="number" class="productQuantity" name="productQuantity" value="1" id="quantity"  style="    width: 50px;
-                                               text-align: center;
-                                               border: none;
-                                               outline: none;
-                                               font-size: 20px;
-                                               background-color: #f9f9f9;"/>
-                                        <button type="button" class="compute" onclick="increaseQuantity(this)">+</button>
+                                <c:if test="${product.getUnit__in__stock() != 0}">
+                                    <div class="product-quantity-box">
+                                        <div>
+                                            <button type="button" class="compute" onclick="decreaseQuantity(this)">-</button>
+                                            <input type="text" class="productQuantity" oninput="checkQuantity(this, ${product.getUnit__in__stock()})" name="productQuantity" value="1" id="quantity"  style="    width: 50px;
+                                                   text-align: center;
+                                                   border: none;
+                                                   outline: none;
+                                                   font-size: 20px;
+                                                   background-color: #f9f9f9;"/>
+                                            <button type="button" class="compute" onclick="increaseQuantity(this, ${product.getUnit__in__stock()})">+</button>
+                                        </div>
+                                        <div class="addto-cart-box">
+
+                                            <button class="thm-btn" type="submit" onclick="loadQuantity(); addToCart('mainProForm')">Add to Cart</button>
+
+                                            <form action="home" method="POST" style="display: none" id="mainProForm">
+                                                <input type="hidden" name="site" value="payment">
+                                                <input type="hidden" name="action" value="add">
+                                                <input type="hidden" name="currentPage" value="product-details">
+                                                <input type="hidden" name="productId" value="${product.getProduct__id()}">
+                                                <input type="hidden" id="inputQuantity" name="quantity" value="">
+                                                <input type="hidden" name="price" value="${product.getUnit__price()}">
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="addto-cart-box">
-                                        <button class="thm-btn" type="submit" onclick="loadQuantity(); addToCart('mainProForm')">Add to Cart</button>
-                                        <form action="home" method="POST" style="display: none" id="mainProForm">
-                                            <input type="hidden" name="site" value="payment">
-                                            <input type="hidden" name="action" value="add">
-                                            <input type="hidden" name="currentPage" value="product-details">
-                                            <input type="hidden" name="productId" value="${product.getProduct__id()}">
-                                            <input type="hidden" id="inputQuantity" name="quantity" value="">
-                                            <input type="hidden" name="price" value="${product.getUnit__price()}">
-                                        </form>
-                                    </div>
-                                </div>
+                                </c:if>
+                                <c:if test="${product.getUnit__in__stock() == 0}">
+                                    <p style="color: red">This product has sold out</p>
+                                </c:if>
                                 <ul class="list-unstyled category_tag_list">
                                     <li><span>Category:</span> ${category.getCategory__name()}</li>
                                 </ul>
@@ -202,32 +216,43 @@
         <script src="${pageContext.request.contextPath}/js/organik.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
-                                            let quantity = 1;
+                                                let quantity = 1;
 
-                                            function increaseQuantity(button) {
-                                                let input = button.parentElement.querySelector('input[name="productQuantity"]');
-                                                input.value = parseInt(input.value) + 1;
-                                            }
-
-                                            function decreaseQuantity(button) {
-                                                let input = button.parentElement.querySelector('input[name="productQuantity"]');
-                                                if (parseInt(input.value) > 1) {
-                                                    input.value = parseInt(input.value) - 1;
+                                                function checkQuantity(inputForm, num) {
+                                                    let input = inputForm.parentElement.querySelector('input[name="productQuantity"]');
+                                                    if (parseInt(input.value) > parseInt(num)) {
+                                                        input.value = parseInt(num);
+                                                    } else if (parseInt(input.value) < 1) {
+                                                        input.value = 1;
+                                                    }
                                                 }
-                                            }
 
-                                            function loadQuantity() {
-                                                let number = document.getElementById('quantity').value;
-                                                quantity = number;
-                                            }
+                                                function increaseQuantity(button, num) {
+                                                    let input = button.parentElement.querySelector('input[name="productQuantity"]');
+                                                    if (parseInt(input.value) < parseInt(num)) {
+                                                        input.value = parseInt(input.value) + 1;
+                                                    }
+                                                }
 
-                                            function addToCart(e) {
-                                                let inputQuantity = document.getElementById('inputQuantity');
-                                                let mainProForm = document.getElementById(e);
-                                                let productId = document.getElementById('productId');
-                                                inputQuantity.value = quantity;
-                                                mainProForm.submit();
-                                            }
+                                                function decreaseQuantity(button) {
+                                                    let input = button.parentElement.querySelector('input[name="productQuantity"]');
+                                                    if (parseInt(input.value) > 1) {
+                                                        input.value = parseInt(input.value) - 1;
+                                                    }
+                                                }
+
+                                                function loadQuantity() {
+                                                    let number = document.getElementById('quantity').value;
+                                                    quantity = number;
+                                                }
+
+                                                function addToCart(e) {
+                                                    let inputQuantity = document.getElementById('inputQuantity');
+                                                    let mainProForm = document.getElementById(e);
+                                                    let productId = document.getElementById('productId');
+                                                    inputQuantity.value = quantity;
+                                                    mainProForm.submit();
+                                                }
         </script>
     </body>
 </html>

@@ -74,6 +74,7 @@
                             <thead>
                                 <tr>
                                     <th>Item</th>
+                                    <th>Remains</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
@@ -85,21 +86,22 @@
                                     <tr>
                                         <td>
                                             <div class="product-box">
-                                                <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}" alt="">
+                                                <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}" alt="" style="width: 270px; height: 283px">
                                                 <h3><a href="home?site=product-details&productId=${item.getProduct().getProduct__id()}">${item.getProduct().getProduct__name()}</a></h3>
                                             </div><!-- /.product-box -->
                                         </td>
+                                        <td>${item.getProduct().getUnit__in__stock()}</td>
                                         <td>$${item.getPrice()}</td>
                                         <td>
                                             <div>
-                                                <button type="button" class="compute" onclick="decreaseQuantity(this)">-</button>
-                                                <input type="number" class="productQuantity" name="productQuantity" value="${item.getQuantity()}"  style="    width: 50px;
+                                                <button type="button" class="compute" onclick="decreaseQuantity(this), update()">-</button>
+                                                <input type="text" class="productQuantity" oninput="checkQuantity(this, ${item.getProduct().getUnit__in__stock()})" name="productQuantity" value="${item.getQuantity()}" style="width: 50px;
                                                        text-align: center;
                                                        border: none;
                                                        outline: none;
                                                        font-size: 20px;
                                                        background-color: #f9f9f9;"/>
-                                                <button type="button" class="compute" onclick="increaseQuantity(this)">+</button>
+                                                <button type="button" class="compute" onclick="increaseQuantity(this, ${item.getProduct().getUnit__in__stock()}), update()">+</button>
                                             </div>
                                         </td>
                                         <td>
@@ -176,10 +178,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
 
+                                    function checkQuantity(inputForm, num) {
+                                        let input = inputForm.parentElement.querySelector('input[name="productQuantity"]');
+                                        if (parseInt(input.value) > parseInt(num)) {
+                                            input.value = parseInt(num);
+                                        } else if (parseInt(input.value) < 1) {
+                                            input.value = 1;
+                                        }
+                                    }
 
-                                    function increaseQuantity(button) {
+                                    function increaseQuantity(button, num) {
                                         let input = button.parentElement.querySelector('input[name="productQuantity"]');
-                                        input.value = parseInt(input.value) + 1;
+                                        if (parseInt(input.value) < parseInt(num)) {
+                                            input.value = parseInt(input.value) + 1;
+                                        }
                                     }
 
                                     function decreaseQuantity(button) {

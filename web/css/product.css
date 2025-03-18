@@ -62,3 +62,10 @@ input[type="number"] {
 .compute:hover {
     background-color: #e1e1e1;
 }
+
+.out-of-stock {
+    position: absolute;
+    width: 30px;
+    border-radius: 50%;
+    transform: translateY(50px) translateX(2px);
+}

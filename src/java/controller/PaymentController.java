@@ -21,7 +21,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -107,7 +106,7 @@ public class PaymentController extends HttpServlet {
                 }
             }
             case "checkout" -> {
-                if (cart != null) {
+                if (cart != null && u != null) {
                     Calendar c = Calendar.getInstance();
                     java.sql.Date date = new java.sql.Date(c.getTime().getTime());
                     int orderId = odao.createOrderGetId(Order.builder().user__id(u.getUser__id()).order__date(date).build());
@@ -115,6 +114,7 @@ public class PaymentController extends HttpServlet {
                     while (iterator.hasNext()) {
                         Item i = iterator.next();
                         oddao.createOrderDetail(OrderDetail.builder().order__id(orderId).product__id(i.getProduct().getProduct__id()).quantity(i.getQuantity()).unit__price(i.getPrice()).build());
+                        pdao.editProductQuantity(i.getProduct().getProduct__id(), i.getProduct().getUnit__in__stock() - i.getQuantity(), i.getProduct().getQuantity__sold() + i.getQuantity());
                         iterator.remove();
                     }
                     updateCart(response, cart);
@@ -184,6 +184,7 @@ public class PaymentController extends HttpServlet {
                     + "                            <thead>\n"
                     + "                                <tr>\n"
                     + "                                    <th>Item</th>\n"
+                    + "                                    <th>Remains</th>\n"
                     + "                                    <th>Price</th>\n"
                     + "                                    <th>Quantity</th>\n"
                     + "                                    <th>Total</th>\n"
@@ -196,21 +197,22 @@ public class PaymentController extends HttpServlet {
                 out.print("                                    <tr>\n"
                         + "                                        <td>\n"
                         + "                                            <div class=\"product-box\">\n"
-                        + "                                                <img src=\"/Grocery_Store/" + item.getProduct().getImage() + "\" alt=\"\">\n"
+                        + "                                                <img src=\"/Grocery_Store/" + item.getProduct().getImage() + "\" alt=\"\" style=\"width: 270px; height: 283px\">\n"
                         + "                                                <h3><a href=\"home?site=product-details\">" + item.getProduct().getProduct__name() + "</a></h3>\n"
                         + "                                            </div><!-- /.product-box -->\n"
                         + "                                        </td>\n"
+                        + "                                        <td>" + item.getProduct().getUnit__in__stock() + "</td>"
                         + "                                        <td>$" + item.getPrice() + "</td>\n"
                         + "                                        <td>\n"
                         + "                                            <div>\n"
-                        + "                                                <button type=\"button\" class=\"compute\" onclick=\"decreaseQuantity(this)\">-</button>\n"
-                        + "                                                <input type=\"number\" class=\"productQuantity\" name=\"productQuantity\" value=\"" + item.getQuantity() + "\"  style=\"    width: 50px;\n"
+                        + "                                                <button type=\"button\" class=\"compute\" onclick=\"decreaseQuantity(this), update()\">-</button>\n"
+                        + "                                                <input type=\"text\" class=\"productQuantity\" oninput=\"checkQuantity(this, " + item.getProduct().getUnit__in__stock() + ")\" name=\"productQuantity\" value=\"" + item.getQuantity() + "\" style=\"width: 50px;\n"
                         + "                                                       text-align: center;\n"
                         + "                                                       border: none;\n"
                         + "                                                       outline: none;\n"
                         + "                                                       font-size: 20px;\n"
-                        + "                                                       background-color: #f9f9f9;\"/>\n"
-                        + "                                                <button type=\"button\" class=\"compute\" onclick=\"increaseQuantity(this)\">+</button>\n"
+                        + "                                                       background-color: #f9f9f9;\"/>"
+                        + "                                               <button type=\"button\" class=\"compute\" onclick=\"increaseQuantity(this, " + item.getProduct().getUnit__in__stock() + "), update()\">+</button>"
                         + "                                            </div>"
                         + "                                        </td>\n"
                         + "                                        <td>\n"
