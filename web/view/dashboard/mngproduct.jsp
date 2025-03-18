@@ -140,7 +140,7 @@
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
-                                    <div class="col-lg-2" style="margin-top: 30px">
+                            <div class="col-lg-2" style="margin-top: 30px">
                                 <form action="AdminControllerProduct?action=add" method="post">
                                     <button type="submit" class="btn btn-success" style="height: 40px">
                                         <i class="fa-solid fa-plus"></i>
@@ -190,7 +190,7 @@
                     </div>
                 </section>
             </div>
-
+            
         </main>    
 
 
