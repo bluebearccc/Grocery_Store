@@ -74,14 +74,14 @@ public class CategoryDAO extends DBContext {
         return null;
     }
 
-    public int updateCategory(Category category) {
+    public int updateCategory(String cateName, String description, int id) {
         String sql = "UPDATE [dbo].[Categories] SET category__name = ?, description = ? WHERE category__id = ?";
         try {
             connection = getConnection();
             ps = connection.prepareStatement(sql);
-            ps.setString(1, category.getCategory__name());
-            ps.setString(2, category.getDescription());
-            ps.setInt(3, category.getCategory__id());
+            ps.setString(1, cateName);
+            ps.setString(2, description);
+            ps.setInt(3, id);
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Exception at updateCategory" + e.getMessage());
@@ -226,5 +226,5 @@ public class CategoryDAO extends DBContext {
         }
         return sum;
     }
-
+    
 }

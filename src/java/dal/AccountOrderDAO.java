@@ -43,6 +43,27 @@ public class AccountOrderDAO extends DBContext {
         }
         return list;
     }
+    
+    public List<AccountOrder> getAllAccountOrders() {
+        List<AccountOrder> list = new ArrayList<>();
+        String sql = "SELECT o.order__id, o.user__id, o.order__date, d.quantity, d.unit__price, p.product__name \n"
+                + "FROM Orders o \n"
+                + "INNER JOIN OrderDetails d ON o.order__id = d.order__id\n"
+                + "INNER JOIN Products p ON p.product__id = d.product__id\n";
+        try {
+            connection = getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new AccountOrder(rs.getInt("order__id"), rs.getInt("user__id"), rs.getDate("order__date"), rs.getString("product__name"), rs.getInt("quantity"), rs.getDouble("unit__price")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception at getAllOrderDetails: " + e.getMessage());
+        } finally {
+            closeResources();
+        }
+        return list;
+    }
 
     private void closeResources() {
         try {
@@ -60,11 +81,5 @@ public class AccountOrderDAO extends DBContext {
         }
     }
     
-    public static void main(String[] args) {
-        AccountOrderDAO dao = new AccountOrderDAO();
-        for (AccountOrder accountOrder : dao.getAllAccountOrder(3, 1)) {
-            System.out.println(accountOrder);
-        }
-    }
 
 }

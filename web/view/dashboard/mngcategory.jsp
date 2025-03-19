@@ -121,68 +121,64 @@
             <jsp:include page="leftadmin.jsp"></jsp:include>
             </header>
         <jsp:include page="header_right.jsp"></jsp:include>
-            <!--Main layout-->
             <main>
                 <div class="container pt-4">
-                    <!--Section: Quan Ly tai Khoan-->
                     <section class="mb-4">
                         <div class="card">
                             <div class="row" style="">
                                 <div class="col-sm-4" style="text-align: center; margin-top: 20px; padding-top: 20px">
                                     <h3 class="mb-0" id="">
-                                        <strong>Manage Products</strong>
+                                        <strong>Manage Category</strong>
                                     </h3>
                                 </div>
                                 <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
 
-                                    <form action="AdminControllerProduct?action=search" method="post" style="display: flex; justify-content: center">
+                                    <form action="AdminCategoryController?action=search" method="post" style="display: flex; justify-content: center">
                                         <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search product name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                             <div class="col-lg-2" style="margin-top: 30px">
-                                <form action="AdminControllerProduct?action=add" method="post">
+                                <form action="AdminCategoryController?action=add" method="post">
                                     <button type="submit" class="btn btn-success" style="height: 40px">
                                         <i class="fa-solid fa-plus"></i>
                                     </button>
                                 </form>
                             </div>
                         </div>
+
                         <div class="card-body">
                             <div class="table-responsive"  id="contentt">
                                 <table  class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="text_page_head" scope="col">ID</th>
-                                            <th class="text_page_head" scope="col">Name</th>
-                                            <th class="text_page_head" style="text-align: center" scope="col">Image</th>
-                                            <th class="text_page_head" scope="col">Price</th>
+                                            <th class="text_page_head" scope="col">Category Name</th>
+                                            <th class="text_page_head" scope="col">Description</th>
                                             <th class="text_page_head" scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${listAllProducts}" var="o">
+                                        <c:forEach items="${requestScope.listCate}" var="c">
                                             <tr class="product_items">
-                                                <td class="text_page">${o.product__id}</td>
-                                                <td style="max-width: 280px;" class="text_page">${o.product__name}</td>
-                                                <td style="text-align: center">
-                                                    <img style="width: 170px; height:180px" src="${pageContext.request.getContextPath()}/${o.image}">
-                                                </td>
-                                                <td class="text_page">${o.unit__price}$</td>
+                                                <td class="text_page">${c.category__name}</td>
+                                                <td style="max-width: 280px;" class="text_page">${c.description}</td>
                                                 <td class="text_page">
-                                                    <form id="form" action="AdminControllerProduct?action=edit" method="post">
+
+                                                    <form id="form" action="AdminCategoryController?action=edit" method="post">
                                                         <button type="submit" class="btn btn-warning">
                                                             <i class="fa-solid fa-pen"></i>
-                                                            <input name="id" type="hidden" value="${o.product__id}">
+                                                            <input name="id" type="hidden" value="${c.category__id}">
                                                         </button>
                                                     </form>
-                                                    <form action="AdminControllerProduct?action=delete" method="post">
+
+                                                    <form action="AdminCategoryController?action=delete" method="post">
                                                         <button type="submit" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash"></i>
-                                                            <input name="id" type="hidden" value="${o.product__id}">
+                                                            <input name="id" type="hidden" value="${c.category__id}">
                                                         </button>
                                                     </form>
-                                                </c:forEach>         
+                                            </tr>
+                                        </c:forEach>         
                                     </tbody>
                                 </table>
                             </div>
@@ -190,8 +186,7 @@
                     </div>
                 </section>
             </div>
-            
-        </main>    
+        </main>   
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -209,57 +204,6 @@
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
-
         <script src="js/countdown.js"></script>
-        <script type="text/javascript">
-            function addOption(selectElement, value, text) {
-                var option = document.createElement("option");
-                option.value = value;
-                option.text = text;
-                selectElement.add(option);
-            }
-
-            var defaultReleaseDate = document.getElementById("stringdateolb").value;
-            var defaultDateArray = defaultReleaseDate.split('-');
-            var defaultDay = parseInt(defaultDateArray[2]);
-            var defaultMonth = parseInt(defaultDateArray[1]);
-            var defaultYear = parseInt(defaultDateArray[0]);
-
-            var daysSelect = document.getElementById('dobDay');
-            var monthsSelect = document.getElementById('dobMonth');
-            var yearsSelect = document.getElementById('dobYear');
-
-            for (var day = 1; day <= 31; day++) {
-                addOption(daysSelect, day, day);
-            }
-
-            for (var month = 1; month <= 12; month++) {
-                addOption(monthsSelect, month, month);
-            }
-
-            var currentYear = new Date().getFullYear();
-            for (var year = currentYear; year >= 1900; year--) {
-                addOption(yearsSelect, year, year);
-            }
-
-            daysSelect.value = defaultDay;
-            monthsSelect.value = defaultMonth;
-            yearsSelect.value = defaultYear;
-
-
-            document.getElementById('addEmployeeModal').addEventListener('submit', function (event) {
-                var day = document.getElementById('dobDay').value;
-                var month = document.getElementById('dobMonth').value;
-                var year = document.getElementById('dobYear').value;
-
-                // Định dạng ngày tháng theo YYYY-MM-DD
-                var formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
-
-                document.getElementById('here').value = formattedDate; // Sử dụng id 'here' như trong JSP của bạn
-            });
-
-        </script>
     </body>
-
-
 </html>

@@ -32,8 +32,7 @@ public class AdminControllerProduct extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         request.setAttribute("listAllProducts", productDao.getAllProducts());
-        session.setAttribute("listAllCategories", cateDao.getAllCategories());
-        session.setAttribute("listAllSuppliers", supDao.getAllSuppliers());
+        
         request.getRequestDispatcher("view/dashboard/mngproduct.jsp").forward(request, response);
     }
 

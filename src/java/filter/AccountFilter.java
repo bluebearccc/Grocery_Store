@@ -44,7 +44,7 @@ public class AccountFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         User u = (User) req.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-        if (u == null || u.isRole()) {
+        if (u == null || !u.isRole()) {
             resp.sendRedirect(req.getContextPath() + "/account?action=login");
         }
     }

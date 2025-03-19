@@ -5,23 +5,19 @@
 package controller;
 
 import dal.CategoryDAO;
-import dal.OrderDetailDAO;
-import dal.ProductDAO;
-import dal.SupplierDAO;
-import dal.UserDAO;
+import entity.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author Tranh
  */
-public class AdminController extends HttpServlet {
+public class AdminAddCategory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +36,10 @@ public class AdminController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminController</title>");
+            out.println("<title>Servlet AddCategory</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddCategory at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,43 +57,7 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String site = request.getParameter("site");
-        request.setAttribute("totalProduct", new ProductDAO().totalProduct());
-        request.setAttribute("totalSoldProduct", new ProductDAO().totalQuantitySold());
-        request.setAttribute("totalUser", new UserDAO().totalUser());
-        request.setAttribute("totalCate", new CategoryDAO().totalCategory());
-        request.setAttribute("totalSupplier", new SupplierDAO().totalSupplier());
-        request.setAttribute("totalMoney", new OrderDetailDAO().totalMoney());
-        session.setAttribute("listAllCategories", new CategoryDAO().getAllCategories());
-        session.setAttribute("listAllSuppliers", new SupplierDAO().getAllSuppliers());
-        if (site == null) {
-            response.sendRedirect("AdminController?site=maindashboard");
-            return;
-        }
-        switch (site) {
-            case "maindashboard":
-                request.getRequestDispatcher("view/dashboard/dashboard.jsp").forward(request, response);
-                return;
-            case "product":
-                request.getRequestDispatcher("AdminControllerProduct").forward(request, response);
-                return;
-            case "supplier":
-                response.sendRedirect("AdminSupplierController");
-                return;
-            case "account":
-                response.sendRedirect("AdminControllerAccount");
-                return;
-            case "monthlyRevenue":
-                response.sendRedirect("MonthlyRevenue");
-                return;
-            case "manageCategory":
-                response.sendRedirect("AdminCategoryController");
-                return;
-            case "manageOrders":
-                response.sendRedirect("AdminOrderDetail");
-                return;
-        }
+        request.getRequestDispatcher("view/dashboard/addcategory.jsp").forward(request, response);
     }
 
     /**
@@ -111,6 +71,15 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String cateName = request.getParameter("categoryName");
+        String description = request.getParameter("description");
+
+        CategoryDAO dao = new CategoryDAO();
+        Category category = Category.builder()
+                .category__name(cateName)
+                .description(description).build();
+        dao.createCategory(category);
+        response.sendRedirect("AdminCategoryController");
     }
 
     /**
