@@ -263,7 +263,7 @@
 
                                             console.log(params.toString());
                                             $.ajax({
-                                                url: '/Grocery_Store/payment' + params.toString(),
+                                                url: '/Grocery_Store/payment?' + params.toString(),
                                                 method: 'POST',
                                                 data: {
                                                     action: "update"

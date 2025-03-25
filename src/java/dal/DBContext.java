@@ -23,8 +23,8 @@ public class DBContext {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://localhost:1433;databaseName=DB_GroceryStore";
-            String username = "sa";
-            String password = "123";
+            String username = "sa123";
+            String password = "12345";
             connection = DriverManager.getConnection(url, username, password);
             return connection;
         } catch (Exception e) {

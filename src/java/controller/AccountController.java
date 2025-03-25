@@ -48,7 +48,7 @@ public class AccountController extends HttpServlet {
                 request.getRequestDispatcher("view/homepage/register.jsp").forward(request, response);
             case "logout" -> {
                 session.invalidate();
-                request.getRequestDispatcher("view/homepage/register.jsp").forward(request, response);
+                request.getRequestDispatcher("home").forward(request, response);
             }
             default -> {
                 User u = (User) session.getAttribute(CommonConst.SESSION_ACCOUNT);
@@ -104,7 +104,7 @@ public class AccountController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
-        String currentPage = request.getParameter("remember");
+        String currentPage = (String) session.getAttribute("currentPage");
         User u = udao.getUser(username, password);
 
         if (u != null) {
@@ -123,6 +123,7 @@ public class AccountController extends HttpServlet {
 
             if (currentPage != null) {
                 response.sendRedirect(currentPage);
+                session.removeAttribute("currentPage");
             } else {
                 response.sendRedirect("home");
             }
@@ -140,7 +141,7 @@ public class AccountController extends HttpServlet {
         String address = request.getParameter("address");
         String password = request.getParameter("password");
         String passwordConfirm = request.getParameter("password-confirm");
-        String currentPage = request.getParameter("remember");
+        String currentPage = (String) session.getAttribute("currentPage");
 
         if (!password.equals(passwordConfirm)) {
             request.setAttribute("error", "⚠️ password are not matching. Please try again!");
@@ -157,6 +158,7 @@ public class AccountController extends HttpServlet {
             session.setAttribute(CommonConst.SESSION_ACCOUNT, u);
             if (currentPage != null) {
                 response.sendRedirect(currentPage);
+                session.removeAttribute("currentPage");
             } else {
                 response.sendRedirect("home");
             }

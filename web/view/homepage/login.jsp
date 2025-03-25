@@ -23,7 +23,7 @@
         <div class="login-container">
             <div class="overlay"></div>
             <div class="content">
-                <form action="home" class="form-login" method="POST">
+                <form action="account" class="form-login" method="POST">
                     <input type="hidden" name="site" value="validatelogin">
                     <div class="input-group">
                         <input type="text" name="username" placeholder="Username" value="${cookie['userCookie'].value}" required>

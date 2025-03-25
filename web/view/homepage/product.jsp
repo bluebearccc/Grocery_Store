@@ -218,7 +218,7 @@
                                         function loadPage(page) {
                                             getMinMaxSearchName();
                                             $.ajax({
-                                                url: "/Grocery_Store/home",
+                                                url: "/Grocery_Store/product",
                                                 type: "get",
                                                 data: {
                                                     site: "product",

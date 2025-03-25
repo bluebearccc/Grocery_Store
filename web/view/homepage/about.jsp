@@ -78,21 +78,22 @@
                                     <h3>We’re Selling Quality
                                         Products</h3>
                                 </div><!-- /.block-title -->
-                                <p>There are many variations of passages of available but the majority have suffered alteration in
-                                    some form, by injected humou or words even slightly believable.</p>
-                                <p>There are many variations of passages of available but the majority have suffered alteration in
-                                    some form, by injected humou or words even slightly believable.</p>
+                                <p>Welcome to Our Fruit Paradise! 🍎🍊🍇
+                                    At Organik, we are passionate about bringing you the freshest, juiciest, and most delicious fruits straight to your table. 
+                                    Our selection includes a wide variety of seasonal and exotic fruits, carefully sourced to ensure top quality and flavor. 
+                                </p>
+                                <p>TWhether you're looking for a healthy snack, ingredients for a refreshing smoothie, or a vibrant fruit platter, we've got you covered. 
+                                    Join us on a journey of taste and health — because fresh fruits make life sweeter! 🌿🥭🍍.
+                                </p>
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6">
                                         <div class="about-one__box">
-                                            <h3><i class="fa fa-check-circle"></i> Magnis Dis Nascet</h3>
-                                            <p>Lorem ipsum is free do sit</p>
+                                            <h3><i class="fa fa-check-circle"></i> Fruit Paradise! 🍎🍊🍇</h3>
                                         </div><!-- /.about-one__box -->
                                     </div><!-- /.col-md-6 -->
                                     <div class="col-md-6 col-lg-6">
                                         <div class="about-one__box">
-                                            <h3><i class="fa fa-check-circle"></i> Libero id Ege</h3>
-                                            <p>Lorem ipsum is free do sit</p>
+                                            <h3><i class="fa fa-check-circle"></i>  fresh fruits make life sweeter! 🌿🥭🍍</h3>
                                         </div><!-- /.about-one__box -->
                                     </div><!-- /.col-md-6 -->
                                 </div><!-- /.row -->
@@ -109,80 +110,6 @@
                         Organic Food</h3>
                 </div><!-- /.container -->
             </section><!-- /.video-one -->
-
-            <section class="team-one">
-                <img src="${pageContext.request.contextPath}/images/shapes/team-shape-1.png" alt="" class="team-one__shape-1">
-                <img src="${pageContext.request.contextPath}/images/shapes/team-shape-2.png" alt="" class="team-one__shape-2">
-                <div class="container">
-                    <div class="block-title text-center">
-                        <div class="block-title__decor"></div><!-- /.block-title__decor -->
-                        <p>Professional People</p>
-                        <h3>Meet the Team</h3>
-                    </div><!-- /.block-title -->
-                    <div class="row">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="team-card">
-                                <div class="team-card__image">
-                                    <img src="${pageContext.request.contextPath}/images/team/team-1-1.png" alt="">
-                                </div><!-- /.team-card__image -->
-                                <div class="team-card__content">
-                                    <h3>Ray Luna</h3>
-                                    <div class="team-card__social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div><!-- /.team-card__social -->
-                                </div><!-- /.team-card__content -->
-                            </div><!-- /.team-card -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="team-card">
-                                <div class="team-card__image">
-                                    <img src="${pageContext.request.contextPath}/images/team/team-1-2.png" alt="">
-                                </div><!-- /.team-card__image -->
-                                <div class="team-card__content">
-                                    <h3>Ora McLaughlin</h3>
-                                    <div class="team-card__social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div><!-- /.team-card__social -->
-                                </div><!-- /.team-card__content -->
-                            </div><!-- /.team-card -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="team-card">
-                                <div class="team-card__image">
-                                    <img src="${pageContext.request.contextPath}/images/team/team-1-3.png" alt="">
-                                </div><!-- /.team-card__image -->
-                                <div class="team-card__content">
-                                    <h3>Peter Ramsey</h3>
-                                    <div class="team-card__social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div><!-- /.team-card__social -->
-                                </div><!-- /.team-card__content -->
-                            </div><!-- /.team-card -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="team-card">
-                                <div class="team-card__image">
-                                    <img src="${pageContext.request.contextPath}/images/team/team-1-4.png" alt="">
-                                </div><!-- /.team-card__image -->
-                                <div class="team-card__content">
-                                    <h3>Eric Miller</h3>
-                                    <div class="team-card__social">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div><!-- /.team-card__social -->
-                                </div><!-- /.team-card__content -->
-                            </div><!-- /.team-card -->
-                        </div><!-- /.col-md-6 col-lg-3 -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-            </section><!-- /.team-one -->
 
             <jsp:include page="../com/page-wrapper/site-footer.jsp"></jsp:include><!-- /.site-footer -->
 

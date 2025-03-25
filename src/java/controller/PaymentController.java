@@ -69,69 +69,67 @@ public class PaymentController extends HttpServlet {
 
         if (u == null && action.equals("add")) {
             if (productId != 0) {
-                request.setAttribute("currentPage", currentPage + "?productId=" + productId);
+                session.setAttribute("currentPage", currentPage + "?productId=" + productId);
             }
-            request.setAttribute("action", "login");
-            request.getRequestDispatcher("account").forward(request, response);
-        }
-
-        switch (action) {
-            case "add" -> {
-                int quantity = Integer.parseInt(request.getParameter("quantity"));
-                float price = Float.parseFloat(request.getParameter("price"));
-                Item i = new Item(pdao.getProduct(productId), quantity, price);
-                if (cart == null) {
-                    cart = new Cart();
-                    session.setAttribute(CommonConst.SESSION_CART, cart);
+            response.sendRedirect("account?action=login");
+        } else {
+            switch (action) {
+                case "add" -> {
+                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                    float price = Float.parseFloat(request.getParameter("price"));
+                    Item i = new Item(pdao.getProduct(productId), quantity, price);
+                    if (cart == null) {
+                        cart = new Cart();
+                        session.setAttribute(CommonConst.SESSION_CART, cart);
+                    }
+                    cart.addItem(i);
+                    response.sendRedirect(currentPage + "?productId=" + productId);
                 }
-                cart.addItem(i);
-                response.sendRedirect(currentPage + "?productId=" + productId);
-            }
-            case "delete" -> {
-                if (cart != null) {
-                    cart.removeItem(productId);
+                case "delete" -> {
+                    if (cart != null) {
+                        cart.removeItem(productId);
+                    }
+                    updateCart(response, cart);
                 }
-                updateCart(response, cart);
-            }
-            case "update" -> {
-                if (cart != null) {
-                    String product[] = request.getParameterValues("productId");
-                    String quantity[] = request.getParameterValues("quantity");
+                case "update" -> {
+                    if (cart != null) {
+                        String product[] = request.getParameterValues("productId");
+                        String quantity[] = request.getParameterValues("quantity");
 
-                    if (quantity != null && product != null) {
-                        for (int i = 0; i < quantity.length; i++) {
-                            if (!product[i].trim().isEmpty() && !quantity[i].trim().isEmpty()) {
-                                cart.getItemById(Integer.parseInt(product[i])).setQuantity(Integer.parseInt(quantity[i]));
+                        if (quantity != null && product != null) {
+                            for (int i = 0; i < quantity.length; i++) {
+                                if (!product[i].trim().isEmpty() && !quantity[i].trim().isEmpty()) {
+                                    cart.getItemById(Integer.parseInt(product[i])).setQuantity(Integer.parseInt(quantity[i]));
+                                }
                             }
                         }
+                        updateCart(response, cart);
                     }
-                    updateCart(response, cart);
                 }
-            }
-            case "checkout" -> {
-                if (cart != null && u != null) {
-                    Calendar c = Calendar.getInstance();
-                    java.sql.Date date = new java.sql.Date(c.getTime().getTime());
-                    int orderId = odao.createOrderGetId(Order.builder().user__id(u.getUser__id()).order__date(date).build());
-                    Iterator<Item> iterator = cart.getItems().iterator();
-                    while (iterator.hasNext()) {
-                        Item i = iterator.next();
-                        oddao.createOrderDetail(OrderDetail.builder().order__id(orderId).product__id(i.getProduct().getProduct__id()).quantity(i.getQuantity()).unit__price(i.getPrice()).build());
-                        pdao.editProductQuantity(i.getProduct().getProduct__id(), i.getProduct().getUnit__in__stock() - i.getQuantity(), i.getProduct().getQuantity__sold() + i.getQuantity());
-                        iterator.remove();
+                case "checkout" -> {
+                    if (cart != null && u != null) {
+                        Calendar c = Calendar.getInstance();
+                        java.sql.Date date = new java.sql.Date(c.getTime().getTime());
+                        int orderId = odao.createOrderGetId(Order.builder().user__id(u.getUser__id()).order__date(date).build());
+                        Iterator<Item> iterator = cart.getItems().iterator();
+                        while (iterator.hasNext()) {
+                            Item i = iterator.next();
+                            oddao.createOrderDetail(OrderDetail.builder().order__id(orderId).product__id(i.getProduct().getProduct__id()).quantity(i.getQuantity()).unit__price(i.getPrice()).build());
+                            pdao.editProductQuantity(i.getProduct().getProduct__id(), i.getProduct().getUnit__in__stock() - i.getQuantity(), i.getProduct().getQuantity__sold() + i.getQuantity());
+                            iterator.remove();
+                        }
+                        updateCart(response, cart);
                     }
-                    updateCart(response, cart);
                 }
-            }
-            case "updateSmallCart" -> {
-                if (cart != null) {
-                    updateSmallCart(response, cart);
+                case "updateSmallCart" -> {
+                    if (cart != null) {
+                        updateSmallCart(response, cart);
+                    }
                 }
+                default ->
+                    throw new AssertionError();
             }
-            default ->
-                throw new AssertionError();
         }
-
     }
 
     /**

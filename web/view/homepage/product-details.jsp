@@ -118,10 +118,9 @@
 
                                             <button class="thm-btn" type="submit" onclick="loadQuantity(); addToCart('mainProForm')">Add to Cart</button>
 
-                                            <form action="home" method="POST" style="display: none" id="mainProForm">
-                                                <input type="hidden" name="site" value="payment">
+                                            <form action="payment" method="POST" style="display: none" id="mainProForm">
                                                 <input type="hidden" name="action" value="add">
-                                                <input type="hidden" name="currentPage" value="product-details">
+                                                <input type="hidden" name="currentPage" value="productdetail">
                                                 <input type="hidden" name="productId" value="${product.getProduct__id()}">
                                                 <input type="hidden" id="inputQuantity" name="quantity" value="">
                                                 <input type="hidden" name="price" value="${product.getUnit__price()}">
